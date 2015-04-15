@@ -26,7 +26,7 @@ return [
 	|
 	*/
 
-	'url' => 'http://localhost',
+	'url' => 'http://laravelcms.khit.dev',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -78,7 +78,7 @@ return [
 	|
 	*/
 
-	'key' => env('APP_KEY', 'SomeRandomString'),
+	'key' => env('APP_KEY', 'nx5GTrXGvMs4rr3j7njDWBdaKvmnMues6FHqZsBGnAangJWUqGywTYuuvqvkNp9s'),
 
 	'cipher' => MCRYPT_RIJNDAEL_128,
 
@@ -135,6 +135,7 @@ return [
 		'Illuminate\Translation\TranslationServiceProvider',
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
+                'Illuminate\Html\HtmlServiceProvider',
 
 		/*
 		 * Application Service Providers...
@@ -144,6 +145,7 @@ return [
 		'App\Providers\ConfigServiceProvider',
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
+                'Laracasts\Flash\FlashServiceProvider'
 
 	],
 
@@ -192,6 +194,9 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
+                'Form'      => 'Illuminate\Html\FormFacade',
+                'Html'      => 'Illuminate\Html\HtmlFacade',
+                'Flash' => 'Laracasts\Flash\Flash'
 
 	],
 

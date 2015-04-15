@@ -30,5 +30,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 * @var array
 	 */
 	protected $hidden = ['password', 'remember_token'];
+        
+        /**
+         * Alter the primary key
+         * @var string 
+         */
+        protected $primaryKey = 'uid';
 
 }
