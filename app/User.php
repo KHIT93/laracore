@@ -37,4 +37,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
          */
         protected $primaryKey = 'uid';
 
+        public function nodes()
+        {
+            return $this->hasMany('App\Node', 'author', 'uid');
+        }
 }

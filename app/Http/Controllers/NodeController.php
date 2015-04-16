@@ -3,8 +3,11 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Node;
+use App\Metadata;
+use App\PathAlias;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class NodeController extends Controller {
 
@@ -33,7 +36,7 @@ class NodeController extends Controller {
 	 */
 	public function create()
 	{
-            return view('admin.content_form');
+            return view('admin.content_form_add');
 	}
 
 	/**
@@ -41,9 +44,17 @@ class NodeController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
-            Node::create(Request::all());
+            $data = $request->all();
+            $data['content']['author'] = \Auth::user()->uid;
+            $node = Node::create($data['content']);
+            $data['meta']['nid'] = $node->nid;
+            $metadata = Metadata::create($data['meta']);
+            //$url = (empty(trim($data['url']['alias']))) ? Str::slug($node->title) : $data['url']['alias'];
+            return PathAlias::create(['nid' => $node->nid, 'alias' => Str::slug($node->title)]);
+            flash('The new node has been created');
+            return redirect('admin/content');
 	}
 
 	/**
@@ -54,7 +65,10 @@ class NodeController extends Controller {
 	 */
 	public function show($nid)
 	{
-            //
+            $node = Node::find($nid);
+            $metadata = $node->metadata()->first();
+            $user = $node->author()->first();
+            return compact('node', 'metadata', 'user');
 	}
         
         /**
@@ -74,7 +88,10 @@ class NodeController extends Controller {
 	 */
 	public function edit($nid)
 	{
-            //
+            $node = Node::find($nid);
+            $meta = $node->metadata()->first();
+            $urls = $node->aliases()->getResults();
+            return view('admin.content_form_edit', compact('node', 'meta', 'urls'));
 	}
 
 	/**

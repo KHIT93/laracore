@@ -17,9 +17,12 @@ class CreateNodesTable extends Migration {
 			$table->increments('nid');
                         $table->string('title');
                         $table->text('body');
-                        $table->integer('author');
-                        $table->integer('status');
+                        $table->integer('author')->unsigned();
+                        $table->integer('published');
 			$table->timestamps();
+                        $table->foreign('author')
+                                ->references('uid')
+                                ->on('users');
 		});
 	}
 

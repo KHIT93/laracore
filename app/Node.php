@@ -15,7 +15,7 @@ class Node extends Model {
         'title',
         'body',
         'author',
-        'status'
+        'published'
     ];
     
     /**
@@ -24,4 +24,28 @@ class Node extends Model {
     */
     protected $primaryKey = 'nid';
 
+    /**
+     * Gets the author of the node.
+     * @return User
+     */
+    public function author()
+    {
+        return $this->belongsTo('App\User', 'author', 'uid');
+    }
+    
+    /**
+     * Gets the metadata for this node.
+     * @return Metadata
+     */
+    public function metadata()
+    {
+        return $this->hasOne('App\Metadata', 'nid', 'nid');
+    }
+    
+    public function aliases()
+    {
+        return $this->hasMany('App\PathAlias', 'nid');
+    }
+    
+    
 }

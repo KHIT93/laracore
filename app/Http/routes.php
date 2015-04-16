@@ -21,6 +21,8 @@ Route::get('admin/content', 'NodeController@index');
 
 Route::get('node/add', 'NodeController@create');
 
+Route::post('node/add', 'NodeController@store');
+
 Route::get('node/{nid}', 'NodeController@show');
 
 Route::get('node/{nid}/edit', 'NodeController@edit');
