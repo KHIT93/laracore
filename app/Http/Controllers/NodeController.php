@@ -52,7 +52,6 @@ class NodeController extends Controller {
             $data['meta']['nid'] = $node->nid;
             $metadata = Metadata::create($data['meta']);
             //$url = (empty(trim($data['url']['alias']))) ? Str::slug($node->title) : $data['url']['alias'];
-            return PathAlias::create(['nid' => $node->nid, 'alias' => Str::slug($node->title)]);
             flash('The new node has been created');
             return redirect('admin/content');
 	}
@@ -66,10 +65,13 @@ class NodeController extends Controller {
 	public function show($nid)
 	{
             $node = Node::find($nid);
-            $metadata = $node->metadata()->first();
-            $user = $node->author()->first();
-            return compact('node', 'metadata', 'user');
+            return view('node', compact('node'));
 	}
+        
+        public function resolve(PathAlias $path_alias)
+        {
+            return $this->show($path_alias->node()->first()->nid);
+        }
         
         /**
          * Display all resources.

@@ -11,6 +11,18 @@
 |
 */
 
+/**
+ * Create Route-Model Bindingd
+ */
+
+Route::bind('path_alias', function($value)
+{
+    return App\PathAlias::where('alias', $value)->first();
+});
+
+/**
+ * Create generic routes
+ */
 Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
@@ -33,3 +45,5 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+Route::get('{path_alias}', 'NodeController@resolve');

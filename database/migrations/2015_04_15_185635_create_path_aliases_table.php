@@ -14,7 +14,8 @@ class CreatePathAliasesTable extends Migration {
 	{
 		Schema::create('url_alias', function(Blueprint $table)
 		{
-			$table->integer('nid');
+			$table->increments('id');
+                        $table->integer('nid');
                         $table->string('alias')->unique;
 			$table->timestamps();
 		});

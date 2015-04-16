@@ -16,8 +16,10 @@ class PathAlias extends Model {
             'alias',
         ];
         
-        protected $primaryKey = 'alias';
-        
+        /**
+         * Returns the node relationship
+         * @return Node
+         */
         public function node()
         {
             return $this->belongsTo('App\Node', 'nid');
