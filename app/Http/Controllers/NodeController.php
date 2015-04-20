@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use App\Http\Requests\NodeRequest;
 use App\Http\Controllers\Controller;
 use App\Node;
 use App\Metadata;
@@ -17,6 +18,7 @@ class NodeController extends Controller {
         public function __construct()
         {
             //$this->middleware('permission', ['except' => ['show']]);
+            $this->middleware('auth', ['except' => ['show']]);
         }
 	/**
 	 * Display a listing of the resource.
@@ -44,15 +46,16 @@ class NodeController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(Request $request)
+	public function store(NodeRequest $request)
 	{
             $data = $request->all();
             $data['content']['author'] = \Auth::user()->uid;
             $node = Node::create($data['content']);
             $data['meta']['nid'] = $node->nid;
             $metadata = Metadata::create($data['meta']);
-            //$url = (empty(trim($data['url']['alias']))) ? Str::slug($node->title) : $data['url']['alias'];
-            flash('The new node has been created');
+            $url = (empty(trim($data['url']['alias']))) ? Str::slug($node->title) : $data['url']['alias'];
+            PathAlias::create(['nid' => $node->nid, 'alias' => $url]);
+            \Flash::success('The new node has been created');
             return redirect('admin/content');
 	}
 
@@ -62,24 +65,14 @@ class NodeController extends Controller {
 	 * @param  int  $nid
 	 * @return Response
 	 */
-	public function show($nid)
+	public function show(Node $node)
 	{
-            $node = Node::find($nid);
             return view('node', compact('node'));
 	}
         
         public function resolve(PathAlias $path_alias)
         {
             return $this->show($path_alias->node()->first()->nid);
-        }
-        
-        /**
-         * Display all resources.
-         * @return Response
-         */
-        public function showAll()
-        {
-            
         }
 
 	/**
@@ -88,9 +81,8 @@ class NodeController extends Controller {
 	 * @param  int  $nid
 	 * @return Response
 	 */
-	public function edit($nid)
+	public function edit(Node $node)
 	{
-            $node = Node::find($nid);
             $meta = $node->metadata()->first();
             $urls = $node->aliases()->getResults();
             return view('admin.content_form_edit', compact('node', 'meta', 'urls'));
@@ -102,9 +94,14 @@ class NodeController extends Controller {
 	 * @param  int  $nid
 	 * @return Response
 	 */
-	public function update($nid)
+	public function update(Node $node, NodeRequest $request)
 	{
-            //
+            $data = $request->all();
+            $node->update($data['content']);
+            $metadata = $node->metadata()->first();
+            $metadata->update($data['meta']);
+            \Flash::success('The node has been updated');
+            return redirect('admin/content');
 	}
 
         /**
@@ -112,9 +109,9 @@ class NodeController extends Controller {
          * @param int $nid
          * @return Response
          */
-        public function remove($nid)
+        public function remove(Node $node)
         {
-            //
+            return view('admin.content_form_delete', compact('node'));
         }
         
 	/**
@@ -123,9 +120,11 @@ class NodeController extends Controller {
 	 * @param  int  $nid
 	 * @return Response
 	 */
-	public function destroy($nid)
+	public function destroy(Node $node)
 	{
-            //
+            $node->delete();
+            \Flash::success('The node has been deleted');
+            return redirect('admin/content');
 	}
 
 }

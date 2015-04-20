@@ -19,6 +19,9 @@ Route::bind('path_alias', function($value)
 {
     return App\PathAlias::where('alias', $value)->first();
 });
+Route::bind('node', function($nid){
+    return App\Node::findOrFail($nid);
+});
 
 /**
  * Create generic routes
@@ -35,11 +38,15 @@ Route::get('node/add', 'NodeController@create');
 
 Route::post('node/add', 'NodeController@store');
 
-Route::get('node/{nid}', 'NodeController@show');
+Route::get('node/{node}', 'NodeController@show');
 
-Route::get('node/{nid}/edit', 'NodeController@edit');
+Route::get('node/{node}/edit', 'NodeController@edit');
 
-Route::get('node/{nid}/delete', 'NodeController@remove');
+Route::post('node/{node}/edit', 'NodeController@update');
+
+Route::get('node/{node}/delete', 'NodeController@remove');
+
+Route::post('node/{node}/delete', 'NodeController@destroy');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

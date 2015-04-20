@@ -22,8 +22,8 @@ class NodeRequest extends Request {
 	public function rules()
 	{
 		return [
-                    'title' => 'required',
-                    'body' => 'required'
+                    'content.title' => 'required',
+                    'content.body' => 'required'
 		];
 	}
 

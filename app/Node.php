@@ -42,10 +42,22 @@ class Node extends Model {
         return $this->hasOne('App\Metadata', 'nid', 'nid');
     }
     
+    /**
+     * Gets all path aliases for this node.
+     * @return Array
+     */
     public function aliases()
     {
         return $this->hasMany('App\PathAlias', 'nid');
     }
     
+    /**
+     * Gets all nodes that are published
+     * @param $query
+     */
+    public function scopePublished($query)
+    {
+        $query->where('published', '=', 1);
+    }
     
 }
