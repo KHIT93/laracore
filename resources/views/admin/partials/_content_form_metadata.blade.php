@@ -13,7 +13,7 @@
         {!! Form::text('meta[description]', null, ['class' => 'form-control']) !!}
     </div>
     <div class="form-group @if ($errors->has('meta.robots')) has-error @endif">
-        {!! Form::label('meta[description]', 'Search Engines') !!}
+        {!! Form::label('meta[robots]', 'Search Engines') !!}
         {!! Form::select('meta[robots]', [
             'noindex,nofollow' => 'No indexing and no following',
             'index,nofollow' => 'Index, but do not follow',

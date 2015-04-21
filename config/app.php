@@ -52,7 +52,7 @@ return [
 	|
 	*/
 
-	'locale' => 'en',
+	'locale' => 'da',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -132,7 +132,7 @@ return [
 		'Illuminate\Redis\RedisServiceProvider',
 		'Illuminate\Auth\Passwords\PasswordResetServiceProvider',
 		'Illuminate\Session\SessionServiceProvider',
-		'Illuminate\Translation\TranslationServiceProvider',
+		//'Illuminate\Translation\TranslationServiceProvider',
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
                 'Illuminate\Html\HtmlServiceProvider',
@@ -146,7 +146,9 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
                 'Laracasts\Flash\FlashServiceProvider',
-                'Barryvdh\Elfinder\ElfinderServiceProvider'
+                'Barryvdh\Elfinder\ElfinderServiceProvider',
+                'Khill\Fontawesome\FontAwesomeServiceProvider',
+                'Overtrue\LaravelLang\TranslationServiceProvider',
 
 	],
 

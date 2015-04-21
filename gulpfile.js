@@ -17,6 +17,7 @@ elixir(function(mix) {
         'css/app.css',
         'css/font-awesome.min.css',
         'css/admin/sidebar.css',
+        'css/admin/overrides.css',
         'js/jquery.select2/select2.min.css'
     ], 'public/css/styles.css', 'resources/assets');
     mix.scripts([

@@ -18,7 +18,7 @@ class NodeController extends Controller {
         public function __construct()
         {
             //$this->middleware('permission', ['except' => ['show']]);
-            $this->middleware('auth', ['except' => ['show']]);
+            $this->middleware('auth', ['except' => ['show', 'showDefault']]);
         }
 	/**
 	 * Display a listing of the resource.
@@ -69,6 +69,11 @@ class NodeController extends Controller {
 	{
             return view('node', compact('node'));
 	}
+        
+        public function showDefault()
+        {
+            return view('node', ['node' => Node::find(1)]);
+        }
         
         public function resolve(PathAlias $path_alias)
         {
