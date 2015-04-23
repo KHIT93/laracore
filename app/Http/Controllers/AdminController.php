@@ -22,7 +22,16 @@ class AdminController extends Controller {
          */
         public function index()
         {
-            return view('admin.dashboard');
+            $items = \App\MenuItem::where('mid', '=', 2)->get();
+            foreach ($items as $key => $item) {
+                if($item->parent > 0)
+                {
+                    $items[$item->parent]->childs[] = $item;
+                    unset($items[$key]);
+                }
+            }
+            //dd(\App\MenuItem::where('mid', '=', 2)->get());
+            return view('admin.dashboard', ['items' => $items]);
         }
 
 }

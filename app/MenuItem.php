@@ -14,17 +14,19 @@ class MenuItem extends Model {
             'icon'
         ];
         
+        public $childs = array();
+        
         public function menu()
         {
             return $this->belongsTo('App\Menu', 'mid');
         }
         public function children()
         {
-            return $this->hasMany('App\MenuItem', 'parent');
+            return $this->hasMany('App\MenuItem', 'parent', 'id');
         }
         public function parent()
         {
-            return $this->belongsTo('App\MenuItem', 'parent');
+            return $this->belongsTo('App\MenuItem', 'id', 'parent');
         }
 
 }
