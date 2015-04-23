@@ -19,7 +19,6 @@
         "Illuminate\\Redis\\RedisServiceProvider",
         "Illuminate\\Auth\\Passwords\\PasswordResetServiceProvider",
         "Illuminate\\Session\\SessionServiceProvider",
-        "Illuminate\\Translation\\TranslationServiceProvider",
         "Illuminate\\Validation\\ValidationServiceProvider",
         "Illuminate\\View\\ViewServiceProvider",
         "Illuminate\\Html\\HtmlServiceProvider",
@@ -29,7 +28,9 @@
         "App\\Providers\\EventServiceProvider",
         "App\\Providers\\RouteServiceProvider",
         "Laracasts\\Flash\\FlashServiceProvider",
-        "Barryvdh\\Elfinder\\ElfinderServiceProvider"
+        "Barryvdh\\Elfinder\\ElfinderServiceProvider",
+        "Khill\\Fontawesome\\FontAwesomeServiceProvider",
+        "Overtrue\\LaravelLang\\TranslationServiceProvider"
     ],
     "eager": [
         "Illuminate\\Auth\\AuthServiceProvider",
@@ -49,7 +50,8 @@
         "App\\Providers\\EventServiceProvider",
         "App\\Providers\\RouteServiceProvider",
         "Laracasts\\Flash\\FlashServiceProvider",
-        "Barryvdh\\Elfinder\\ElfinderServiceProvider"
+        "Barryvdh\\Elfinder\\ElfinderServiceProvider",
+        "Khill\\Fontawesome\\FontAwesomeServiceProvider"
     ],
     "deferred": {
         "command.app.name": "Illuminate\\Foundation\\Providers\\ArtisanServiceProvider",
@@ -126,10 +128,10 @@
         "redis": "Illuminate\\Redis\\RedisServiceProvider",
         "auth.password": "Illuminate\\Auth\\Passwords\\PasswordResetServiceProvider",
         "auth.password.tokens": "Illuminate\\Auth\\Passwords\\PasswordResetServiceProvider",
-        "translator": "Illuminate\\Translation\\TranslationServiceProvider",
-        "translation.loader": "Illuminate\\Translation\\TranslationServiceProvider",
         "html": "Illuminate\\Html\\HtmlServiceProvider",
-        "form": "Illuminate\\Html\\HtmlServiceProvider"
+        "form": "Illuminate\\Html\\HtmlServiceProvider",
+        "translator": "Overtrue\\LaravelLang\\TranslationServiceProvider",
+        "translation.loader": "Overtrue\\LaravelLang\\TranslationServiceProvider"
     },
     "when": {
         "Illuminate\\Foundation\\Providers\\ArtisanServiceProvider": [],
@@ -142,7 +144,7 @@
         "Illuminate\\Queue\\QueueServiceProvider": [],
         "Illuminate\\Redis\\RedisServiceProvider": [],
         "Illuminate\\Auth\\Passwords\\PasswordResetServiceProvider": [],
-        "Illuminate\\Translation\\TranslationServiceProvider": [],
-        "Illuminate\\Html\\HtmlServiceProvider": []
+        "Illuminate\\Html\\HtmlServiceProvider": [],
+        "Overtrue\\LaravelLang\\TranslationServiceProvider": []
     }
 }
