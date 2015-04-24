@@ -23,7 +23,7 @@ class NodeController extends Controller {
 	/**
 	 * Display a listing of the resource.
 	 *
-	 * @return Response
+	 * @return View
 	 */
 	public function index()
 	{
@@ -34,7 +34,7 @@ class NodeController extends Controller {
 	/**
 	 * Show the form for creating a new resource.
 	 *
-	 * @return Response
+	 * @return View
 	 */
 	public function create()
 	{
@@ -44,7 +44,7 @@ class NodeController extends Controller {
 	/**
 	 * Store a newly created resource in storage.
 	 *
-	 * @return Response
+	 * @return Redirect
 	 */
 	public function store(NodeRequest $request)
 	{
@@ -62,29 +62,29 @@ class NodeController extends Controller {
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  int  $nid
-	 * @return Response
+	 * @param  Node  $node
+	 * @return View
 	 */
 	public function show(Node $node)
 	{
             return view('node', compact('node'));
 	}
         
-        public function showDefault()
-        {
-            return view('node', ['node' => Node::find(1)]);
-        }
+    public function showDefault()
+    {
+        return view('node', ['node' => Node::find(1)]);
+    }
         
-        public function resolve(PathAlias $path_alias)
-        {
-            return $this->show($path_alias->node()->first());
-        }
+    public function resolve(PathAlias $path_alias)
+    {
+        return $this->show($path_alias->node()->first());
+    }
 
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param  int  $nid
-	 * @return Response
+	 * @param  Node  $node
+	 * @return View
 	 */
 	public function edit(Node $node)
 	{
@@ -96,8 +96,9 @@ class NodeController extends Controller {
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param  int  $nid
-	 * @return Response
+	 * @param  Node  $node
+     * @param NodeRequest $request
+	 * @return Redirect
 	 */
 	public function update(Node $node, NodeRequest $request)
 	{
@@ -111,8 +112,8 @@ class NodeController extends Controller {
 
         /**
          * Show the page for confirming the removal of the specified resource from storage.
-         * @param int $nid
-         * @return Response
+         * @param Node $node
+         * @return View
          */
         public function remove(Node $node)
         {
@@ -122,8 +123,8 @@ class NodeController extends Controller {
 	/**
 	 * Remove the specified resource from storage.
 	 *
-	 * @param  int  $nid
-	 * @return Response
+	 * @param  Node  $node
+	 * @return Redirect
 	 */
 	public function destroy(Node $node)
 	{

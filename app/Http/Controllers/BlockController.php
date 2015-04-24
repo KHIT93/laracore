@@ -11,7 +11,7 @@ class BlockController extends Controller {
 	/**
 	 * Display a listing of the resource.
 	 *
-	 * @return Response
+	 * @return View
 	 */
 	public function index()
 	{
@@ -21,7 +21,7 @@ class BlockController extends Controller {
 	/**
 	 * Show the form for creating a new resource.
 	 *
-	 * @return Response
+	 * @return View
 	 */
 	public function create()
 	{
@@ -31,7 +31,7 @@ class BlockController extends Controller {
 	/**
 	 * Store a newly created resource in storage.
 	 *
-	 * @return Response
+	 * @return Redirect
 	 */
 	public function store(BlockRequest $request)
 	{
@@ -43,8 +43,8 @@ class BlockController extends Controller {
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param  int  $id
-	 * @return Response
+	 * @param  Block  $block
+	 * @return View
 	 */
 	public function edit(Block $block)
 	{
@@ -54,8 +54,9 @@ class BlockController extends Controller {
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param  int  $id
-	 * @return Response
+	 * @param  Block  $block
+     * @param  BlockRequest  $request
+	 * @return Redirect
 	 */
 	public function update(Block $block, BlockRequest $request)
 	{
@@ -67,8 +68,8 @@ class BlockController extends Controller {
         /**
 	 * Show the page for confirming the removal of the specified resource from storage.
 	 *
-	 * @param Menu $menu
-	 * @return Response
+	 * @param Block $block
+	 * @return View
 	 */
 	public function remove(Block $block)
 	{
@@ -78,8 +79,8 @@ class BlockController extends Controller {
 	/**
 	 * Remove the specified resource from storage.
 	 *
-	 * @param  int  $id
-	 * @return Response
+	 * @param  Block  $block
+	 * @return Redirect
 	 */
 	public function destroy(Block $block)
 	{

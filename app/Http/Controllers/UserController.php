@@ -21,7 +21,7 @@ class UserController extends Controller {
 	/**
 	 * Display a listing of the resource.
 	 *
-	 * @return Response
+	 * @return View
 	 */
 	public function index()
 	{
@@ -31,7 +31,7 @@ class UserController extends Controller {
 	/**
 	 * Show the form for creating a new resource.
 	 *
-	 * @return Response
+	 * @return View
 	 */
 	public function create()
 	{
@@ -41,19 +41,19 @@ class UserController extends Controller {
 	/**
 	 * Store a newly created resource in storage.
 	 *
-	 * @return Response
+	 * @return Redirect
 	 */
 	public function store(UserRequest $request)
 	{
             User::create($request->all());
             \Flash::success('The new user has been created');
+            return redirect('admin/users');
 	}
 
         /**
 	 * Display the current Authenticated User resource.
 	 *
-	 * @param  int  $id
-	 * @return Response
+	 * @return View
 	 */
 	public function showCurrent()
 	{
@@ -63,8 +63,8 @@ class UserController extends Controller {
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  int  $id
-	 * @return Response
+	 * @param  User  $user
+	 * @return View
 	 */
 	public function show(User $user)
 	{
@@ -74,8 +74,8 @@ class UserController extends Controller {
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param  int  $id
-	 * @return Response
+	 * @param  User  $user
+	 * @return View
 	 */
 	public function edit(User $user)
 	{
@@ -85,8 +85,9 @@ class UserController extends Controller {
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param  int  $id
-	 * @return Response
+	 * @param  User  $user
+     * @param  Request  $request
+	 * @return Redirect
 	 */
 	public function update(User $user, Request $request)
 	{
@@ -98,8 +99,8 @@ class UserController extends Controller {
 	/**
 	 * Remove the specified resource from storage.
 	 *
-	 * @param  int  $id
-	 * @return Response
+	 * @param  User  $user
+	 * @return Redirect
 	 */
 	public function destroy(User $user)
 	{

@@ -18,7 +18,7 @@ class LayoutController extends Controller {
         
         /**
          * 
-         * @return Response
+         * @return View
          */
         public function index()
         {

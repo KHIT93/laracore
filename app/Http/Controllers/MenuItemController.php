@@ -22,7 +22,7 @@ class MenuItemController extends Controller {
 	/**
 	 * Show the form for creating a new resource.
 	 *
-	 * @return Response
+	 * @return View
 	 */
 	public function create(Menu $menu)
 	{
@@ -32,7 +32,7 @@ class MenuItemController extends Controller {
 	/**
 	 * Store a newly created resource in storage.
 	 * @param MenuItemRequest $request
-	 * @return Response
+	 * @return Redirect
 	 */
 	public function store(MenuItemRequest $request, Menu $menu)
 	{
@@ -44,8 +44,9 @@ class MenuItemController extends Controller {
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param  int  $id
-	 * @return Response
+	 * @param  Menu  $menu
+     * @param  MenuItem $item
+	 * @return View
 	 */
 	public function edit(Menu $menu, MenuItem $item)
 	{
@@ -55,8 +56,10 @@ class MenuItemController extends Controller {
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param  int  $id
-	 * @return Response
+	 * @param  MenuRequest  $request
+     * @param  Menu  $menu
+     * @param  MenuItem  $item
+	 * @return Redirect
 	 */
 	public function update(MenuItemRequest $request, Menu $menu, MenuItem $item)
 	{
@@ -69,7 +72,8 @@ class MenuItemController extends Controller {
 	 * Show the page for confirming the removal of the specified resource from storage.
 	 *
 	 * @param Menu $menu
-	 * @return Response
+     * @param MenuItem $item
+	 * @return View
 	 */
 	public function remove(Menu $menu, MenuItem $item)
 	{
@@ -80,7 +84,8 @@ class MenuItemController extends Controller {
 	 * Remove the specified resource from storage.
 	 *
 	 * @param Menu $menu
-	 * @return Response
+     * @param MenuItem $itm
+	 * @return Redirect
 	 */
 	public function destroy(Menu $menu, MenuItem $item)
 	{

@@ -21,7 +21,7 @@ class MenuController extends Controller {
         /**
 	 * Display a listing of the resource.
 	 *
-	 * @return Response
+	 * @return View
 	 */
 	public function index()
 	{
@@ -31,7 +31,7 @@ class MenuController extends Controller {
 	/**
 	 * Show the form for creating a new resource.
 	 *
-	 * @return Response
+	 * @return View
 	 */
 	public function create()
 	{
@@ -41,7 +41,7 @@ class MenuController extends Controller {
 	/**
 	 * Store a newly created resource in storage.
 	 * @param MenuRequest $request
-	 * @return Response
+	 * @return Redirect
 	 */
 	public function store(MenuRequest $request)
 	{
@@ -54,7 +54,7 @@ class MenuController extends Controller {
 	 * Display the specified resource.
 	 *
 	 * @param  Menu  $menu
-	 * @return Response
+	 * @return View
 	 */
 	public function show(Menu $menu)
 	{
@@ -65,7 +65,7 @@ class MenuController extends Controller {
 	 * Show the form for editing the specified resource.
 	 *
 	 * @param Menu $menu
-	 * @return Response
+	 * @return View
 	 */
 	public function edit(Menu $menu)
 	{
@@ -77,7 +77,7 @@ class MenuController extends Controller {
 	 *
 	 * @param Menu $menu
          * @param MenuRequest $request
-	 * @return Response
+	 * @return Redirect
 	 */
 	public function update(Menu $menu, MenuRequest $request)
 	{
@@ -90,7 +90,7 @@ class MenuController extends Controller {
 	 * Show the page for confirming the removal of the specified resource from storage.
 	 *
 	 * @param Menu $menu
-	 * @return Response
+	 * @return View
 	 */
 	public function remove(Menu $menu)
 	{
@@ -101,7 +101,7 @@ class MenuController extends Controller {
 	 * Remove the specified resource from storage.
 	 *
 	 * @param Menu $menu
-	 * @return Response
+	 * @return Redirect
 	 */
 	public function destroy(Menu $menu)
 	{
