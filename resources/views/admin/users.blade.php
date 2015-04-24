@@ -38,8 +38,8 @@
                         <td>{{ $user->updated_at->diffForHumans() }}</td>
                         <td>
                             {!! Html::link('user/'.$user->uid, 'View', ['class' => 'btn btn-default']) !!}
-                            {!! Html::link('user/'.$user->uid.'/edit', 'Edit', ['class' => 'btn btn-primary']) !!}
-                            {!! Html::link('user/'.$user->uid.'/delete', 'Delete', ['class' => 'btn btn-danger']) !!}
+                            {!! Html::link('admin/users/'.$user->uid.'/edit', 'Edit', ['class' => 'btn btn-primary']) !!}
+                            {!! Html::link('admin/users/'.$user->uid.'/delete', 'Delete', ['class' => 'btn btn-danger']) !!}
                         </td>
                     </tr>
                     @endforeach

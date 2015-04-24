@@ -92,10 +92,21 @@ class UserController extends Controller {
 	public function update(User $user, Request $request)
 	{
 		$user->update($request->all());
-                \Flash::success('The user has been updated');
-                return redirect('admin/users');
+        \Flash::success('The user has been updated');
+        return redirect('admin/users');
 	}
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  User  $user
+     * @return View
+     */
+	public function remove(User $user)
+	{
+		return view('admin.users_delete', compact('role'));
+	}
+    
 	/**
 	 * Remove the specified resource from storage.
 	 *
@@ -105,8 +116,8 @@ class UserController extends Controller {
 	public function destroy(User $user)
 	{
 		$user->delete($user);
-                \Flash::success('The user has been deleted');
-                return redirect('admin/users');
+        \Flash::success('The user has been deleted');
+        return redirect('admin/users');
 	}
 
 }

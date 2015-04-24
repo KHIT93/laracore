@@ -34,6 +34,9 @@ Route::bind('block', function($bid){
 Route::bind('user', function($uid){
     return App\User::findOrFail($uid);
 });
+Route::bind('role', function($rid){
+    return App\Role::findOrFail($rid);
+});
 
 /**
  *  Generic routes.
@@ -140,6 +143,21 @@ Route::post('admin/users/{user}/edit', 'UserController@update');
 Route::get('admin/users/{user}/delete', 'UserController@remove');
 
 Route::post('admin/users/{user}/delete', 'UserController@destroy');
+
+/**
+ * Routing for Role Management.
+ */
+Route::get('admin/users/roles', 'RoleController@index');
+
+Route::post('admin/users/roles', 'RoleController@store');
+
+Route::get('admin/users/roles/{role}/edit', 'RoleController@edit');
+
+Route::post('admin/users/roles/{role}/edit', 'RoleController@update');
+
+Route::get('admin/users/roles/{role}/delete', 'RoleController@remove');
+
+Route::post('admin/users/roles/{role}/delete', 'RoleController@destroy');
 
 /**
  * Default controller routes from Laravel.
