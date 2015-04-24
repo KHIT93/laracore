@@ -77,7 +77,7 @@ class NodeController extends Controller {
         
         public function resolve(PathAlias $path_alias)
         {
-            return $this->show($path_alias->node()->first()->nid);
+            return $this->show($path_alias->node()->first());
         }
 
 	/**
