@@ -149,6 +149,7 @@ return [
                 'Barryvdh\Elfinder\ElfinderServiceProvider',
                 'Khill\Fontawesome\FontAwesomeServiceProvider',
                 'Overtrue\LaravelLang\TranslationServiceProvider',
+                'Zizaco\Entrust\EntrustServiceProvider',
 
 	],
 
@@ -199,7 +200,8 @@ return [
 		'View'      => 'Illuminate\Support\Facades\View',
                 'Form'      => 'Illuminate\Html\FormFacade',
                 'Html'      => 'Illuminate\Html\HtmlFacade',
-                'Flash' => 'Laracasts\Flash\Flash'
+                'Flash'     => 'Laracasts\Flash\Flash',
+                'Entrust'   => 'Zizaco\Entrust\EntrustFacade',
 
 	],
 

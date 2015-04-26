@@ -33,7 +33,7 @@
                     @foreach($users as $user)
                     <tr>
                         <td>{!! Html::link('user/'.$user->uid, $user->name) !!}</td>
-                        <td>{!! $user->role()->first()->name !!}</td>
+                        <td>{!! $user->roles()->first()->display_name !!}</td>
                         <td>{{ ($user->enabled == 1) ? 'Enabled' : 'Disabled' }}</td>
                         <td>{{ $user->updated_at->diffForHumans() }}</td>
                         <td>

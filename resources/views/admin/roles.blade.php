@@ -7,6 +7,7 @@
 </div>
 <div class="col-sm-12">
     @include('flash::message')
+    @include('errors._form_list')
 </div>
 <div class="col-sm-12">
     <ul class="nav nav-tabs">
@@ -28,16 +29,21 @@
                 <tbody>
                     @foreach($roles as $role)
                     <tr>
-                        <td>{{ $role->name }}</td>
                         <td>
-                            {!! Html::link('admin/users/roles/'.$role->rid.'/edit', 'Edit', ['class' => 'btn btn-primary']) !!}
-                            {!! Html::link('admin/users/roles/'.$role->rid.'/delete', 'Delete', ['class' => 'btn btn-danger']) !!}
+                            <span data-toggle="tooltip" data-placement="right" title="{{ $role->description }}">{{ $role->display_name }}</span>
+                        </td>
+                        <td>
+                            {!! Html::link('admin/users/roles/'.$role->id.'/edit', 'Edit', ['class' => 'btn btn-primary']) !!}
+                            {!! Html::link('admin/users/roles/'.$role->id.'/delete', 'Delete', ['class' => 'btn btn-danger']) !!}
                         </td>
                     </tr>
                     @endforeach
                     {!! Form::open() !!}
                     <tr>
-                        <td>{!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Input new role name']) !!}</td>
+                        <td>
+                            {!! Form::text('display_name', null, ['class' => 'form-control', 'placeholder' => 'Input new role name']) !!}
+                            {!! Form::text('description', null, ['class' => 'form-control', 'placeholder' => 'Type an optional role description']) !!}
+                        </td>
                         <td>{!! Form::submit('Create', ['class' => 'btn btn-default']) !!}</td>
                     </tr>
                     {!! Form::close() !!}

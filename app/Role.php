@@ -1,18 +1,19 @@
 <?php namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+//use Illuminate\Database\Eloquent\Model;
+use Zizaco\Entrust\EntrustRole;
 
-class Role extends Model {
+class Role extends EntrustRole {
 
-    protected $fillable = [
+    /*protected $fillable = [
         'name'
-    ];
+    ];*/
     
     /**
     * Alter the primary key
     * @var string 
     */
-    protected $primaryKey = 'rid';
+    /*protected $primaryKey = 'rid';
 
     public function permissions()
     {
@@ -22,5 +23,5 @@ class Role extends Model {
     public function users()
     {
         return $this->hasMany('App\User', 'rid', 'role');
-    }
+    }*/
 }

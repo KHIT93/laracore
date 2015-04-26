@@ -21,4 +21,8 @@ class Block extends Model {
         */
         protected $primaryKey = 'bid';
 
+        public function render()
+        {
+            return view('public.partials._block', ['block' => $this]);
+        }
 }
