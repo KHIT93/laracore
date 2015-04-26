@@ -25,6 +25,10 @@ class UserController extends Controller {
 	 */
 	public function index()
 	{
+            if(!has_permission('access_admin_dashboard'))
+            {
+                abort(403, 'You do not have access to the specified resource.');
+            }
             return view('admin.users', ['users' => User::all()]);
 	}
 
@@ -35,6 +39,10 @@ class UserController extends Controller {
 	 */
 	public function create()
 	{
+            if(!has_permission('access_admin_dashboard'))
+            {
+                abort(403, 'You do not have access to the specified resource.');
+            }
             return view('admin.users_form', ['user' => new User()]);
 	}
 
@@ -79,7 +87,11 @@ class UserController extends Controller {
 	 */
 	public function edit(User $user)
 	{
-		return view('admin.users_form', ['user' => $user]);
+            if(!has_permission('access_admin_dashboard'))
+            {
+                abort(403, 'You do not have access to the specified resource.');
+            }
+            return view('admin.users_form', ['user' => $user]);
 	}
 
 	/**
@@ -91,9 +103,9 @@ class UserController extends Controller {
 	 */
 	public function update(User $user, Request $request)
 	{
-		$user->update($request->all());
-        \Flash::success('The user has been updated');
-        return redirect('admin/users');
+            $user->update($request->all());
+            \Flash::success('The user has been updated');
+            return redirect('admin/users');
 	}
 
     /**
@@ -104,7 +116,11 @@ class UserController extends Controller {
      */
 	public function remove(User $user)
 	{
-		return view('admin.users_delete', compact('role'));
+            if(!has_permission('access_admin_dashboard'))
+            {
+                abort(403, 'You do not have access to the specified resource.');
+            }
+            return view('admin.users_delete', compact('role'));
 	}
     
 	/**
@@ -115,9 +131,9 @@ class UserController extends Controller {
 	 */
 	public function destroy(User $user)
 	{
-		$user->delete($user);
-        \Flash::success('The user has been deleted');
-        return redirect('admin/users');
+            $user->delete($user);
+            \Flash::success('The user has been deleted');
+            return redirect('admin/users');
 	}
 
 }

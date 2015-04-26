@@ -14,8 +14,10 @@ class MenuController extends Controller {
          */
         public function __construct()
         {
-            //$this->middleware('permission', ['except' => ['show']]);
-            $this->middleware('auth');
+            if(!has_permission('access_admin_ui') || !has_permission('access_admin_menus'))
+            {
+                abort(403, 'You do not have access to the specified resource.');
+            }
         }
         
         /**

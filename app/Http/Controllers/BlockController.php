@@ -8,6 +8,17 @@ use Illuminate\Http\Request;
 
 class BlockController extends Controller {
 
+        /**
+         * Constructor for adding middleware.
+         */
+        public function __construct()
+        {
+            if(!has_permission('access_admin_ui') || !has_permission('access_admin_blocks'))
+            {
+                abort(403, 'You do not have access to the specified resource.');
+            }
+        }
+        
 	/**
 	 * Display a listing of the resource.
 	 *

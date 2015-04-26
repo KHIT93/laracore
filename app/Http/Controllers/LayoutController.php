@@ -12,8 +12,10 @@ class LayoutController extends Controller {
          */
         public function __construct()
         {
-            //$this->middleware('permission', ['except' => ['show']]);
-            $this->middleware('auth');
+            if(!has_permission('access_admin_ui') || !has_permission('access_admin_layout'))
+            {
+                abort(403, 'You do not have access to the specified resource.');
+            }
         }
         
         /**

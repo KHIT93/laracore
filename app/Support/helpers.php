@@ -35,6 +35,7 @@ if(!function_exists('t'))
         return string_format($output, $args);
     }
 }
+
 if(!function_exists('string_format')) {
     function string_format($string, $args = array()) {
         // Transform arguments before inserting them.
@@ -58,5 +59,31 @@ if(!function_exists('string_format')) {
             }
         }
         return strtr($string, $args);
+    }
+}
+
+if(!function_exists('has_permission'))
+{
+    function has_permission($permission)
+    {
+        if(auth()->check())
+        {
+            if(auth()->user()->hasRole('administrator'))
+            {
+                return true;
+            }
+            else if(auth()->user()->can('access_admin_dashboard'))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return redirect()->guest('auth/login');
+        }
     }
 }
