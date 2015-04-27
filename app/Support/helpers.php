@@ -87,3 +87,10 @@ if(!function_exists('has_permission'))
         }
     }
 }
+if(!function_exists('eval_permission'))
+{
+    function eval_permission(\App\Role $role, $permission)
+    {
+        
+    }
+}

@@ -18,5 +18,15 @@ class Menu extends Model {
         {
             return $this->hasMany('App\MenuItem', 'mid');
         }
+        
+        public function item_list()
+        {
+            $output = [0 => '<'.$this->name.'>'];
+            foreach ($this->items as $item)
+            {
+            	$output[$item->id] = $item->name;
+            }
+            return $output;
+        }
 
 }

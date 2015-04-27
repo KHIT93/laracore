@@ -11,9 +11,7 @@ class AppServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-                /*view()->composer('nav', function($view){
-                    $view->with('node', \App\Node::find());
-                });*/
+        //
 	}
 
 	/**

@@ -7,7 +7,7 @@
 	<title>Administration</title>
 
 	<link href="{{ asset('/css/styles.css') }}" rel="stylesheet">
-
+    <link href="{{ asset('/favicon.ico') }}" rel="shortcut icon" type="image/x-icon">
 	<!-- Fonts -->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 

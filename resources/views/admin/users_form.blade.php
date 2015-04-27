@@ -24,6 +24,18 @@
         {!! Form::label('password_confirmation', 'Confirm Password') !!}
         {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
     </div>
+    <div class="form-group @if ($errors->has('meta.robots')) has-error @endif">
+        {!! Form::label('role', 'Select user role') !!}
+        {!! Form::select('role', $roles, ((isset($user->roles()->first()->id)) ? $user->roles()->first()->id : 4), ['class' => 'form-control']) !!}
+    </div>
+    <div class="form-group">
+        <div class="checkbox">
+            <label>
+                {!! Form::checkbox('enabled', 1, ((isset($user->enabled)) ? (bool)$user->enabled : false)) !!}
+                Enabled
+            </label>
+        </div>
+    </div>
     <hr>
     <div class="form-group">
         {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}

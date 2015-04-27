@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="col-sm-12">
-    <h1>{!! FA::icon('users') !!} Role Management</h1>
+    <h1>{!! FA::icon('shield') !!} Role Management</h1>
 </div>
 <div class="col-sm-12">
     @include('flash::message')

@@ -61,7 +61,8 @@ class NodeController extends Controller {
         $node = Node::create($data['content']);
         $data['meta']['nid'] = $node->nid;
         $metadata = Metadata::create($data['meta']);
-        $url = (empty(trim($data['url']['alias']))) ? Str::slug($node->title) : $data['url']['alias'];
+        $url_trim = trim($data['url']['alias']);
+        $url = (empty($url_trim) || $url_trim == '') ? Str::slug($node->title) : Str::slug($data['url']['alias']);
         PathAlias::create(['nid' => $node->nid, 'alias' => $url]);
         \Flash::success('The new node has been created');
         return redirect('admin/content');

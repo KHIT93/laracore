@@ -43,7 +43,14 @@ class UserController extends Controller {
             {
                 abort(403, 'You do not have access to the specified resource.');
             }
-            return view('admin.users_form', ['user' => new User()]);
+            foreach(\App\Role::all() as $role)
+            {
+                if($role->name != 'anonymous')
+                {
+                    $roles[$role->id] = $role->display_name;
+                }
+            }
+            return view('admin.users_form', ['user' => new User(), 'roles' => $roles]);
 	}
 
 	/**
@@ -53,7 +60,8 @@ class UserController extends Controller {
 	 */
 	public function store(UserRequest $request)
 	{
-            User::create($request->all());
+            $user = User::create($request->all());
+            $user->roles()->sync([$request->input('role')]);
             \Flash::success('The new user has been created');
             return redirect('admin/users');
 	}
@@ -91,7 +99,14 @@ class UserController extends Controller {
             {
                 abort(403, 'You do not have access to the specified resource.');
             }
-            return view('admin.users_form', ['user' => $user]);
+            foreach(\App\Role::all() as $role)
+            {
+                if($role->name != 'anonymous')
+                {
+                    $roles[$role->id] = $role->display_name;
+                }
+            }
+            return view('admin.users_form', ['user' => $user, 'roles' => $roles]);
 	}
 
 	/**
@@ -104,6 +119,7 @@ class UserController extends Controller {
 	public function update(User $user, Request $request)
 	{
             $user->update($request->all());
+            $user->roles()->sync([$request->input('role')]);
             \Flash::success('The user has been updated');
             return redirect('admin/users');
 	}

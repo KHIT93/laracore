@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="col-sm-12">
-    <h1>Add new menu</h1>
+    <h1>Add new menu item</h1>
 </div>
 @include('flash::message')
 @include('errors._form_list')
@@ -18,7 +18,7 @@
     </div>
     <div class="form-group @if ($errors->has('parent')) has-error @endif">
         {!! Form::label('parent', 'Parent link') !!}
-        {!! Form::select('parent', [$menu->items()->getResults()], 0, ['class' => 'form-control']) !!}
+        {!! Form::select('parent', $menu->item_list(), 0, ['class' => 'form-control']) !!}
     </div>
     <div class="form-group @if ($errors->has('position')) has-error @endif">
         {!! Form::label('position', 'Position') !!}

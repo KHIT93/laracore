@@ -160,6 +160,13 @@ Route::get('admin/users/roles/{role}/delete', 'RoleController@remove');
 Route::post('admin/users/roles/{role}/delete', 'RoleController@destroy');
 
 /**
+ * Routing for Permission Management.
+ */
+Route::get('admin/users/permissions', 'PermissionController@index');
+
+Route::post('admin/users/permissions', 'PermissionController@update');
+
+/**
  * Default controller routes from Laravel.
  */
 Route::controllers([

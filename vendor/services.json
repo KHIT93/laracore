@@ -30,7 +30,9 @@
         "Laracasts\\Flash\\FlashServiceProvider",
         "Barryvdh\\Elfinder\\ElfinderServiceProvider",
         "Khill\\Fontawesome\\FontAwesomeServiceProvider",
-        "Overtrue\\LaravelLang\\TranslationServiceProvider"
+        "Overtrue\\LaravelLang\\TranslationServiceProvider",
+        "Zizaco\\Entrust\\EntrustServiceProvider",
+        "Orangehill\\Iseed\\IseedServiceProvider"
     ],
     "eager": [
         "Illuminate\\Auth\\AuthServiceProvider",
@@ -51,7 +53,9 @@
         "App\\Providers\\RouteServiceProvider",
         "Laracasts\\Flash\\FlashServiceProvider",
         "Barryvdh\\Elfinder\\ElfinderServiceProvider",
-        "Khill\\Fontawesome\\FontAwesomeServiceProvider"
+        "Khill\\Fontawesome\\FontAwesomeServiceProvider",
+        "Zizaco\\Entrust\\EntrustServiceProvider",
+        "Orangehill\\Iseed\\IseedServiceProvider"
     ],
     "deferred": {
         "command.app.name": "Illuminate\\Foundation\\Providers\\ArtisanServiceProvider",

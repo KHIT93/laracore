@@ -135,7 +135,7 @@ return [
 		//'Illuminate\Translation\TranslationServiceProvider',
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
-                'Illuminate\Html\HtmlServiceProvider',
+        'Illuminate\Html\HtmlServiceProvider',
 
 		/*
 		 * Application Service Providers...
@@ -145,11 +145,13 @@ return [
 		'App\Providers\ConfigServiceProvider',
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
-                'Laracasts\Flash\FlashServiceProvider',
-                'Barryvdh\Elfinder\ElfinderServiceProvider',
-                'Khill\Fontawesome\FontAwesomeServiceProvider',
-                'Overtrue\LaravelLang\TranslationServiceProvider',
-                'Zizaco\Entrust\EntrustServiceProvider',
+        'App\Providers\ViewComposerServiceProvider',
+        'Laracasts\Flash\FlashServiceProvider',
+        'Barryvdh\Elfinder\ElfinderServiceProvider',
+        'Khill\Fontawesome\FontAwesomeServiceProvider',
+        'Overtrue\LaravelLang\TranslationServiceProvider',
+        'Zizaco\Entrust\EntrustServiceProvider',
+        'Orangehill\Iseed\IseedServiceProvider',
 
 	],
 
@@ -198,10 +200,10 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
-                'Form'      => 'Illuminate\Html\FormFacade',
-                'Html'      => 'Illuminate\Html\HtmlFacade',
-                'Flash'     => 'Laracasts\Flash\Flash',
-                'Entrust'   => 'Zizaco\Entrust\EntrustFacade',
+        'Form'      => 'Illuminate\Html\FormFacade',
+        'Html'      => 'Illuminate\Html\HtmlFacade',
+        'Flash'     => 'Laracasts\Flash\Flash',
+        'Entrust'   => 'Zizaco\Entrust\EntrustFacade',
 
 	],
 
