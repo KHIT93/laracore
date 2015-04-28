@@ -25,10 +25,7 @@ class UserController extends Controller {
 	 */
 	public function index()
 	{
-            if(!has_permission('access_admin_dashboard'))
-            {
-                abort(403, 'You do not have access to the specified resource.');
-            }
+        eval_permission('access_admin_users');
             return view('admin.users', ['users' => User::all()]);
 	}
 
@@ -39,18 +36,15 @@ class UserController extends Controller {
 	 */
 	public function create()
 	{
-            if(!has_permission('access_admin_dashboard'))
+        eval_permission('access_admin_users');
+        foreach(\App\Role::all() as $role)
+        {
+            if($role->name != 'anonymous')
             {
-                abort(403, 'You do not have access to the specified resource.');
+                $roles[$role->id] = $role->display_name;
             }
-            foreach(\App\Role::all() as $role)
-            {
-                if($role->name != 'anonymous')
-                {
-                    $roles[$role->id] = $role->display_name;
-                }
-            }
-            return view('admin.users_form', ['user' => new User(), 'roles' => $roles]);
+        }
+        return view('admin.users_form', ['user' => new User(), 'roles' => $roles]);
 	}
 
 	/**
@@ -95,18 +89,15 @@ class UserController extends Controller {
 	 */
 	public function edit(User $user)
 	{
-            if(!has_permission('access_admin_dashboard'))
+        eval_permission('access_admin_users');
+        foreach(\App\Role::all() as $role)
+        {
+            if($role->name != 'anonymous')
             {
-                abort(403, 'You do not have access to the specified resource.');
+                $roles[$role->id] = $role->display_name;
             }
-            foreach(\App\Role::all() as $role)
-            {
-                if($role->name != 'anonymous')
-                {
-                    $roles[$role->id] = $role->display_name;
-                }
-            }
-            return view('admin.users_form', ['user' => $user, 'roles' => $roles]);
+        }
+        return view('admin.users_form', ['user' => $user, 'roles' => $roles]);
 	}
 
 	/**
@@ -132,11 +123,8 @@ class UserController extends Controller {
      */
 	public function remove(User $user)
 	{
-            if(!has_permission('access_admin_dashboard'))
-            {
-                abort(403, 'You do not have access to the specified resource.');
-            }
-            return view('admin.users_delete', compact('role'));
+        eval_permission('access_admin_users');
+        return view('admin.users_delete', compact('user'));
 	}
     
 	/**

@@ -5,25 +5,15 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
-class LayoutController extends Controller {
-
-	/**
-         * Constructor for adding middleware.
-         */
-        public function __construct()
-        {
-            if(!has_permission('access_admin_ui') || !has_permission('access_admin_layout'))
-            {
-                abort(403, 'You do not have access to the specified resource.');
-            }
-        }
-        
+class LayoutController extends Controller
+{
         /**
          * 
          * @return View
          */
         public function index()
         {
+            eval_permission('access_admin_layout');
             return view('admin.layout');
         }
 

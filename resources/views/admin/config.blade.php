@@ -9,11 +9,11 @@
     <div class="panel panel-default">
         <div class="panel-heading">General</div>
         <div class="list-group">
-            <a href="/admin/menus" class="list-group-item">
+            <a href="/admin/config/system/site" class="list-group-item">
                 <h4 class="list-group-item-heading"><i class="fa fa-arrow-circle-right"></i> Site information</h4>
                 <p class="list-group-item-text">Change site name, email address, slogan, default front page, and error pages.</p>
             </a>
-            <a href="#" class="list-group-item">
+            <a href="/admin/config/system/maintenance" class="list-group-item">
                 <h4 class="list-group-item-heading"><i class="fa fa-arrow-circle-right"></i> Maintenance mode</h4>
                 <p class="list-group-item-text">Take the site offline for maintenance or bring it back online.</p>
             </a>

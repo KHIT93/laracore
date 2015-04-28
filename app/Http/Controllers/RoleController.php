@@ -13,10 +13,7 @@ class RoleController extends Controller {
      */
     public function __construct()
     {
-        if(!has_permission('access_admin_ui') || !has_permission('access_admin_users'))
-        {
-            abort(403, 'You do not have access to the specified resource.');
-        }
+        
     }
     /**
      * Display a listing of the resource.
@@ -25,6 +22,7 @@ class RoleController extends Controller {
      */
     public function index()
     {
+        eval_permission('access_admin_users');
         return view('admin.roles', ['roles' => Role::all()]);
     }
 
@@ -48,6 +46,7 @@ class RoleController extends Controller {
      */
     public function edit(Role $role)
     {
+        eval_permission('access_admin_users');
         return view('admin.roles_form', compact('role'));
     }
 
@@ -72,6 +71,7 @@ class RoleController extends Controller {
  */
     public function remove(Role $role)
     {
+        eval_permission('access_admin_users');
         return view('admin.roles_delete', compact('role'));
     }
 

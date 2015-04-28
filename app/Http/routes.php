@@ -177,6 +177,7 @@ Route::get('admin/config', 'ConfigurationController@index');
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
+    'admin/config/system' => 'ConfigurationController'
 ]);
 
 /*

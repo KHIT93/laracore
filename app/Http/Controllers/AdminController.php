@@ -5,25 +5,15 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
-class AdminController extends Controller {
-
-	/**
-         * Constructor for adding middleware.
-         */
-        public function __construct()
-        {
-            if(!has_permission('access_admin_ui') || !has_permission('access_admin_dashboard'))
-            {
-                abort(403, 'You do not have access to the specified resource.');
-            }
-        }
-        
+class AdminController extends Controller
+{ 
         /**
          * 
          * @return View
          */
         public function index()
         {
+            eval_permission('access_admin_dashboard');
             $items = \App\MenuItem::where('mid', '=', 2)->get();
             foreach ($items as $key => $item) {
                 if($item->parent > 0)

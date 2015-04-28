@@ -204,6 +204,7 @@ return [
         'Html'      => 'Illuminate\Html\HtmlFacade',
         'Flash'     => 'Laracasts\Flash\Flash',
         'Entrust'   => 'Zizaco\Entrust\EntrustFacade',
+        'Setting'   => 'App\Setting',
 
 	],
 

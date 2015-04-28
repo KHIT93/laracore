@@ -6,26 +6,17 @@ use App\Http\Controllers\Controller;
 use App\Block;
 use Illuminate\Http\Request;
 
-class BlockController extends Controller {
+class BlockController extends Controller
+{
 
-        /**
-         * Constructor for adding middleware.
-         */
-        public function __construct()
-        {
-            if(!has_permission('access_admin_ui') || !has_permission('access_admin_blocks'))
-            {
-                abort(403, 'You do not have access to the specified resource.');
-            }
-        }
-        
-	/**
+     /**
 	 * Display a listing of the resource.
 	 *
 	 * @return View
 	 */
 	public function index()
 	{
+        eval_permission('access_admin_blocks');
 		return view('admin.blocks', ['blocks' => Block::all()]);
 	}
 
@@ -36,7 +27,8 @@ class BlockController extends Controller {
 	 */
 	public function create()
 	{
-            return view('admin.block_form', ['block' => new Block()]);
+        eval_permission('access_admin_blocks');
+        return view('admin.block_form', ['block' => new Block()]);
 	}
 
 	/**
@@ -59,7 +51,8 @@ class BlockController extends Controller {
 	 */
 	public function edit(Block $block)
 	{
-            return view('admin.block_form', compact('block'));
+        eval_permission('access_admin_blocks');
+        return view('admin.block_form', compact('block'));
 	}
 
 	/**
@@ -84,7 +77,8 @@ class BlockController extends Controller {
 	 */
 	public function remove(Block $block)
 	{
-            return view('admin.blocks_delete', compact('block'));
+        eval_permission('access_admin_blocks');
+        return view('admin.blocks_delete', compact('block'));
 	}
         
 	/**

@@ -7,27 +7,18 @@ use App\Http\MenuRequest;
 
 use Illuminate\Http\Request;
 
-class MenuController extends Controller {
+class MenuController extends Controller
+{
 
 	/**
-         * Constructor for adding middleware.
-         */
-        public function __construct()
-        {
-            if(!has_permission('access_admin_ui') || !has_permission('access_admin_menus'))
-            {
-                abort(403, 'You do not have access to the specified resource.');
-            }
-        }
-        
-        /**
 	 * Display a listing of the resource.
 	 *
 	 * @return View
 	 */
 	public function index()
 	{
-            return view('admin.menus', ['menus' => Menu::all()]);
+        eval_permission('access_admin_menus');
+        return view('admin.menus', ['menus' => Menu::all()]);
 	}
 
 	/**
@@ -37,7 +28,8 @@ class MenuController extends Controller {
 	 */
 	public function create()
 	{
-            return view('admin.menus_form', ['menu' => new Menu()]);
+        eval_permission('access_admin_menus');
+        return view('admin.menus_form', ['menu' => new Menu()]);
 	}
 
 	/**
@@ -60,7 +52,8 @@ class MenuController extends Controller {
 	 */
 	public function show(Menu $menu)
 	{
-            return view('admin.menus_links', compact('menu'));
+        eval_permission('access_admin_menus');
+        return view('admin.menus_links', compact('menu'));
 	}
 
 	/**
@@ -71,7 +64,8 @@ class MenuController extends Controller {
 	 */
 	public function edit(Menu $menu)
 	{
-            return view('admin.menus_form', ['menu' => $menu]);
+        eval_permission('access_admin_menus');
+        return view('admin.menus_form', ['menu' => $menu]);
 	}
 
 	/**
@@ -83,9 +77,9 @@ class MenuController extends Controller {
 	 */
 	public function update(Menu $menu, MenuRequest $request)
 	{
-            $menu->update($request->all());
-            \Flash::success('The menu has been updated');
-            return redirect('admin/menus');
+        $menu->update($request->all());
+        \Flash::success('The menu has been updated');
+        return redirect('admin/menus');
 	}
 
         /**
@@ -96,7 +90,8 @@ class MenuController extends Controller {
 	 */
 	public function remove(Menu $menu)
 	{
-            return view('admin.menus_delete', compact('menu'));
+        eval_permission('access_admin_menus');
+        return view('admin.menus_delete', compact('menu'));
 	}
         
 	/**

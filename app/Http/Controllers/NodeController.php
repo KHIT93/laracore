@@ -10,16 +10,8 @@ use App\PathAlias;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
-class NodeController extends Controller {
-
-    /**
-     * Constructor for adding middleware.
-     */
-    public function __construct()
-    {
-        //$this->middleware('permission', ['except' => ['show']]);
-        //$this->middleware('auth', ['except' => ['show', 'showDefault']]);
-    }
+class NodeController extends Controller
+{
     /**
      * Display a listing of the resource.
      *
@@ -27,10 +19,7 @@ class NodeController extends Controller {
      */
     public function index()
     {
-        if(!has_permission('access_admin_ui') || !has_permission('access_admin_content'))
-        {
-            abort(403, 'You do not have access to the specified resource.');
-        }
+        eval_permission('access_admin_content');
         $data = Node::all();
         return view('admin.content', ['nodes' => $data]);
     }
@@ -42,10 +31,7 @@ class NodeController extends Controller {
      */
     public function create()
     {
-        if(!has_permission('access_admin_content'))
-        {
-            abort(403, 'You do not have access to the specified resource.');
-        }
+        eval_permission('access_admin_content');
         return view('admin.content_form_add');
     }
 
@@ -97,10 +83,7 @@ class NodeController extends Controller {
      */
     public function edit(Node $node)
     {
-        if(!has_permission('access_admin_content'))
-        {
-            abort(403, 'You do not have access to the specified resource.');
-        }
+        eval_permission('access_admin_content');
         $meta = $node->metadata()->first();
         $urls = $node->aliases()->getResults();
         return view('admin.content_form_edit', compact('node', 'meta', 'urls'));
@@ -130,10 +113,7 @@ class NodeController extends Controller {
      */
     public function remove(Node $node)
     {
-        if(!has_permission('access_admin_content'))
-        {
-            abort(403, 'You do not have access to the specified resource.');
-        }
+        eval_permission('access_admin_content');
         return view('admin.content_form_delete', compact('node'));
     }
 

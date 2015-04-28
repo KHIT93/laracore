@@ -8,27 +8,17 @@ use App\Http\Requests\MenuItemRequest;
 
 use Illuminate\Http\Request;
 
-class MenuItemController extends Controller {
-    
-        /**
-         * Constructor for adding middleware.
-         */
-        public function __construct()
-        {
-            if(!has_permission('access_admin_ui') || !has_permission('access_admin_menus'))
-            {
-                abort(403, 'You do not have access to the specified resource.');
-            }
-        }
-
-	/**
+class MenuItemController extends Controller
+{
+    /**
 	 * Show the form for creating a new resource.
 	 *
 	 * @return View
 	 */
 	public function create(Menu $menu)
 	{
-            return view('admin.menus_links_form', ['item' => new MenuItem(), 'menu' => $menu]);
+        eval_permission('access_admin_menus');
+        return view('admin.menus_links_form', ['item' => new MenuItem(), 'menu' => $menu]);
 	}
 
 	/**
@@ -39,8 +29,8 @@ class MenuItemController extends Controller {
 	public function store(MenuItemRequest $request, Menu $menu)
 	{
 		$menu->items()->create($request->all());
-                \Flash::success('The new menu item has been created');
-                return redirect('admin/menus/'.$menu->mid.'/links');
+        \Flash::success('The new menu item has been created');
+        return redirect('admin/menus/'.$menu->mid.'/links');
 	}
 
 	/**
@@ -52,7 +42,8 @@ class MenuItemController extends Controller {
 	 */
 	public function edit(Menu $menu, MenuItem $item)
 	{
-            return view('admin.menus_links_form', compact('menu', 'item'));
+        eval_permission('access_admin_menus');
+        return view('admin.menus_links_form', compact('menu', 'item'));
 	}
 
 	/**
@@ -79,7 +70,8 @@ class MenuItemController extends Controller {
 	 */
 	public function remove(Menu $menu, MenuItem $item)
 	{
-            return view('admin.menus_links_delete', compact('menu', 'item'));
+        eval_permission('access_admin_menus');
+        return view('admin.menus_links_delete', compact('menu', 'item'));
 	}
         
 	/**

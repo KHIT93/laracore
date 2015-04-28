@@ -87,3 +87,31 @@ if(!function_exists('has_permission'))
         }
     }
 }
+
+if(!function_exists('eval_permission'))
+{
+    function eval_permission($permission, $admin = true)
+    {
+        if(auth()->check())
+        {
+            if($admin)
+            {
+                if(!has_permission('access_admin_ui') && !has_permission($permission))
+                {
+                    abort(403, 'You do not have access to the specified resource.');
+                }
+            }
+            else
+            {
+                if(!has_permission($permission))
+                {
+                    abort(403, 'You do not have access ro the specified resource.');
+                }
+            }
+        }
+        else
+        {
+            redirect('auth/login');
+        }
+    }
+}
