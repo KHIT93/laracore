@@ -167,6 +167,11 @@ Route::get('admin/users/permissions', 'PermissionController@index');
 Route::post('admin/users/permissions', 'PermissionController@update');
 
 /**
+ * Routing for Configuration Management.
+ */
+Route::get('admin/config', 'ConfigurationController@index');
+
+/**
  * Default controller routes from Laravel.
  */
 Route::controllers([

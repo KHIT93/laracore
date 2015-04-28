@@ -72,7 +72,7 @@ if(!function_exists('has_permission'))
             {
                 return true;
             }
-            else if(auth()->user()->can('access_admin_dashboard'))
+            else if(auth()->user()->can($permission))
             {
                 return true;
             }
@@ -83,14 +83,7 @@ if(!function_exists('has_permission'))
         }
         else
         {
-            return redirect()->guest('auth/login');
+            return false;
         }
-    }
-}
-if(!function_exists('eval_permission'))
-{
-    function eval_permission(\App\Role $role, $permission)
-    {
-        
     }
 }

@@ -5,4 +5,6 @@
 *.sln
 *.phpproj
 *.suo
-*.phpproject.*
+*.phpproject
+*.phpproject.user
+*.user
