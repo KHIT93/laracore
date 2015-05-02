@@ -175,8 +175,8 @@ Route::get('admin/config', 'ConfigurationController@index');
  * Default controller routes from Laravel.
  */
 Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
+    'auth' => 'Auth\AuthController',
+    'password' => 'Auth\PasswordController',
     'admin/config/system' => 'ConfigurationController'
 ]);
 

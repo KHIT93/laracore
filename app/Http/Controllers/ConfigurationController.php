@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Setting;
+use App\ScheduledTask;
 use Illuminate\Http\Request;
 
 class ConfigurationController extends Controller {
@@ -49,5 +50,24 @@ class ConfigurationController extends Controller {
         public function postMaintenance()
         {
             
+        }
+        
+        public function getCron()
+        {
+            return view('admin.config_cron', ['tasks' => ScheduledTask::all()]);
+        }
+        
+        public function getCronExecute()
+        {
+            \Artisan::call('schedule:run');
+            \Flash::info('Cron execution has been started. Any errors are shown below');
+            return redirect('admin/config/system/cron');
+        }
+        
+        public function postCron(Request $request)
+        {
+            ScheduledTask::create($request->all());
+            \Flash::success('The new task has been created');
+            return redirect('admin/config/system/cron');
         }
 }

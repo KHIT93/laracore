@@ -17,9 +17,12 @@
                 <h4 class="list-group-item-heading"><i class="fa fa-arrow-circle-right"></i> Maintenance mode</h4>
                 <p class="list-group-item-text">Take the site offline for maintenance or bring it back online.</p>
             </a>
-            <a href="#" class="list-group-item">
+            <a href="/admin/config/system/cron" class="list-group-item">
                 <h4 class="list-group-item-heading"><i class="fa fa-arrow-circle-right"></i> Scheduled tasks</h4>
-                <p class="list-group-item-text">Manage automatic site maintenance tasks, such as automatic updating of modules and themes</p>
+                <p class="list-group-item-text">
+                    Manage automatic site maintenance tasks, such as automatic updating of modules and themes.<br>
+                    <strong>This feature is for advanced users only</strong>
+                </p>
             </a>
         </div>
     </div>
