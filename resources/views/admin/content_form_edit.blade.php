@@ -1,48 +1,56 @@
 @extends('admin')
 
 @section('content')
-<div class="col-sm-12">
-    <h1>Edit <em>{{ $node->title }}</em></h1>
+<div class="row">
+    <div class="col-sm-12">
+        <h1 class="page-header">Edit <em>{{ $node->title }}</em></h1>
+    </div>
 </div>
-@include('flash::message')
-@include('errors._form_list')
-<div class="col-sm-12">
-    {!! Form::model($node) !!}
-    <ul class="nav nav-tabs">
-        <li class="active"><a href="#tab-main" data-target="#tab-main" data-toggle="tab" aria-expanded="true">Content</a></li>
-        <li><a href="#tab-meta" data-target="#tab-meta" data-toggle="tab" aria-expanded="false">Metadata</a></li>
-    </ul>
-    <div class="tab-content">
-        <div class="tab-pane fade in active" id="tab-main">
-            <br>
-            @include('admin.partials._content_form')
-            @if(count($urls))
-            <fieldset>
-                <legend>URL</legend>
-                <table class="table table-striped">
-                    <tbody>
-                        @foreach($urls as $url)
-                        <tr>
-                            <td>{{ $url->alias }}</td>
-                            <td>{!! Html::link('admin/config/redirects/'.$url->alias.'/delete', 'Delete', ['class' => 'btn btn-danger']) !!}</td>
-                        </tr>
-                        @endforeach
-                        <tr>
-                            <td colspan="2">{!! Form::button('Add', ['class' => 'btn btn-info', 'data-toggle' => 'modal', 'data-target' => '#redirectModal']) !!}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </fieldset>
-            @endif
+<div class="row">
+    <div class="col-sm-12">
+        @include('flash::message')
+        @include('errors._form_list')
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        {!! Form::model($node) !!}
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab-main" data-target="#tab-main" data-toggle="tab" aria-expanded="true">Content</a></li>
+            <li><a href="#tab-meta" data-target="#tab-meta" data-toggle="tab" aria-expanded="false">Metadata</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane fade in active" id="tab-main">
+                <br>
+                @include('admin.partials._content_form')
+                @if(count($urls))
+                <fieldset>
+                    <legend>URL</legend>
+                    <table class="table table-striped">
+                        <tbody>
+                            @foreach($urls as $url)
+                            <tr>
+                                <td>{{ $url->alias }}</td>
+                                <td>{!! Html::link('admin/config/redirects/'.$url->alias.'/delete', 'Delete', ['class' => 'btn btn-danger']) !!}</td>
+                            </tr>
+                            @endforeach
+                            <tr>
+                                <td colspan="2">{!! Form::button('Add', ['class' => 'btn btn-info', 'data-toggle' => 'modal', 'data-target' => '#redirectModal']) !!}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </fieldset>
+                @endif
+            </div>
+            @include('admin.partials._content_form_metadata')
         </div>
-        @include('admin.partials._content_form_metadata')
+        <hr>
+        <div class="form-group">
+            {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+            {!! Html::link('admin/content', 'Cancel', ['class' => 'btn btn-default']) !!}
+        </div>
+        {!! Form::close() !!}
     </div>
-    <hr>
-    <div class="form-group">
-        {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-        {!! Html::link('admin/content', 'Cancel', ['class' => 'btn btn-default']) !!}
-    </div>
-    {!! Form::close() !!}
 </div>
 <div class="modal fade" id="redirectModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">

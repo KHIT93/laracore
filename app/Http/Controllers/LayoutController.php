@@ -8,6 +8,14 @@ use Illuminate\Http\Request;
 class LayoutController extends Controller
 {
         /**
+         * Constructor for adding middleware.
+         */
+        public function __construct()
+        {
+            $this->middleware('auth');
+        }
+        
+        /**
          * 
          * @return View
          */

@@ -6,7 +6,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
-{ 
+{
+        /**
+         * Constructor for adding middleware.
+         */
+        public function __construct()
+        {
+            $this->middleware('auth');
+        }
         /**
          * 
          * @return View

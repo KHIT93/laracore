@@ -13,6 +13,14 @@ use Illuminate\Support\Str;
 class NodeController extends Controller
 {
     /**
+     * Constructor for adding middleware.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['show', 'showDefault', 'resolve']]);
+    }
+        
+    /**
      * Display a listing of the resource.
      *
      * @return View

@@ -111,7 +111,7 @@ if(!function_exists('eval_permission'))
         }
         else
         {
-            redirect('auth/login');
+            return redirect('auth/login');
         }
     }
 }

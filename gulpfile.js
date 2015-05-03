@@ -16,14 +16,28 @@ elixir(function(mix) {
     mix.styles([
         'css/app.css',
         'css/font-awesome.min.css',
-        'css/admin/sidebar.css',
-        'css/admin/overrides.css',
         'js/jquery.select2/select2.min.css'
     ], 'public/css/styles.css', 'resources/assets');
+    mix.styles([
+        'css/app.css',
+        'css/font-awesome.min.css',
+        'css/admin/metisMenu.css',
+        'css/admin/sb-admin-2.css',
+        'css/admin/timeline.css',
+        'js/jquery.select2/select2.min.css'
+    ], 'public/css/admin.css', 'resources/assets');
     mix.scripts([
         'jquery.min.js',
         'bootstrap.min.js',
         'jquery.select2/select2.min.js',
         'main.js'
     ], 'public/js/plugins.js', 'resources/assets/js');
+    mix.scripts([
+        'jquery.min.js',
+        'bootstrap.min.js',
+        'admin/metisMenu.js',
+        'admin/sb-admin-2.js',
+        'jquery.select2/select2.min.js',
+        'main.js'
+    ], 'public/js/admin.plugins.js', 'resources/assets/js');
 });

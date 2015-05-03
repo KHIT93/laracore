@@ -19,7 +19,7 @@
 	<![endif]-->
 </head>
 <body>
-	    @include('partials._navbar')
+        @include('partials._navbar')
         @yield('content')
 
 	<!-- Scripts -->

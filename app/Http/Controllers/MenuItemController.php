@@ -10,7 +10,15 @@ use Illuminate\Http\Request;
 
 class MenuItemController extends Controller
 {
-    /**
+        /**
+         * Constructor for adding middleware.
+         */
+        public function __construct()
+        {
+            $this->middleware('auth');
+        }
+        
+        /**
 	 * Show the form for creating a new resource.
 	 *
 	 * @return View

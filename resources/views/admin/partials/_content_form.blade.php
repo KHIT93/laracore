@@ -4,7 +4,7 @@
 </div>
 <div class="form-group @if ($errors->has('content.body')) has-error @endif">
     {!! Form::label('content[body]', 'Body') !!}
-    {!! Form::textarea('content[body]', $node->body, ['class' => 'form-control', 'required']) !!}
+    {!! Form::textarea('content[body]', $node->body, ['class' => 'form-control ckeditor', 'required']) !!}
 </div>
 <div class="form-group">
     <div class="checkbox">

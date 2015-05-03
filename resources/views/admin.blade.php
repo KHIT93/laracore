@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Administration</title>
 
-	<link href="{{ asset('/css/styles.css') }}" rel="stylesheet">
+	<link href="{{ asset('/css/admin.css') }}" rel="stylesheet">
     <link href="{{ asset('/favicon.ico') }}" rel="shortcut icon" type="image/x-icon">
 	<!-- Fonts -->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
@@ -19,19 +19,19 @@
 	<![endif]-->
 </head>
 <body>
-    @include('admin.partials._navbar')
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-3 col-md-2 sidebar">
-                @include('admin.partials._sidebar')
-            </div>
-            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                @yield('content')
-            </div>
+    <div id="wrapper">
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            @include('admin.partials._navbar')
+            @include('admin.partials._sidebar')
+        </nav>
+        <div id="page-wrapper">
+            @yield('content')
         </div>
     </div>
     
-	<!-- Scripts -->
-	<script src="{{ asset('/js/plugins.js') }}"></script>
+    <!-- Scripts -->
+    <script src="{{ asset('/js/admin.plugins.js') }}"></script>
+    <script src="{{ asset('/js/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('/js/ckeditor.config.js') }}"></script>
 </body>
 </html>

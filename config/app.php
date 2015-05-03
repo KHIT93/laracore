@@ -135,7 +135,7 @@ return [
 		//'Illuminate\Translation\TranslationServiceProvider',
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
-        'Illuminate\Html\HtmlServiceProvider',
+                'Illuminate\Html\HtmlServiceProvider',
 
 		/*
 		 * Application Service Providers...
@@ -145,13 +145,14 @@ return [
 		'App\Providers\ConfigServiceProvider',
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
-        'App\Providers\ViewComposerServiceProvider',
-        'Laracasts\Flash\FlashServiceProvider',
-        'Barryvdh\Elfinder\ElfinderServiceProvider',
-        'Khill\Fontawesome\FontAwesomeServiceProvider',
-        'Overtrue\LaravelLang\TranslationServiceProvider',
-        'Zizaco\Entrust\EntrustServiceProvider',
-        'Orangehill\Iseed\IseedServiceProvider',
+                'App\Providers\ViewComposerServiceProvider',
+                'Laracasts\Flash\FlashServiceProvider',
+                'Barryvdh\Elfinder\ElfinderServiceProvider',
+                'Khill\Fontawesome\FontAwesomeServiceProvider',
+                'Overtrue\LaravelLang\TranslationServiceProvider',
+                'Zizaco\Entrust\EntrustServiceProvider',
+                'Orangehill\Iseed\IseedServiceProvider',
+                'KHIT\Theme\ThemeServiceProvider',
 
 	],
 

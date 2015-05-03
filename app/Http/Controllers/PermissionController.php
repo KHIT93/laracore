@@ -9,6 +9,14 @@ use Illuminate\Http\Request;
 class PermissionController extends Controller {
 
 	/**
+         * Constructor for adding middleware.
+         */
+        public function __construct()
+        {
+            $this->middleware('auth');
+        }
+        
+        /**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response

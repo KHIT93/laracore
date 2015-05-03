@@ -2,11 +2,15 @@
 
 @section('content')
 
-<div class="col-sm-12">
-    <h1>Overview</h1>
+<div class="row">
+    <div class="col-sm-12">
+        <h1 class="page-header">Overview</h1>
+    </div>
 </div>
-<div class="col-sm-12">
-    @include('flash::message')
+<div class="row">
+    <div class="col-sm-12">
+        @include('flash::message')
+    </div>
 </div>
 <div class="row">
     <div class="col-lg-4 col-md-6">

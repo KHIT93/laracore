@@ -124,6 +124,9 @@ Route::post('admin/blocks/{block}/delete', 'BlockController@destroy');
 /**
  * Routing for Theme Management.
  */
+Route::get('admin/themes', 'ThemeController@index');
+
+Route::get('admin/themes/{theme}', 'ThemeController@apply');
 
 /**
  * Routing for Module Management.
