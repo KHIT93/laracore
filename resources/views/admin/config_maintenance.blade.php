@@ -23,7 +23,7 @@
                 </label>
             </div>
         </div>
-        <div class="form-group @if ($errors->has('site_slogan')) has-error @endif">
+        <div class="form-group @if ($errors->has('maintenance_text')) has-error @endif">
             {!! Form::label('maintenance_text', 'Site slogan') !!}
             {!! Form::textarea('maintenance_text', Setting::get('maintenance_text'), ['class' => 'form-control', 'required']) !!}
         </div>

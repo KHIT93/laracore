@@ -50,9 +50,20 @@ class ConfigurationController extends Controller {
             return view('admin.config_maintenance');
         }
         
-        public function postMaintenance()
+        public function postMaintenance(Request $request)
         {
-            
+            $output = array();
+            foreach ($request->all() as $key => $value)
+            {
+            	$output[$key] = $value;
+            }
+            unset($output['_token']);
+            foreach ($output as $key => $value)
+            {
+            	$setting = Setting::whereKey($key);
+                $setting->update(['value' => $value]);
+            }
+            return redirect('admin/config');
         }
         
         public function getCron()
