@@ -36,7 +36,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">Content authoring</div>
             <div class="list-group">
-                <a href="/admin/menus" class="list-group-item">
+                <a href="/admin/config/text-formats" class="list-group-item">
                     <h4 class="list-group-item-heading"><i class="fa fa-arrow-circle-right"></i> Text formats and Wysiwyg</h4>
                     <p class="list-group-item-text">Configure how user-contributed content is filtered and formatted, as well as the text editor user interface (WYSIWYGs or toolbars).</p>
                 </a>

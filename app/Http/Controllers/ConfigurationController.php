@@ -84,4 +84,9 @@ class ConfigurationController extends Controller {
             \Flash::success('The new task has been created');
             return redirect('admin/config/system/cron');
         }
+        
+        public function textFormats()
+        {
+            return view('admin.config_textformats');
+        }
 }

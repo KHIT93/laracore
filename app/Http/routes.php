@@ -174,6 +174,8 @@ Route::post('admin/users/permissions', 'PermissionController@update');
  */
 Route::get('admin/config', 'ConfigurationController@index');
 
+Route::get('admin/config/text-formats', 'ConfigurationController@textFormats');
+
 /**
  * Default controller routes from Laravel.
  */
