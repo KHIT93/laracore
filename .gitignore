@@ -8,3 +8,5 @@
 *.phpproject
 *.phpproject.user
 *.user
+/.idea
+/.idea
