@@ -18,7 +18,7 @@ class RedirectController extends Controller
      */
     public function index()
     {
-        return view('admin.config_redirect', ['redirects' => PathAlias::all()]);
+        return view('admin.config.redirect.index', ['redirects' => PathAlias::all()]);
     }
 
     public function store(Request $request)

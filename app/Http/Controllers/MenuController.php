@@ -26,7 +26,7 @@ class MenuController extends Controller
     public function index()
     {
         eval_permission('access_admin_menus');
-        return view('admin.menus', ['menus' => Menu::all()]);
+        return view('admin.menus.index', ['menus' => Menu::all()]);
     }
 
     /**
@@ -37,7 +37,7 @@ class MenuController extends Controller
     public function create()
     {
         eval_permission('access_admin_menus');
-        return view('admin.menus_form', ['menu' => new Menu()]);
+        return view('admin.menus.form', ['menu' => new Menu()]);
     }
 
     /**
@@ -61,7 +61,7 @@ class MenuController extends Controller
     public function show(Menu $menu)
     {
         eval_permission('access_admin_menus');
-        return view('admin.menus_links', compact('menu'));
+        return view('admin.menus.links.index', compact('menu'));
     }
 
     /**
@@ -73,7 +73,7 @@ class MenuController extends Controller
     public function edit(Menu $menu)
     {
         eval_permission('access_admin_menus');
-        return view('admin.menus_form', ['menu' => $menu]);
+        return view('admin.menus.form', ['menu' => $menu]);
     }
 
     /**
@@ -99,7 +99,7 @@ class MenuController extends Controller
     public function remove(Menu $menu)
     {
         eval_permission('access_admin_menus');
-        return view('admin.menus_delete', compact('menu'));
+        return view('admin.menus.delete', compact('menu'));
     }
 
     /**

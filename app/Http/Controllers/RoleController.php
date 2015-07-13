@@ -25,7 +25,7 @@ class RoleController extends Controller
     public function index()
     {
         eval_permission('access_admin_users');
-        return view('admin.roles', ['roles' => Role::all()]);
+        return view('admin.users.roles.index', ['roles' => Role::all()]);
     }
 
     /**
@@ -49,7 +49,7 @@ class RoleController extends Controller
     public function edit(Role $role)
     {
         eval_permission('access_admin_users');
-        return view('admin.roles_form', compact('role'));
+        return view('admin.users.roles.form', compact('role'));
     }
 
     /**
@@ -74,7 +74,7 @@ class RoleController extends Controller
     public function remove(Role $role)
     {
         eval_permission('access_admin_users');
-        return view('admin.roles_delete', compact('role'));
+        return view('admin.users.roles.delete', compact('role'));
     }
 
     /**

@@ -26,7 +26,7 @@ class MenuItemController extends Controller
     public function create(Menu $menu)
     {
         eval_permission('access_admin_menus');
-        return view('admin.menus_links_form', ['item' => new MenuItem(), 'menu' => $menu]);
+        return view('admin.menus.links.form', ['item' => new MenuItem(), 'menu' => $menu]);
     }
 
     /**
@@ -51,7 +51,7 @@ class MenuItemController extends Controller
     public function edit(Menu $menu, MenuItem $item)
     {
         eval_permission('access_admin_menus');
-        return view('admin.menus_links_form', compact('menu', 'item'));
+        return view('admin.menus.links.form', compact('menu', 'item'));
     }
 
     /**
@@ -79,7 +79,7 @@ class MenuItemController extends Controller
     public function remove(Menu $menu, MenuItem $item)
     {
         eval_permission('access_admin_menus');
-        return view('admin.menus_links_delete', compact('menu', 'item'));
+        return view('admin.menus.links.delete', compact('menu', 'item'));
     }
 
     /**

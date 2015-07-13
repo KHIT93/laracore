@@ -26,7 +26,7 @@ class ThemeController extends Controller
             $themes[$key]['machine'] = str_replace(base_path('public/themes') . '/', '', $theme);
         }
 
-        return view('admin.themes', compact('themes'));
+        return view('admin.themes.index', compact('themes'));
     }
 
     public function apply($theme)

@@ -26,7 +26,7 @@ class BlockController extends Controller
     public function index()
     {
         eval_permission('access_admin_blocks');
-        return view('admin.blocks', ['blocks' => Block::all()]);
+        return view('admin.blocks.index', ['blocks' => Block::all()]);
     }
 
     /**
@@ -37,7 +37,7 @@ class BlockController extends Controller
     public function create()
     {
         eval_permission('access_admin_blocks');
-        return view('admin.block_form', ['block' => new Block()]);
+        return view('admin.blocks.form', ['block' => new Block()]);
     }
 
     /**
@@ -66,7 +66,7 @@ class BlockController extends Controller
     public function edit(Block $block)
     {
         eval_permission('access_admin_blocks');
-        return view('admin.block_form', compact('block'));
+        return view('admin.blocks.form', compact('block'));
     }
 
     /**
@@ -92,7 +92,7 @@ class BlockController extends Controller
     public function remove(Block $block)
     {
         eval_permission('access_admin_blocks');
-        return view('admin.blocks_delete', compact('block'));
+        return view('admin.blocks.delete', compact('block'));
     }
 
     /**

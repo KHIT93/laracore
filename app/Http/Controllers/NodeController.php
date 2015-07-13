@@ -35,7 +35,7 @@ class NodeController extends Controller
     {
         eval_permission('access_admin_content');
         $data = Node::all();
-        return view('admin.content', ['nodes' => $data]);
+        return view('admin.node.index', ['nodes' => $data]);
     }
 
     /**
@@ -46,7 +46,7 @@ class NodeController extends Controller
     public function create()
     {
         eval_permission('access_admin_content');
-        return view('admin.content_form_add');
+        return view('admin.node.form_add');
     }
 
     /**
@@ -131,7 +131,7 @@ class NodeController extends Controller
         eval_permission('access_admin_content');
         $meta = $node->metadata()->first();
         $urls = $node->aliases()->getResults();
-        return view('admin.content_form_edit', compact('node', 'meta', 'urls'));
+        return view('admin.node.form_edit', compact('node', 'meta', 'urls'));
     }
 
     /**
@@ -159,7 +159,7 @@ class NodeController extends Controller
     public function remove(Node $node)
     {
         eval_permission('access_admin_content');
-        return view('admin.content_form_delete', compact('node'));
+        return view('admin.node.delete', compact('node'));
     }
 
     /**

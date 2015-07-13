@@ -22,7 +22,7 @@ class LayoutController extends Controller
     public function index()
     {
         eval_permission('access_admin_layout');
-        return view('admin.layout');
+        return view('admin.layout.index');
     }
 
 }

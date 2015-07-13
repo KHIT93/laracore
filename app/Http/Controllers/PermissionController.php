@@ -26,7 +26,7 @@ class PermissionController extends Controller
     {
         //$role = Role::find(2);
         //dd($role->perms);
-        return view('admin.permissions', ['roles' => Role::where('name', '<>', 'administrator')->get(), 'permissions' => Permission::all()]);
+        return view('admin.users.permissions.index', ['roles' => Role::where('name', '<>', 'administrator')->get(), 'permissions' => Permission::all()]);
     }
 
     /**

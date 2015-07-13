@@ -20,13 +20,13 @@ class ConfigurationController extends Controller
     public function index()
     {
         eval_permission('access_admin_config');
-        return view('admin.config');
+        return view('admin.config.index');
     }
 
     public function getSite()
     {
         eval_permission('access_admin_config');
-        return view('admin.config_site', ['nodes' => \App\Node::all()->lists('title', 'nid')]);
+        return view('admin.config.site.index', ['nodes' => \App\Node::all()->lists('title', 'nid')]);
     }
 
     public function postSite(Request $request)
@@ -46,7 +46,7 @@ class ConfigurationController extends Controller
 
     public function getMaintenance()
     {
-        return view('admin.config_maintenance');
+        return view('admin.config.maintenance.index');
     }
 
     public function postMaintenance(Request $request)
@@ -69,7 +69,7 @@ class ConfigurationController extends Controller
 
     public function getCron()
     {
-        return view('admin.config_cron', ['tasks' => ScheduledTask::all()]);
+        return view('admin.config.maintenance.cron', ['tasks' => ScheduledTask::all()]);
     }
 
     public function getCronExecute()
@@ -88,6 +88,6 @@ class ConfigurationController extends Controller
 
     public function textFormats()
     {
-        return view('admin.config_textformats');
+        return view('admin.config.textformats.index');
     }
 }

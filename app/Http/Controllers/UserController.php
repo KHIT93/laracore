@@ -26,7 +26,7 @@ class UserController extends Controller
     public function index()
     {
         eval_permission('access_admin_users');
-        return view('admin.users', ['users' => User::all()]);
+        return view('admin.users.index', ['users' => User::all()]);
     }
 
     /**
@@ -42,7 +42,7 @@ class UserController extends Controller
                 $roles[$role->id] = $role->display_name;
             }
         }
-        return view('admin.users_form', ['user' => new User(), 'roles' => $roles]);
+        return view('admin.users.form', ['user' => new User(), 'roles' => $roles]);
     }
 
     /**
@@ -65,7 +65,7 @@ class UserController extends Controller
      */
     public function showCurrent()
     {
-        return view('user_profile', ['user' => auth()->user()]);
+        return view('users.profile', ['user' => auth()->user()]);
     }
 
     /**
@@ -76,7 +76,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('user_profile', ['user' => $user]);
+        return view('users.profile', ['user' => $user]);
     }
 
     /**
@@ -93,7 +93,7 @@ class UserController extends Controller
                 $roles[$role->id] = $role->display_name;
             }
         }
-        return view('admin.users_form', ['user' => $user, 'roles' => $roles]);
+        return view('admin.users.form', ['user' => $user, 'roles' => $roles]);
     }
 
     /**
@@ -120,7 +120,7 @@ class UserController extends Controller
     public function remove(User $user)
     {
         eval_permission('access_admin_users');
-        return view('admin.users_delete', compact('user'));
+        return view('admin.users.delete', compact('user'));
     }
 
     /**
