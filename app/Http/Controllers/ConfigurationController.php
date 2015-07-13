@@ -55,9 +55,13 @@ class ConfigurationController extends Controller
         foreach ($request->all() as $key => $value) {
             $output[$key] = $value;
         }
+        if(!$request->input('site_maintenance'))
+        {
+            $output['site_maintenance'] = 0;
+        }
         unset($output['_token']);
         foreach ($output as $key => $value) {
-            $setting = Setting::whereKey($key);
+            $setting = Setting::whereKey($key)->first();
             $setting->update(['value' => $value]);
         }
         return redirect('admin/config');

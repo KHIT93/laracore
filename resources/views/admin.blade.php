@@ -28,7 +28,7 @@
             @yield('content')
         </div>
     </div>
-    
+
     <!-- Scripts -->
     <script src="{{ asset('/js/admin.plugins.js') }}"></script>
     <script src="{{ asset('/js/ckeditor/ckeditor.js') }}"></script>
