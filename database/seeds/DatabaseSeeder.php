@@ -3,22 +3,25 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 
-class DatabaseSeeder extends Seeder {
+class DatabaseSeeder extends Seeder
+{
 
-	/**
-	 * Run the database seeds.
-	 *
-	 * @return void
-	 */
-	public function run()
-	{
-		Model::unguard();
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        Model::unguard();
 
-		 $this->call('MenuTableSeeder');
-                 $this->call('MenuItemTableSeeder');
-                 $this->call('RoleTableSeeder');
-                 $this->call('PermissionTableSeeder');
-                 $this->call('PermissionRoleMappingSeeder');
-	}
+        $this->call('MenuTableSeeder');
+        $this->call('MenuItemTableSeeder');
+        $this->call('RoleTableSeeder');
+        $this->call('PermissionTableSeeder');
+        $this->call('PermissionRoleMappingSeeder');
+        $this->call('SettingsTableSeeder');
+        $this->call('BlockTableSeeder');
+    }
 
 }

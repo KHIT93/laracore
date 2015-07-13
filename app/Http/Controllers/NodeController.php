@@ -3,12 +3,18 @@
 use App\Http\Requests;
 use App\Http\Requests\NodeRequest;
 use App\Http\Controllers\Controller;
+use App\Libraries\Page;
+use App\Libraries\Theme;
 use App\Node;
 use App\Metadata;
 use App\PathAlias;
+use App\Setting;
 
+use Collective\Html\HtmlFacade;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Str;
+use Symfony\Component\Console\Application;
 
 class NodeController extends Controller
 {
@@ -70,17 +76,57 @@ class NodeController extends Controller
      */
     public function show(Node $node)
     {
-        return view('node', compact('node'));
+        if($node == null)
+        {
+            abort(404);
+        }
+        else
+        {
+            Page::getInstance()->node = $node;
+            $header = $node->header();
+            //return view('node', compact('node'));
+            return view(Theme::template('page'), ['node' => $node, 'title' => $header['title'], 'metadata' => $header['metadata']]);
+        }
     }
         
     public function showDefault()
     {
-        return view('node', ['node' => Node::find(1)]);
+        $node = null;
+        if(!count(Node::all()))
+        {
+            $node = new Node;
+            $node->title = 'No content available';
+            $node->body = 'There is currently no content available for display. Please log in and '.HtmlFacade::link('admin/content', 'Create some content');
+            //return view('node', ['node' => $node]);
+            return view(Theme::template('page'));
+        }
+        else
+        {
+            $site_home = Setting::get('site_home');
+            return $this->show(Node::findOrFail($site_home));
+            /*if(strpos($site_home, 'node/'))
+            {
+                return $this->show(Node::findOrFail(explode($site_home, '/')[1]));
+            }
+            else
+            {
+                return $this->resolve(PathAlias::whereAlias($site_home)->first());
+            }*/
+        }
+
     }
         
     public function resolve(PathAlias $path_alias)
     {
-        return $this->show($path_alias->node()->first());
+        $node = null;
+        if($path_alias->node()->first() instanceof Node)
+        {
+            return $this->show($path_alias->node()->first());
+        }
+        else
+        {
+            abort(404);
+        }
     }
 
     /**

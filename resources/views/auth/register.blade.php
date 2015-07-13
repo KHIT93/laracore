@@ -1,4 +1,4 @@
-@extends('app')
+@extends(Theme::template('page'))
 
 @section('content')
 <div class="container-fluid">

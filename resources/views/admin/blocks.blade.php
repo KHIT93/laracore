@@ -27,7 +27,7 @@
                 @foreach($blocks as $block)
                 <tr>
                     <td>
-                        {{ $block->title }}
+                        {{ $block->description }}
                     </td>
                     <td>{{ ucfirst($block->section) }}</td>
                     <td>

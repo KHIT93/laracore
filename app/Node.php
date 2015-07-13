@@ -2,26 +2,27 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Node extends Model {
+class Node extends Model
+{
 
     /**
-    * The database table used by the model.
-    *
-    * @var string
-    */
+     * The database table used by the model.
+     *
+     * @var string
+     */
     protected $table = 'nodes';
-    
+
     protected $fillable = [
         'title',
         'body',
         'author',
         'published'
     ];
-    
+
     /**
-    * Alter the primary key
-    * @var string 
-    */
+     * Alter the primary key
+     * @var string
+     */
     protected $primaryKey = 'nid';
 
     /**
@@ -32,7 +33,7 @@ class Node extends Model {
     {
         return $this->belongsTo('App\User', 'author', 'uid');
     }
-    
+
     /**
      * Gets the metadata for this node.
      * @return Metadata
@@ -41,7 +42,7 @@ class Node extends Model {
     {
         return $this->hasOne('App\Metadata', 'nid', 'nid');
     }
-    
+
     /**
      * Gets all path aliases for this node.
      * @return Array
@@ -50,7 +51,7 @@ class Node extends Model {
     {
         return $this->hasMany('App\PathAlias', 'nid');
     }
-    
+
     /**
      * Gets all nodes that are published
      * @param $query
@@ -59,5 +60,23 @@ class Node extends Model {
     {
         $query->where('published', '=', 1);
     }
-    
+
+    /**Gets all nodes that are unpublished
+     * @param $query
+     */
+    public function scopeUnpublished($query)
+    {
+        $query->where('published', '=', 0);
+    }
+
+    public function header()
+    {
+        return [
+            'title' => (($this->metadata()->first()->title != '') ? $this->metadata()->first()->title : $this->title),
+            'metadata' => view('partials._meta', ['name' => 'description', 'content' => $this->metadata()->first()->description])
+                . view('partials._meta', ['name' => 'keywords', 'content' => $this->metadata()->first()->keywords])
+                . view('partials._meta', ['name' => 'robots', 'content' => $this->metadata()->first()->robots])
+        ];
+    }
+
 }

@@ -26,7 +26,7 @@ return [
 	|
 	*/
 
-	'url' => 'http://laravelcms.khit.dev',
+	'url' => env('APP_URL'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -39,7 +39,7 @@ return [
 	|
 	*/
 
-	'timezone' => 'Europe/Copenhagen',
+	'timezone' => env('APP_TIMEZONE'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ return [
 	|
 	*/
 
-	'locale' => 'da',
+	'locale' => env('APP_LOCALE', 'en'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -150,7 +150,6 @@ return [
         'Overtrue\LaravelLang\TranslationServiceProvider',
         'Zizaco\Entrust\EntrustServiceProvider',
         'Orangehill\Iseed\IseedServiceProvider',
-        'KHIT\Theme\ThemeServiceProvider',
 
 	],
 
@@ -204,6 +203,7 @@ return [
         'Flash'     => 'Laracasts\Flash\Flash',
         'Entrust'   => 'Zizaco\Entrust\EntrustFacade',
         'Setting'   => 'App\Setting',
+        'Theme'     => 'App\Libraries\Theme'
 
 	],
 

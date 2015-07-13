@@ -11,7 +11,8 @@ class Setting extends Model {
     
     public static function get($key)
     {
-        return self::whereKey($key)->first()->value;
+        $return = self::whereKey($key)->first();
+        return ($return instanceof Setting) ? $return->value : null;
     }
 
 }

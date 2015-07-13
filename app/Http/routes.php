@@ -18,23 +18,44 @@
 Route::bind('path_alias', function($value)
 {
     return App\PathAlias::where('alias', $value)->first();
+    /*try
+    {
+        return App\PathAlias::where('alias', $value)->first();
+    }
+    catch(Illuminate\Database\Eloquent\ModelNotFoundException $ex)
+    {
+        throw new \Symfony\Component\HttpKernel\Exception\HttpException(404);
+    }*/
 });
-Route::bind('node', function($nid){
-    return App\Node::findOrFail($nid);
+Route::bind('node', function($nid)
+{
+    try
+    {
+        return App\Node::findOrFail($nid);
+    }
+    catch(Illuminate\Database\Eloquent\ModelNotFoundException $ex)
+    {
+        throw new \Symfony\Component\HttpKernel\Exception\HttpException(404);
+    }
 });
-Route::bind('menu', function($mid){
+Route::bind('menu', function($mid)
+{
     return App\Menu::findOrFail($mid);
 });
-Route::bind('menu_item', function($id){
+Route::bind('menu_item', function($id)
+{
     return App\MenuItem::findOrFail($id);
 });
-Route::bind('block', function($bid){
+Route::bind('block', function($bid)
+{
     return App\Block::findorFail($bid);
 });
-Route::bind('user', function($uid){
+Route::bind('user', function($uid)
+{
     return App\User::findOrFail($uid);
 });
-Route::bind('role', function($rid){
+Route::bind('role', function($rid)
+{
     return App\Role::findOrFail($rid);
 });
 
@@ -184,6 +205,10 @@ Route::controllers([
     'password' => 'Auth\PasswordController',
     'admin/config/system' => 'ConfigurationController'
 ]);
+
+Route::get('theme-test', function(){
+   dd(\App\Libraries\Theme::info('agency'));
+});
 
 /*
  * Default route for using path aliases instead of node/{nid}.

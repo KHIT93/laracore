@@ -1,4 +1,4 @@
-name: Agency
+name: 'Agency'
 description: 'Agency is a stylish, Bootstrap theme for agencies and small businesses.'
 # version: VERSION
 # core: 5.x
@@ -8,5 +8,6 @@ regions:
   footer: 'Footer first'
 css:
     css/all.css: {}
+    css/plugins.css: {}
 js:
     js/plugins.js: {}

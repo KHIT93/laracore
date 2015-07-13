@@ -15,6 +15,7 @@ elixir(function(mix) {
     mix.less('app.less', 'resources/assets/css');
     mix.styles([
         'css/app.css',
+        'css/custom.css',
         'css/font-awesome.min.css',
         'js/jquery.select2/select2.min.css'
     ], 'public/css/styles.css', 'resources/assets');

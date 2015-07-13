@@ -25,6 +25,12 @@
                 <div class="form-group @if ($errors->has('title')) has-error @endif">
                     {!! Form::label('title', 'Title') !!}
                     {!! Form::text('title', null, ['class' => 'form-control', 'required']) !!}
+                    <span class="help-block">This field contains the title of the block. This will be displayed to the visitors of the website. This field can be left blank in order to not display a title</span>
+                </div>
+                <div class="form-group @if ($errors->has('description')) has-error @endif">
+                    {!! Form::label('description', 'Description') !!}
+                    {!! Form::text('description', null, ['class' => 'form-control', 'required']) !!}
+                    <span class="help-block">This field contains a description of the block. This will not be shown to the visitors of the website</span>
                 </div>
                 <div class="form-group @if ($errors->has('body')) has-error @endif">
                     {!! Form::label('body', 'Body') !!}
@@ -46,7 +52,7 @@
                 <div class="form-group">
                     <div class="radio">
                         <label>
-                            {!! Form::radio('visibility', 0, true) !!}
+                            {!! Form::radio('visibility', 0, false) !!}
                             Show for the listed pages
                         </label>
                     </div>
@@ -54,7 +60,7 @@
                 <div class="form-group">
                     <div class="radio">
                         <label>
-                            {!! Form::radio('visibility', 1, false) !!}
+                            {!! Form::radio('visibility', 1, true) !!}
                             Hide for the listed pages
                         </label>
                     </div>
