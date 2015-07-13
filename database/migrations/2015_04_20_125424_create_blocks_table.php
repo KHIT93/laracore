@@ -20,7 +20,7 @@ class CreateBlocksTable extends Migration
             $table->string('theme');
             $table->integer('position');
             $table->string('section');
-            $table->integer('visbility')->unsigned();
+            $table->integer('visibility')->unsigned();
             $table->text('pages');
             $table->string('title');
             $table->string('description')->nullable();
