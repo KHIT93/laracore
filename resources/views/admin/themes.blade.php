@@ -30,6 +30,9 @@
                     @if(file_exists(base_path('public/themes/'.$theme['machine']).'/screenshot.jpg'))
                     <img src="{{ asset('themes/'.$theme['machine'].'/screenshot.jpg') }}" class="img-responsive" title="{{ $theme['description'] }}">
                     @endif
+                    @if(file_exists(base_path('public/themes/'.$theme['machine']).'/screenshot.png'))
+                        <img src="{{ asset('themes/'.$theme['machine'].'/screenshot.png') }}" class="img-responsive" title="{{ $theme['description'] }}">
+                    @endif
                 </div>
                 <div class="panel-footer">
                     {!! Html::link('admin/themes/'.$theme['machine'], 'Apply theme', ['class' => 'btn btn-info']) !!}

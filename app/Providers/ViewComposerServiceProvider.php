@@ -42,7 +42,7 @@ class ViewComposerServiceProvider extends ServiceProvider
 
             $view->with('page', $page)
                 ->with('logo', Setting::get('site_logo'))
-                ->with('site_home', Setting::get('site_home'))
+                ->with('site_home', '/')
                 ->with('site_name', Setting::get('site_name'))
                 ->with('site_slogan', Setting::get('site_slogan'))
                 ->with('primary_nav', view(Theme::template('primary_navigation'), ['menu' => \App\Menu::find(1)]))
