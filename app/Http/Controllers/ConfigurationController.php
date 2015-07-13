@@ -37,7 +37,7 @@ class ConfigurationController extends Controller
         }
         unset($output['_token']);
         foreach ($output as $key => $value) {
-            $setting = Setting::whereKey($key);
+            $setting = Setting::whereKey($key)->first();
             $setting->update(['value' => $value]);
         }
         return redirect('admin/config');

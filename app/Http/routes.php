@@ -48,6 +48,9 @@ Route::bind('user', function ($uid) {
 Route::bind('role', function ($rid) {
     return App\Role::findOrFail($rid);
 });
+Route::bind('translation', function($id){
+    return App\Translation::findOrFail($id);
+});
 
 /**
  *  Generic routes.
@@ -195,6 +198,21 @@ Route::get('admin/config/redirect', 'RedirectController@index');
 Route::post('admin/config/redirect/add', 'RedirectController@store');
 
 /**
+ * Routing for regional settings and translations
+ */
+Route::get('admin/config/regional', 'RegionalController@index');
+
+Route::post('admin/config/regional', 'RegionalController@update');
+
+Route::get('admin/config/regional/translate', 'RegionalController@translateList');
+
+Route::get('admin/config/regional/{locale}/translate', 'RegionalController@translateList');
+
+Route::get('admin/config/regional/translate/{translation}', 'RegionalController@translate');
+
+Route::post('admin/config/regional/translate/{translation}', 'RegionalController@updateTranslation');
+
+/**
  * Default controller routes from Laravel.
  */
 Route::controllers([
@@ -202,10 +220,6 @@ Route::controllers([
     'password' => 'Auth\PasswordController',
     'admin/config/system' => 'ConfigurationController'
 ]);
-
-Route::get('theme-test', function () {
-    dd(\App\Libraries\Theme::info('agency'));
-});
 
 /*
  * Default route for using path aliases instead of node/{nid}.
