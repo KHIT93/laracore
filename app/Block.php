@@ -33,7 +33,25 @@ class Block extends Model
         }
         else
         {
-            return view(Theme::template('block'), ['block' => $this]);
+            $pages = explode(',', $this->pages);
+            if($this->visibility == 0)
+            {
+                if(in_array(app('request')->path(), $pages))
+                {
+                    return view(Theme::template('block'), ['block' => $this]);
+                }
+                else if(app('request')->path() == '/' && in_array('<front>', $pages))
+                {
+                    return view(Theme::template('block'), ['block' => $this]);
+                }
+            }
+            else if($this->visibility == 1)
+            {
+                if(!in_array(app('request')->path(), $pages) && !(app('request')->path() == '/' && in_array('<front>', $pages)))
+                {
+                    return view(Theme::template('block'), ['block' => $this]);
+                }
+            }
         }
     }
 }
