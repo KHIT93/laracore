@@ -6,44 +6,44 @@ use App\Role;
 use App\Permission;
 use Illuminate\Http\Request;
 
-class PermissionController extends Controller {
+class PermissionController extends Controller
+{
 
-	/**
-         * Constructor for adding middleware.
-         */
-        public function __construct()
-        {
-            $this->middleware('auth');
-        }
-        
-        /**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
+    /**
+     * Constructor for adding middleware.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function index()
+    {
         //$role = Role::find(2);
         //dd($role->perms);
-		return view('admin.permissions', ['roles' => Role::where('name', '<>', 'administrator')->get(), 'permissions' => Permission::all()]);
-	}
+        return view('admin.permissions', ['roles' => Role::where('name', '<>', 'administrator')->get(), 'permissions' => Permission::all()]);
+    }
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update(Request $request)
-	{
-        foreach ($request->all()['permission'] as $role => $permission)
-        {
-        	$entity = Role::find($role);
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int $id
+     * @return Response
+     */
+    public function update(Request $request)
+    {
+        foreach ($request->all()['permission'] as $role => $permission) {
+            $entity = Role::find($role);
             $entity->perms()->sync($permission);
             \Flash::success('The permission assignment has been updated.');
             return redirect('admin/users/permissions');
         }
-        
-	}
+
+    }
 
 }

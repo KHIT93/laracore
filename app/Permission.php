@@ -3,7 +3,8 @@
 //use Illuminate\Database\Eloquent\Model;
 use Zizaco\Entrust\EntrustPermission;
 
-class Permission extends EntrustPermission {
+class Permission extends EntrustPermission
+{
 
     /*protected $fillable = [
         'permission',
@@ -11,11 +12,11 @@ class Permission extends EntrustPermission {
         'description',
         'roles'
     ];*/
-    
+
     /**
-    * Alter the primary key
-    * @var string 
-    */
+     * Alter the primary key
+     * @var string
+     */
     /*protected $primaryKey = 'pid';
 
     public function roles()

@@ -15,8 +15,7 @@
  * Create Route-Model Bindings.
  */
 
-Route::bind('path_alias', function($value)
-{
+Route::bind('path_alias', function ($value) {
     return App\PathAlias::where('alias', $value)->first();
     /*try
     {
@@ -27,35 +26,26 @@ Route::bind('path_alias', function($value)
         throw new \Symfony\Component\HttpKernel\Exception\HttpException(404);
     }*/
 });
-Route::bind('node', function($nid)
-{
-    try
-    {
+Route::bind('node', function ($nid) {
+    try {
         return App\Node::findOrFail($nid);
-    }
-    catch(Illuminate\Database\Eloquent\ModelNotFoundException $ex)
-    {
+    } catch (Illuminate\Database\Eloquent\ModelNotFoundException $ex) {
         throw new \Symfony\Component\HttpKernel\Exception\HttpException(404);
     }
 });
-Route::bind('menu', function($mid)
-{
+Route::bind('menu', function ($mid) {
     return App\Menu::findOrFail($mid);
 });
-Route::bind('menu_item', function($id)
-{
+Route::bind('menu_item', function ($id) {
     return App\MenuItem::findOrFail($id);
 });
-Route::bind('block', function($bid)
-{
+Route::bind('block', function ($bid) {
     return App\Block::findorFail($bid);
 });
-Route::bind('user', function($uid)
-{
+Route::bind('user', function ($uid) {
     return App\User::findOrFail($uid);
 });
-Route::bind('role', function($rid)
-{
+Route::bind('role', function ($rid) {
     return App\Role::findOrFail($rid);
 });
 
@@ -198,6 +188,13 @@ Route::get('admin/config', 'ConfigurationController@index');
 Route::get('admin/config/text-formats', 'ConfigurationController@textFormats');
 
 /**
+ * Routing for Redirect/PathAlias management
+ */
+Route::get('admin/config/redirect', 'RedirectController@index');
+
+Route::post('admin/config/redirect/add', 'RedirectController@store');
+
+/**
  * Default controller routes from Laravel.
  */
 Route::controllers([
@@ -206,8 +203,8 @@ Route::controllers([
     'admin/config/system' => 'ConfigurationController'
 ]);
 
-Route::get('theme-test', function(){
-   dd(\App\Libraries\Theme::info('agency'));
+Route::get('theme-test', function () {
+    dd(\App\Libraries\Theme::info('agency'));
 });
 
 /*

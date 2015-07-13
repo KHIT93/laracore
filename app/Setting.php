@@ -2,13 +2,14 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Setting extends Model {
+class Setting extends Model
+{
 
-	protected $fillable = [
+    protected $fillable = [
         'key',
         'value'
     ];
-    
+
     public static function get($key)
     {
         $return = self::whereKey($key)->first();

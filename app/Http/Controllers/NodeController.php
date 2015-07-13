@@ -25,7 +25,7 @@ class NodeController extends Controller
     {
         $this->middleware('auth', ['except' => ['show', 'showDefault', 'resolve']]);
     }
-        
+
     /**
      * Display a listing of the resource.
      *
@@ -71,37 +71,31 @@ class NodeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  Node  $node
+     * @param  Node $node
      * @return View
      */
     public function show(Node $node)
     {
-        if($node == null)
-        {
+        if ($node == null) {
             abort(404);
-        }
-        else
-        {
+        } else {
             Page::getInstance()->node = $node;
             $header = $node->header();
             //return view('node', compact('node'));
             return view(Theme::template('page'), ['node' => $node, 'title' => $header['title'], 'metadata' => $header['metadata']]);
         }
     }
-        
+
     public function showDefault()
     {
         $node = null;
-        if(!count(Node::all()))
-        {
+        if (!count(Node::all())) {
             $node = new Node;
             $node->title = 'No content available';
-            $node->body = 'There is currently no content available for display. Please log in and '.HtmlFacade::link('admin/content', 'Create some content');
+            $node->body = 'There is currently no content available for display. Please log in and ' . HtmlFacade::link('admin/content', 'Create some content');
             //return view('node', ['node' => $node]);
             return view(Theme::template('page'));
-        }
-        else
-        {
+        } else {
             $site_home = Setting::get('site_home');
             return $this->show(Node::findOrFail($site_home));
             /*if(strpos($site_home, 'node/'))
@@ -115,16 +109,13 @@ class NodeController extends Controller
         }
 
     }
-        
+
     public function resolve(PathAlias $path_alias)
     {
         $node = null;
-        if($path_alias->node()->first() instanceof Node)
-        {
+        if ($path_alias->node()->first() instanceof Node) {
             return $this->show($path_alias->node()->first());
-        }
-        else
-        {
+        } else {
             abort(404);
         }
     }
@@ -132,7 +123,7 @@ class NodeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Node  $node
+     * @param  Node $node
      * @return View
      */
     public function edit(Node $node)
@@ -146,8 +137,8 @@ class NodeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  Node  $node
- * @param NodeRequest $request
+     * @param  Node $node
+     * @param NodeRequest $request
      * @return Redirect
      */
     public function update(Node $node, NodeRequest $request)
@@ -174,7 +165,7 @@ class NodeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Node  $node
+     * @param  Node $node
      * @return Redirect
      */
     public function destroy(Node $node)

@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Role;
 use Illuminate\Http\Request;
 
-class RoleController extends Controller {
+class RoleController extends Controller
+{
 
     /**
      * Constructor for adding middleware.
@@ -15,6 +16,7 @@ class RoleController extends Controller {
     {
         $this->middleware('auth');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -41,7 +43,7 @@ class RoleController extends Controller {
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Role  $role
+     * @param  Role $role
      * @return View
      */
     public function edit(Role $role)
@@ -53,8 +55,8 @@ class RoleController extends Controller {
     /**
      * Update the specified resource in storage.
      *
-     * @param  Role  $role
- * @param  RoleRequest  $request
+     * @param  Role $role
+     * @param  RoleRequest $request
      * @return Redirect
      */
     public function update(Role $role, RoleRequest $request)
@@ -63,12 +65,12 @@ class RoleController extends Controller {
         \Flash::success('The role has been updated');
     }
 
-/**
- * Remove the specified resource from storage.
- *
- * @param  Role  $role
- * @return View
- */
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  Role $role
+     * @return View
+     */
     public function remove(Role $role)
     {
         eval_permission('access_admin_users');
@@ -78,7 +80,7 @@ class RoleController extends Controller {
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Role  $role
+     * @param  Role $role
      * @return Redirect
      */
     public function destroy(Role $role)

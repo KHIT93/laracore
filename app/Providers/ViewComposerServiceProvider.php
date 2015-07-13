@@ -27,14 +27,10 @@ class ViewComposerServiceProvider extends ServiceProvider
 
         view()->composer(Theme::template('page'), function ($view) {
             $page = Page::init();
-            foreach(Theme::sections() as $key => $value)
-            {
-                if(count(Block::whereSection($key)->get()))
-                {
+            foreach (Theme::sections() as $key => $value) {
+                if (count(Block::whereSection($key)->get())) {
                     $page->{$key} = Theme::renderSection($key);
-                }
-                else
-                {
+                } else {
                     $page->{$key} = false;
                 }
             }

@@ -23,7 +23,7 @@
             {!! Form::label('site_slogan', 'Site slogan') !!}
             {!! Form::text('site_slogan', Setting::get('site_slogan'), ['class' => 'form-control', 'required']) !!}
         </div>
-        <div class="form-group @if ($errors->has('meta.robots')) has-error @endif">
+        <div class="form-group @if ($errors->has('site_home')) has-error @endif">
             {!! Form::label('site_home', 'Select homepage') !!}
             {!! Form::select('site_home', $nodes, Setting::get('site_home'), ['class' => 'form-control']) !!}
         </div>

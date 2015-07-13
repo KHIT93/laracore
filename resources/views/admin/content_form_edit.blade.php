@@ -31,7 +31,7 @@
                             @foreach($urls as $url)
                             <tr>
                                 <td>{{ $url->alias }}</td>
-                                <td>{!! Html::link('admin/config/redirects/'.$url->alias.'/delete', 'Delete', ['class' => 'btn btn-danger']) !!}</td>
+                                <td>{!! Html::link('admin/config/redirects/'.$url->id.'/delete', 'Delete', ['class' => 'btn btn-danger']) !!}</td>
                             </tr>
                             @endforeach
                             <tr>

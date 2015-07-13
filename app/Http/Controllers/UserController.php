@@ -7,136 +7,133 @@ use App\User;
 
 use Illuminate\Http\Request;
 
-class UserController extends Controller {
+class UserController extends Controller
+{
 
-        /**
-         * Constructor for adding middleware.
-         */
-        public function __construct()
-        {
-            $this->middleware('auth');
-        }
-        
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return View
-	 */
-	public function index()
-	{
-        eval_permission('access_admin_users');
-            return view('admin.users', ['users' => User::all()]);
-	}
+    /**
+     * Constructor for adding middleware.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return View
-	 */
-	public function create()
-	{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return View
+     */
+    public function index()
+    {
         eval_permission('access_admin_users');
-        foreach(\App\Role::all() as $role)
-        {
-            if($role->name != 'anonymous')
-            {
+        return view('admin.users', ['users' => User::all()]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return View
+     */
+    public function create()
+    {
+        eval_permission('access_admin_users');
+        foreach (\App\Role::all() as $role) {
+            if ($role->name != 'anonymous') {
                 $roles[$role->id] = $role->display_name;
             }
         }
         return view('admin.users_form', ['user' => new User(), 'roles' => $roles]);
-	}
+    }
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Redirect
-	 */
-	public function store(UserRequest $request)
-	{
-            $user = User::create($request->all());
-            $user->roles()->sync([$request->input('role')]);
-            \Flash::success('The new user has been created');
-            return redirect('admin/users');
-	}
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @return Redirect
+     */
+    public function store(UserRequest $request)
+    {
+        $user = User::create($request->all());
+        $user->roles()->sync([$request->input('role')]);
+        \Flash::success('The new user has been created');
+        return redirect('admin/users');
+    }
 
-        /**
-	 * Display the current Authenticated User resource.
-	 *
-	 * @return View
-	 */
-	public function showCurrent()
-	{
-            return view('user_profile', ['user' => auth()->user()]);
-	}
-        
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  User  $user
-	 * @return View
-	 */
-	public function show(User $user)
-	{
-            return view('user_profile', ['user' => $user]);
-	}
+    /**
+     * Display the current Authenticated User resource.
+     *
+     * @return View
+     */
+    public function showCurrent()
+    {
+        return view('user_profile', ['user' => auth()->user()]);
+    }
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  User  $user
-	 * @return View
-	 */
-	public function edit(User $user)
-	{
+    /**
+     * Display the specified resource.
+     *
+     * @param  User $user
+     * @return View
+     */
+    public function show(User $user)
+    {
+        return view('user_profile', ['user' => $user]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  User $user
+     * @return View
+     */
+    public function edit(User $user)
+    {
         eval_permission('access_admin_users');
-        foreach(\App\Role::all() as $role)
-        {
-            if($role->name != 'anonymous')
-            {
+        foreach (\App\Role::all() as $role) {
+            if ($role->name != 'anonymous') {
                 $roles[$role->id] = $role->display_name;
             }
         }
         return view('admin.users_form', ['user' => $user, 'roles' => $roles]);
-	}
+    }
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  User  $user
-     * @param  Request  $request
-	 * @return Redirect
-	 */
-	public function update(User $user, Request $request)
-	{
-            $user->update($request->all());
-            $user->roles()->sync([$request->input('role')]);
-            \Flash::success('The user has been updated');
-            return redirect('admin/users');
-	}
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  User $user
+     * @param  Request $request
+     * @return Redirect
+     */
+    public function update(User $user, Request $request)
+    {
+        $user->update($request->all());
+        $user->roles()->sync([$request->input('role')]);
+        \Flash::success('The user has been updated');
+        return redirect('admin/users');
+    }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  User  $user
+     * @param  User $user
      * @return View
      */
-	public function remove(User $user)
-	{
+    public function remove(User $user)
+    {
         eval_permission('access_admin_users');
         return view('admin.users_delete', compact('user'));
-	}
-    
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  User  $user
-	 * @return Redirect
-	 */
-	public function destroy(User $user)
-	{
-            $user->delete($user);
-            \Flash::success('The user has been deleted');
-            return redirect('admin/users');
-	}
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  User $user
+     * @return Redirect
+     */
+    public function destroy(User $user)
+    {
+        $user->delete($user);
+        \Flash::success('The user has been deleted');
+        return redirect('admin/users');
+    }
 
 }

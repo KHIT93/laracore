@@ -1,10 +1,11 @@
-<?php namespace App\Http\Requests;
+<?php
+
+namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class MenuItemRequest extends Request
+class CreateRedirectRequest extends Request
 {
-
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -12,7 +13,7 @@ class MenuItemRequest extends Request
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -23,9 +24,7 @@ class MenuItemRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required',
-            'link' => 'required'
+            'alias' => 'required'
         ];
     }
-
 }

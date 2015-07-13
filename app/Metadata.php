@@ -2,10 +2,11 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Metadata extends Model {
+class Metadata extends Model
+{
 
     protected $table = 'metadata';
-    
+
     protected $fillable = [
         'nid',
         'title',
@@ -13,11 +14,11 @@ class Metadata extends Model {
         'description',
         'robots'
     ];
-    
+
     /**
-    * Alter the primary key
-    * @var string 
-    */
+     * Alter the primary key
+     * @var string
+     */
     protected $primaryKey = 'nid';
 
     /**

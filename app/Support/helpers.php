@@ -1,34 +1,25 @@
 <?php
-if(!function_exists('t'))
-{
+if (!function_exists('t')) {
     function t($string, $args = array())
     {
         $output = '';
         $lang = config('app.locale');
-        if($lang == 'en')
-        {
+        if ($lang == 'en') {
             $output = $string;
-        }
-        else
-        {
+        } else {
             $translation = '';
-            try
-            {
+            try {
                 $translation = DB::table('translations')->where('string', '=', $string)->where('locale', '=', $lang)->get()[0]->translation;
+            } catch (Exception $ex) {
             }
-            catch (Exception $ex){}
-            
-            if(is_null($translation) || $translation == '')
-            {
+
+            if (is_null($translation) || $translation == '') {
                 $output = $string;
-                try
-                {
+                try {
                     DB::table('translations')->insert(['string' => $string, 'translation' => '', 'locale' => $lang, 'created_at' => date("Y-m-d H:i:s"), 'updated_at' => date("Y-m-d H:i:s")]);
+                } catch (Exception $ex) {
                 }
-                catch (Exception $ex) {}
-            }
-            else
-            {
+            } else {
                 $output = $translation;
             }
         }
@@ -36,8 +27,9 @@ if(!function_exists('t'))
     }
 }
 
-if(!function_exists('string_format')) {
-    function string_format($string, $args = array()) {
+if (!function_exists('string_format')) {
+    function string_format($string, $args = array())
+    {
         // Transform arguments before inserting them.
         foreach ($args as $key => $value) {
             switch ($key[0]) {
@@ -45,14 +37,14 @@ if(!function_exists('string_format')) {
                     // Escaped only.
                     $args[$key] = check_plain($value);
                     //$args[$key] = $value;
-                break;
+                    break;
 
                 case '%':
                 default:
-                // Escaped and placeholder.
+                    // Escaped and placeholder.
                     //$args[$key] = Sanitize::stringPlaceholder($value);
                     $args[$key] = $value;
-                break;
+                    break;
 
                 case '!':
                     // Pass-through.
@@ -62,55 +54,37 @@ if(!function_exists('string_format')) {
     }
 }
 
-if(!function_exists('has_permission'))
-{
+if (!function_exists('has_permission')) {
     function has_permission($permission)
     {
-        if(auth()->check())
-        {
-            if(auth()->user()->hasRole('administrator'))
-            {
+        if (auth()->check()) {
+            if (auth()->user()->hasRole('administrator')) {
                 return true;
-            }
-            else if(auth()->user()->can($permission))
-            {
+            } else if (auth()->user()->can($permission)) {
                 return true;
-            }
-            else
-            {
+            } else {
                 return false;
             }
-        }
-        else
-        {
+        } else {
             return false;
         }
     }
 }
 
-if(!function_exists('eval_permission'))
-{
+if (!function_exists('eval_permission')) {
     function eval_permission($permission, $admin = true)
     {
-        if(auth()->check())
-        {
-            if($admin)
-            {
-                if(!has_permission('access_admin_ui') && !has_permission($permission))
-                {
+        if (auth()->check()) {
+            if ($admin) {
+                if (!has_permission('access_admin_ui') && !has_permission($permission)) {
                     abort(403, 'You do not have access to the specified resource.');
                 }
-            }
-            else
-            {
-                if(!has_permission($permission))
-                {
+            } else {
+                if (!has_permission($permission)) {
                     abort(403, 'You do not have access ro the specified resource.');
                 }
             }
-        }
-        else
-        {
+        } else {
             return redirect('auth/login');
         }
     }

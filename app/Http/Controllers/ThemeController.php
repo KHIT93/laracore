@@ -7,46 +7,43 @@ use Illuminate\Http\Request;
 use App\Setting;
 use KHIT\Theme;
 
-class ThemeController extends Controller {
+class ThemeController extends Controller
+{
 
-	/**
-         * Constructor for adding middleware.
-         */
-        public function __construct()
-        {
-            $this->middleware('auth');
+    /**
+     * Constructor for adding middleware.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    public function index()
+    {
+        $themes = \File::directories(base_path('public/themes'));
+        foreach ($themes as $key => $theme) {
+            $themes[$key] = Yaml::parse(file_get_contents($theme . '/' . str_replace(base_path('public/themes') . '/', '', $theme) . '.yml'));
+            $themes[$key]['machine'] = str_replace(base_path('public/themes') . '/', '', $theme);
         }
-        
-        public function index()
-        {
-            $themes = \File::directories(base_path('public/themes'));
-            foreach ($themes as $key => $theme)
-            {
-                $themes[$key] = Yaml::parse(file_get_contents($theme.'/'.  str_replace(base_path('public/themes').'/', '', $theme).'.yml'));
-                $themes[$key]['machine'] = str_replace(base_path('public/themes').'/', '', $theme);
-            }
-            
-            return view('admin.themes', compact('themes'));
+
+        return view('admin.themes', compact('themes'));
+    }
+
+    public function apply($theme)
+    {
+        if (is_dir(base_path('public/themes/' . $theme)) || $theme == 'default') {
+            $setting = Setting::whereKey('site_theme');
+            $setting->update(['value' => $theme]);
+            \Flash::success('The theme has been changed');
+            return redirect('admin/themes');
+        } else {
+            \Flash::error('The theme does not exist');
+            return redirect('admin/themes');
         }
-        
-        public function apply($theme)
-        {
-            if(is_dir(base_path('public/themes/'.$theme)) || $theme == 'default')
-            {
-                $setting = Setting::whereKey('site_theme');
-                $setting->update(['value' => $theme]);
-                \Flash::success('The theme has been changed');
-                return redirect('admin/themes');
-            }
-            else
-            {
-                \Flash::error('The theme does not exist');
-                return redirect('admin/themes');
-            }
-        }
-        
-        public function create()
-        {
-            
-        }
+    }
+
+    public function create()
+    {
+
+    }
 }
