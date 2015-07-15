@@ -1,5 +1,7 @@
 <?php namespace App\Providers;
 
+use App\Libraries\Theme;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -12,7 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        View::composer(Theme::template('page'), 'App\Composers\Views\PageViewComposer');
     }
 
     /**

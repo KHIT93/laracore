@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers\Auth;
 
+use App\Libraries\Page;
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
@@ -19,6 +20,8 @@ class AuthController extends Controller
     |
     */
     use AuthenticatesAndRegistersUsers;
+
+    protected $redirectPath = '/';
 
     /**
      * Create a new authentication controller instance.
@@ -58,5 +61,18 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    /**
+     * Show the application login form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getLogin()
+    {
+        if (view()->exists('auth.authenticate')) {
+            return view('auth.authenticate');
+        }
+        return view('auth.login', ['title' => 'Login']);
     }
 }

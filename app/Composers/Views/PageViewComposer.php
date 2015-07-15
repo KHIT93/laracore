@@ -1,32 +1,24 @@
-<?php namespace App\Providers;
+<?php
 
-use App\Block;
+
+namespace App\Composers\Views;
+
+
 use App\Libraries\Page;
+use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Schema;
 use App\Setting;
 use App\Libraries\Theme;
-use Illuminate\Http\Response;
-use Illuminate\Support\ServiceProvider;
-use Symfony\Component\HttpFoundation\Request;
+use App\Block;
 
-class ViewComposerServiceProvider extends ServiceProvider
+class PageViewComposer implements ViewComposer
 {
-
-    /**
-     * Bootstrap the application services.
-     *
-     * @return void
-     */
-    public function boot()
+    public function compose(View $view)
     {
-        /**
-         * Compose the primary navigation for all public pages
-         */
-        view()->composer('partials._navbar', function ($view) {
-            $view->with('menu', \App\Menu::find(1));
-        });
-
-        view()->composer(Theme::template('page'), function ($view) {
+        if(Schema::hasTable('settings'))
+        {
             $page = Page::init();
+
             foreach (Theme::sections() as $key => $value) {
                 if (count(Block::whereSection($key)->get())) {
                     $page->{$key} = Theme::renderSection($key);
@@ -34,7 +26,6 @@ class ViewComposerServiceProvider extends ServiceProvider
                     $page->{$key} = false;
                 }
             }
-
 
             $view->with('page', $page)
                 ->with('logo', Setting::get('site_logo'))
@@ -45,19 +36,7 @@ class ViewComposerServiceProvider extends ServiceProvider
                 ->with('secondary_nav', view(Theme::template('secondary_navigation')))
                 ->with('breadcrumb', '')
                 ->with('title', $page->getTitle())
-                ->with('metadata', ((isset($page->metadata)) ? $page->metadata : ''))
-                ->with('status', $page->getTitle());
-        });
+                ->with('metadata', ((isset($page->metadata)) ? $page->metadata : ''));
+        }
     }
-
-    /**
-     * Register the application services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        //
-    }
-
 }

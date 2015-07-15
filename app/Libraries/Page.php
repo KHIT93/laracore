@@ -18,8 +18,9 @@ class Page
     public $title_prefix = '';
     public $title;
     public $title_suffix = '';
-    public $node;
+    public $entity;
     public $status;
+    public $metadata;
     private static $_instance;
 
     /**
@@ -29,18 +30,27 @@ class Page
     {
         $page = (self::$_instance instanceof Page) ? self::$_instance : new Page();
         $url = explode('/', app('request')->path());
-        if (in_array($url[0], self::$_models)) {
+        if (in_array($url[0], self::$_models))
+        {
             $page->_model = $url[0];
             $page->_id = $url[1];
-        } else {
+        }
+        else
+        {
             $entity = PathAlias::whereAlias(app('request')->path())->first();
-            if ($entity instanceof Model) {
+            if ($entity instanceof Node)
+            {
                 $page->_model = 'node';
                 $page->_id = $entity->nid;
             }
+            else if($entity instanceof User)
+            {
+                $page->_model = 'user';
+                $page->_id = $entity->uid;
+            }
         }
-        $page->node = ($page->_id == 0 || is_null($page->_id)) ? Node::find(Setting::get('site_home')) : Node::find($page->_id);
-        $page->title = ($page->node->title) ? $page->node->title : Setting::get(('site_name'));
+        $page->title = ($page->title) ? $page->title : Setting::get(('site_name'));
+        $page->metadata = $page->getMetaData();
         self::$_instance = $page;
         return self::$_instance;
     }
@@ -48,10 +58,9 @@ class Page
     public static function getInstance()
     {
         if (is_null(self::$_instance)) {
-            return self::init();
-        } else {
-            return self::$_instance;
+            self::$_instance = new Page();
         }
+        return self::$_instance;
     }
 
     /**
@@ -61,8 +70,10 @@ class Page
     public function getTitle()
     {
         $title = '';
-        if ($this->status != Response::HTTP_OK && $this->status != null && $this->status != '') {
-            switch ($this->status) {
+        if ($this->status != Response::HTTP_OK && $this->status != null && $this->status != '')
+        {
+            switch ($this->status)
+            {
                 case Response::HTTP_NOT_FOUND:
                     $title = 'Page not found';
                     break;
@@ -78,10 +89,15 @@ class Page
             }
             $this->title = $title;
             $title .= ' | ' . Setting::get('site_name');
-        } else {
-            if (isset($this->title)) {
+        }
+        else
+        {
+            if (isset($this->title))
+            {
                 $title = $this->title;
-            } else {
+            }
+            else
+            {
                 $title = Setting::get('site_name');
             }
         }

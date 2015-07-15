@@ -1,1 +1,1 @@
-<meta name="{{ $name }}" content="{{ $content }}">
+        <meta name="{{ $name }}" content="{{ $content }}">

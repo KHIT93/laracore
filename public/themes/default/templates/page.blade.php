@@ -1,7 +1,7 @@
 @extends(Theme::template('master'))
 
 @section('header_info')
-    <title>{!! $title !!}</title>
+<title>{!! $title !!}</title>
     {!! $metadata !!}
 @stop
 
@@ -47,13 +47,12 @@
             </header> <!-- /#page-header -->
 
             <div class="row">
-
                 @if($page->sidebar_first)
                     <aside class="col-sm-3" role="complementary">
                         {!! $page->sidebar_first !!}
                     </aside>  <!-- End first aside. -->
                 @endif
-
+                <pre>{{ var_dump($page->metadata) }}</pre>
                 <section>
                     @if($page->highlighted)
                         <div class="highlighted jumbotron">{!! $page->highlighted !!}</div>

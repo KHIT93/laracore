@@ -79,33 +79,37 @@ class NodeController extends Controller
         if ($node == null) {
             abort(404);
         } else {
-            Page::getInstance()->node = $node;
+            Page::getInstance()->title = $node->title;
+            Page::getInstance()->entity = $node;
             $header = $node->header();
+            Page::getInstance()->metadata = view('partials._meta', ['name' => 'description', 'content' => $node->metadata()->first()->description])
+                . view('partials._meta', ['name' => 'keywords', 'content' => $node->metadata()->first()->keywords])
+                . view('partials._meta', ['name' => 'robots', 'content' => $node->metadata()->first()->robots]);
+            $header['title'] = (($node->metadata()->first()->title != '') ? $node->metadata()->first()->title : $node->title);
+            $header['metadata'] = view('partials._meta', ['name' => 'description', 'content' => $node->metadata()->first()->description])
+                . view('partials._meta', ['name' => 'keywords', 'content' => $node->metadata()->first()->keywords])
+                . view('partials._meta', ['name' => 'robots', 'content' => $node->metadata()->first()->robots]);
             //return view('node', compact('node'));
-            return view(Theme::template('page'), ['node' => $node, 'title' => $header['title'], 'metadata' => $header['metadata']]);
+            return view(Theme::template('page'), ['node' => $node, 'title' => Page::getInstance()->title, 'metadata' => Page::getInstance()->metadata]);
         }
     }
 
     public function showDefault()
     {
         $node = null;
-        if (!count(Node::all())) {
+        if (!count(Node::all()))
+        {
             $node = new Node;
             $node->title = 'No content available';
             $node->body = 'There is currently no content available for display. Please log in and ' . HtmlFacade::link('admin/content', 'Create some content');
+            Page::getInstance()->entity = $node;
             //return view('node', ['node' => $node]);
             return view(Theme::template('page'));
-        } else {
+        }
+        else
+        {
             $site_home = Setting::get('site_home');
             return $this->show(Node::findOrFail($site_home));
-            /*if(strpos($site_home, 'node/'))
-            {
-                return $this->show(Node::findOrFail(explode($site_home, '/')[1]));
-            }
-            else
-            {
-                return $this->resolve(PathAlias::whereAlias($site_home)->first());
-            }*/
         }
 
     }

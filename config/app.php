@@ -143,7 +143,6 @@ return [
 		'App\Providers\AppServiceProvider',
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
-        'App\Providers\ViewComposerServiceProvider',
         'Laracasts\Flash\FlashServiceProvider',
         'Barryvdh\Elfinder\ElfinderServiceProvider',
         'Khill\Fontawesome\FontAwesomeServiceProvider',

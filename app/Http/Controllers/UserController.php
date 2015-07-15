@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Requests\UserRequest;
 use App\Http\Controllers\Controller;
+use App\Libraries\Page;
 use App\User;
 
 use Illuminate\Http\Request;
@@ -65,7 +66,7 @@ class UserController extends Controller
      */
     public function showCurrent()
     {
-        return view('users.profile', ['user' => auth()->user()]);
+        return $this->show(auth()->user());
     }
 
     /**
@@ -76,7 +77,8 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('users.profile', ['user' => $user]);
+        Page::getInstance()->title = $user->name;
+        return view('users.profile', ['user' => $user, 'title' => $user->name]);
     }
 
     /**
