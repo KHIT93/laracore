@@ -78,6 +78,7 @@ class UserController extends Controller
     public function show(User $user)
     {
         Page::getInstance()->title = $user->name;
+        Page::getInstance()->entity = $user;
         return view('users.profile', ['user' => $user, 'title' => $user->name]);
     }
 

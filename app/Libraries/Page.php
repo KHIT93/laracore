@@ -28,30 +28,54 @@ class Page
      */
     public static function init()
     {
+        logger('Page: Page::init - start');
         $page = (self::$_instance instanceof Page) ? self::$_instance : new Page();
         $url = explode('/', app('request')->path());
+        logger('Page: Page::init - URL split');
         if (in_array($url[0], self::$_models))
         {
+            logger('Page: Page::init - model match start');
             $page->_model = $url[0];
-            $page->_id = $url[1];
+            if ($page->entity instanceof Node)
+            {
+                logger('Page: Page::init - model match node');
+                $page->_model = 'node';
+                $page->_id = $page->entity->nid;
+            }
+            else if($page->entity instanceof User)
+            {
+                logger('Page: Page::init - model match user');
+                $page->_model = 'user';
+                $page->_id = $page->entity->uid;
+            }
+            logger('Page: Page::init - model match done');
         }
         else
         {
-            $entity = PathAlias::whereAlias(app('request')->path())->first();
+            logger('Page: Page::init - no model match start');
+            $entity = PathAlias::whereAlias(app('request')->path())->first()->node()->first();
+            logger('Page: Page::init - entity resolved');
             if ($entity instanceof Node)
             {
+                logger('Page: Page::init - entity model match node');
                 $page->_model = 'node';
                 $page->_id = $entity->nid;
             }
             else if($entity instanceof User)
             {
+                logger('Page: Page::init - entity model match user');
                 $page->_model = 'user';
                 $page->_id = $entity->uid;
             }
+            logger('Page: Page::init - no model match done');
         }
+        logger('Page: Page::init - set page title');
         $page->title = ($page->title) ? $page->title : Setting::get(('site_name'));
-        $page->metadata = $page->getMetaData();
+        logger('Page: Page::init - get metadata');
+        $page->getMetaData();
+        logger('Page: Page::init - set Page instance');
         self::$_instance = $page;
+        logger('Page: Page::init - done');
         return self::$_instance;
     }
 
@@ -110,13 +134,20 @@ class Page
      */
     public function getMetaData()
     {
-        if ($this->_model == 'node') {
+        logger('Page: Page->getMetaData - start');
+        if ($this->_model == 'node' && isset($this->_id)) {
+            logger('Page: Page->getMetaData - model match node');
             $data = Node::find($this->_id);
+            logger('Page: Page->getMetaData - populate metadata');
+            $metadata = '';
             $metadata = view('partials._meta', ['name' => 'description', 'content' => $data->metadata()->first()->description]);
             $metadata .= view('partials._meta', ['name' => 'keywords', 'content' => $data->metadata()->first()->keywords]);
             $metadata .= view('partials._meta', ['name' => 'robots', 'content' => $data->metadata()->first()->robots]);
+            $metadata .= view('partials._meta_link', ['rel' => 'shortlink', 'href' => '/node/'.$data->nid]);
+            $this->metadata = $metadata;
             return $metadata;
         }
+        logger('Page: Page->getMetaData - done');
         return '';
     }
 }

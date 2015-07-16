@@ -52,7 +52,6 @@
                         {!! $page->sidebar_first !!}
                     </aside>  <!-- End first aside. -->
                 @endif
-                <pre>{{ var_dump($page->metadata) }}</pre>
                 <section>
                     @if($page->highlighted)
                         <div class="highlighted jumbotron">{!! $page->highlighted !!}</div>

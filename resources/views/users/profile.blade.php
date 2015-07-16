@@ -10,4 +10,5 @@
         </div>
 		</div>
 	</div>
+    @parent
 @endsection

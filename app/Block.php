@@ -27,7 +27,7 @@ class Block extends Model
 
     public function render()
     {
-        if ($this->module == 'system' && $this->delta == 'main')
+        /*if ($this->module == 'system' && $this->delta == 'main')
         {
             if(Page::getInstance()->entity instanceof \App\Node)
             {
@@ -40,7 +40,7 @@ class Block extends Model
 
         }
         else
-        {
+        {*/
             $pages = explode(',', $this->pages);
             if ($this->visibility == 0)
             {
@@ -59,6 +59,6 @@ class Block extends Model
                     return view(Theme::template('block'), ['block' => $this]);
                 }
             }
-        }
+        //}
     }
 }

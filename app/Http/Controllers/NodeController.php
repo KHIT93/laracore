@@ -79,18 +79,9 @@ class NodeController extends Controller
         if ($node == null) {
             abort(404);
         } else {
-            Page::getInstance()->title = $node->title;
+            Page::getInstance()->title = $node->metadata()->first()->title;
             Page::getInstance()->entity = $node;
-            $header = $node->header();
-            Page::getInstance()->metadata = view('partials._meta', ['name' => 'description', 'content' => $node->metadata()->first()->description])
-                . view('partials._meta', ['name' => 'keywords', 'content' => $node->metadata()->first()->keywords])
-                . view('partials._meta', ['name' => 'robots', 'content' => $node->metadata()->first()->robots]);
-            $header['title'] = (($node->metadata()->first()->title != '') ? $node->metadata()->first()->title : $node->title);
-            $header['metadata'] = view('partials._meta', ['name' => 'description', 'content' => $node->metadata()->first()->description])
-                . view('partials._meta', ['name' => 'keywords', 'content' => $node->metadata()->first()->keywords])
-                . view('partials._meta', ['name' => 'robots', 'content' => $node->metadata()->first()->robots]);
-            //return view('node', compact('node'));
-            return view(Theme::template('page'), ['node' => $node, 'title' => Page::getInstance()->title, 'metadata' => Page::getInstance()->metadata]);
+            return view(Theme::template('node'), ['node' => $node, 'title' => Page::getInstance()->title, 'metadata' => Page::getInstance()->metadata]);
         }
     }
 

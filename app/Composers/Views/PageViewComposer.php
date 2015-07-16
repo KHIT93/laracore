@@ -36,7 +36,7 @@ class PageViewComposer implements ViewComposer
                 ->with('secondary_nav', view(Theme::template('secondary_navigation')))
                 ->with('breadcrumb', '')
                 ->with('title', $page->getTitle())
-                ->with('metadata', ((isset($page->metadata)) ? $page->metadata : ''));
+                ->with('metadata', $page->metadata);
         }
     }
 }
