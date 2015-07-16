@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Setting;
 use Illuminate\Console\Command;
 
 class LaracoreMaintenanceEnable extends Command
@@ -37,6 +38,7 @@ class LaracoreMaintenanceEnable extends Command
      */
     public function handle()
     {
-        //
+        Setting::whereKey('site_maintenance')->first()->update(['value' => 1]);
+        $this->info('Site maintenance is now enabled');
     }
 }

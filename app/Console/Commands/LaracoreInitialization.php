@@ -37,6 +37,12 @@ class LaracoreInitialization extends Command
      */
     public function handle()
     {
-        //
+        $this->line('We are now installing the laracore application data and preparing the database. Please be patient');
+        $this->call('key:generate');
+        $this->line('Running migrations');
+        $this->call('migrate');
+        $this->line('Populating core data tables');
+        $this->call('db:seed');
+        $this->info('Initial tasks for Laracore are now completed. Please run \'php artisan laracore:init-admin\' to start creating content');
     }
 }

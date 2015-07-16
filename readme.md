@@ -67,7 +67,7 @@ APP_TIMEZONE=Europe/Copenhagen
 
 ```
 APP_LOCALE=en
-``
+```
 
 ```
 DB_HOST=localhost

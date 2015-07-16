@@ -14,6 +14,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         'App\Console\Commands\Inspire',
         'App\Console\Commands\LaracoreInitialization',
+        'App\Console\Commands\LaracoreInitialAdmin',
         'App\Console\Commands\LaracoreMaintenanceEnable',
         'App\Console\Commands\LaracoreMaintenanceDisable',
     ];
