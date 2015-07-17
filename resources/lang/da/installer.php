@@ -29,7 +29,23 @@ return [
     ],
     'requirements' => [
         'header' => 'Krav til applikationen',
-        'info' => "Dit webhotel opfylder ikke kravene til at køre Laracore.<br>Gennemse venligst nedenstående liste og løs evt. problemer før du fortsætter"
+        'info' => "Dit webhotel opfylder ikke kravene til at køre Laracore.<br>Gennemse venligst nedenstående liste og løs evt. problemer før du fortsætter",
+        'match' => [
+            'php_version_match' => 'Din version af PHP er kompatibel med Laracore.',
+            'openssl' => 'OpenSSL udvidelsen til PHP er aktiveret',
+            'mcrypt' => 'Mcrypt udvidelsen til PHP er aktiveret',
+            'pdo' => 'PDO Database bibilioteket til PHP er aktiveret',
+            'mbstring' => 'Mbstring udvidelsen til PHP er aktiveret',
+            'tokenizer' => 'Tokenizer udvidelsen til PHP er aktiveret'
+        ],
+        'mismatch' => [
+            'php_version_match' => 'Din version af PHP er ikke kompatibel med Laracore. Der kræves mindst PHP :version',
+            'openssl' => 'OpenSSL udvidelsen til PHP er ikke aktiveret. Aktivér venligst udvidelsen og prøv igen',
+            'mcrypt' => 'Mcrypt udvidelsen til PHP er ikke aktiveret. Aktivér venligst udvidelsen og prøv igen',
+            'pdo' => 'PDO Database biblioteket til PHP er ikke aktiveret. Aktivér venligst udvidelsen og prøv igen',
+            'mbstring' => 'Mbstring udvidelsen til PHP er ikke aktiveret. Aktivér venligst udvidelsen og prøv igen',
+            'tokenizer' => 'Tokenizer udvidelsen til PHP er ikke aktiveret. Aktivér venligst udvidelsen og prøv igen'
+        ]
     ],
     'check_again' => 'Kontroller igen',
     'database' => [
@@ -45,7 +61,6 @@ return [
         'db_prefix' => 'Præfix på tabeller',
         'test' => 'Test forbindelse'
     ],
-    'adv_settings' => 'Avancerede indstillinger',
     'adv_settings' => 'Avancerede indstillinger',
     'hostname' => 'Værtsnavn',
     'port' => 'Port',
@@ -79,6 +94,10 @@ return [
     ],
     'failed' => [
         'header' => 'Installationen fejlede',
-        'info' => "Installation og konfiguration af Laracore blev ikke gennemført.<br>Nedenfor vises en oversigt over hvad der gik galt. For flere detaljer, se venligst logfilen."
-    ]
+        'info' => "Installation og konfiguration af Laracore blev ikke gennemført.<br>Nedenfor vises en oversigt over hvad der gik galt. For flere detaljer, se venligst logfilen.",
+        'env' => 'Programmiljøet kunne ikke opsættes',
+        'laracore' => 'Der opstod en fejl under konfiguration af programmets database. Se venligst '.storage_path('logs').' for flere oplysninger',
+        'admin' => 'Kunne ikke oprette administrator konto'
+    ],
+    'php_version' => 'PHP Version',
 ];
