@@ -17,7 +17,7 @@ class AppServiceProvider extends ServiceProvider
     {
         try
         {
-            $db = DB::connection()->getDatabaseName();
+            $db = \DB::connection()->getDatabaseName();
             if(Schema::hasTable('settings'))
             {
                 View::composer(Theme::template('page'), 'App\Composers\Views\PageViewComposer');
