@@ -1,0 +1,32 @@
+body.installer
+{
+    background-color: #fa503a;
+    background-image: -webkit-radial-gradient(hsl(7, 77%, 40%), hsl(7, 77%, 60%));
+    background-image: -moz-radial-gradient(hsl(7, 77%, 40%), hsl(7, 77%, 60%));
+    background-image: -o-radial-gradient(hsl(7, 77%, 40%), hsl(7, 77%, 60%));
+    background-image: radial-gradient(hsl(7, 77%, 40%), hsl(7, 77%, 60%));
+    background-repeat: repeat;
+    background-position: left top, 0% 0%;
+    min-height: 100%;
+    vertical-align: middle;
+}
+.progress-bar-laravel
+{
+    background-color: #fa503a;
+}
+.btn-laravel
+{
+    color: #ffffff;
+    background-color: #fa503a;
+}
+.btn-laravel:hover, .btn-laravel:focus
+{
+    color: #ffffff;
+    background-color: #993123;
+}
+.btn-laravel:active
+{
+    color: #ffffff;
+    background-color: #993123;
+    border-color: #662117;
+}

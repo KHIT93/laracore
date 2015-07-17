@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="col-sm-12">
-    <h1>Scheduled tasks</h1>
+    <h1>URL Aliases</h1>
 </div>
 @include('flash::message')
 @include('errors._form_list')

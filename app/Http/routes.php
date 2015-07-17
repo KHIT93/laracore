@@ -221,6 +221,25 @@ Route::controllers([
     'admin/config/system' => 'ConfigurationController'
 ]);
 
+/**
+ * Routing for application installer
+ */
+Route::get('installer', 'InstallController@welcome');
+Route::post('installer', 'InstallController@postWelcome');
+Route::get('installer/license', 'InstallController@license');
+Route::post('installer/license', 'InstallController@postLicense');
+Route::get('installer/requirements', 'InstallController@requirements');
+Route::post('installer/requirements', 'InstallController@postRequirements');
+Route::get('installer/database', 'InstallController@database');
+Route::post('installer/database', 'InstallController@postDatabase');
+Route::post('installer/dbcheck', 'InstallController@dbcheck');
+Route::get('installer/site', 'InstallController@site');
+Route::post('installer/site', 'InstallController@postSite');
+Route::get('installer/run', 'InstallController@run');
+Route::post('installer/run', 'InstallController@postRun');
+Route::get('installer/finish', 'InstallController@finish');
+Route::get('installer/fail', 'InstallController@fail');
+
 /*
  * Default route for using path aliases instead of node/{nid}.
  */

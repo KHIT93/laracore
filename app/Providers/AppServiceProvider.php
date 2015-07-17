@@ -19,6 +19,7 @@ class AppServiceProvider extends ServiceProvider
         {
             View::composer(Theme::template('page'), 'App\Composers\Views\PageViewComposer');
         }
+        View::composer(['installer.site', 'installer'], 'App\Composers\Views\InstallerViewComposer');
     }
 
     /**
