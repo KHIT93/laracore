@@ -15,9 +15,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if(Schema::hasTable('settings'))
+        try
         {
-            View::composer(Theme::template('page'), 'App\Composers\Views\PageViewComposer');
+            $db = DB::connection()->getDatabaseName();
+            if(Schema::hasTable('settings'))
+            {
+                View::composer(Theme::template('page'), 'App\Composers\Views\PageViewComposer');
+            }
+        }
+        catch(\PDOException $ex)
+        {
+
         }
         View::composer(['installer.site', 'installer'], 'App\Composers\Views\InstallerViewComposer');
     }
