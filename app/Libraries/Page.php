@@ -46,7 +46,7 @@ class Page
         }
         else
         {
-            if($url[0] != 'auth' || $url[0] != 'admin')
+            if($url[0] != 'auth' && $url[0] != 'admin')
             {
                 $entity = PathAlias::whereAlias(app('request')->path())->first()->node()->first();
                 if ($entity instanceof Node)
