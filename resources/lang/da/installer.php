@@ -77,7 +77,13 @@ return [
             'name' => 'Administrator navn',
             'password' => 'Administrator adgangskode',
             'password_again' => 'Gentag administrator adgangskode'
-        ]
+        ],
+        'email_cfg' => [
+            'driver' => 'Vælg hvordan du ønsker at sende mail',
+            'encryption' => 'Vælg den krypteringsprotokol der benyttes på din mailserver'
+        ],
+        'timezone' => 'Vælg tidszone',
+        'country' => 'Vælg dit land'
     ],
     'username' => 'Brugernavn',
     'password' => 'Adgangskode',

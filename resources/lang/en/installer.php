@@ -76,7 +76,13 @@ return [
             'name' => 'Administrator name',
             'password' => 'Administrator password',
             'password_again' => 'Confirm administrator password'
-        ]
+        ],
+        'email_cfg' => [
+            'driver' => 'Select how you want to send mail',
+            'encryption' => 'Select the encryption protocol used by mail server'
+        ],
+        'timezone' => 'Select timezone',
+        'country' => 'Choose your country'
     ],
     'username' => 'Username',
     'password' => 'Password',
@@ -99,5 +105,6 @@ return [
         'admin' => 'Could not create the administrator account'
     ],
     'php_version' => 'PHP Version',
-
+    'admin' => 'Start customizing',
+    'frontend' => 'Visit your site'
 ];

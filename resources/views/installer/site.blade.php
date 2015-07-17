@@ -36,7 +36,7 @@
     <fieldset>
         <legend>Email settings</legend>
         <div class="form-group @if ($errors->has('MAIL_DRIVER')) has-error @endif">
-            {!! Form::label('MAIL_DRIVER', 'Select how you want to send mail') !!}
+            {!! Form::label('MAIL_DRIVER', trans('installer.site.email_cfg.driver')) !!}
                 {!! Form::select('MAIL_DRIVER', $mail_drivers, config('mail.driver'), ['class' => 'form-control']) !!}
         </div>
         <div class="form-group @if ($errors->has('MAIL_HOST')) has-error @endif">
@@ -52,22 +52,22 @@
             {!! Form::text('MAIL_USERNAME', env('MAIL_USERNAME', null), ['class' => 'form-control']) !!}
         </div>
         <div class="form-group @if ($errors->has('MAIL_PASSWORD')) has-error @endif">
-            {!! Form::label('MAIL_PASSWORD', trans('installer.username')) !!}
+            {!! Form::label('MAIL_PASSWORD', trans('installer.password')) !!}
             {!! Form::text('MAIL_PASSWORD', env('MAIL_PASSWORD', null), ['class' => 'form-control']) !!}
         </div>
         <div class="form-group @if ($errors->has('MAIL_ENCRYPTION')) has-error @endif">
-            {!! Form::label('MAIL_ENCRYPTION', 'Select the encryption protocol for your mail server') !!}
+            {!! Form::label('MAIL_ENCRYPTION', trans('installer.site.email_cfg.encryption')) !!}
             {!! Form::select('MAIL_ENCRYPTION', $mail_encryption, config('mail.encryption'), ['class' => 'form-control']) !!}
         </div>
     </fieldset>
     <fieldset>
         <legend>{{ trans('installer.regional.header') }}</legend>
         <div class="form-group @if ($errors->has('APP_TIMEZONE')) has-error @endif">
-            {!! Form::label('APP_TIMEZONE', 'Select timezone') !!}
+            {!! Form::label('APP_TIMEZONE', trans('installer.site.timezone')) !!}
             {!! Form::select('APP_TIMEZONE', $timezones, date_default_timezone_get(), ['class' => 'form-control']) !!}
         </div>
         <div class="form-group @if ($errors->has('site_country')) has-error @endif">
-            {!! Form::label('site_country', 'Select country') !!}
+            {!! Form::label('site_country', trans('installer.site.country')) !!}
             {!! Form::select('site_country', config('countries'), 'US', ['class' => 'form-control']) !!}
         </div>
     </fieldset>

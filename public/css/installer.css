@@ -30,3 +30,9 @@ body.installer
     background-color: #993123;
     border-color: #662117;
 }
+.laravel-link {
+    color: #fa503a;
+}
+.laravel-link:hover, .laravel-link:focus {
+    color: #993123;
+}
