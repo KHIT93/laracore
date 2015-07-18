@@ -26,7 +26,7 @@ class DatabaseCredentialsRequest extends Request
         return [
             'DB_DATABASE' => 'required',
             'DB_USERNAME' => 'required',
-            'DB_HOST' => 'DB_HOST'
+            'DB_HOST' => 'required'
         ];
     }
 }
