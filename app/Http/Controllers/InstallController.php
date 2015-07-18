@@ -188,7 +188,13 @@ class InstallController extends Controller
         foreach ($request->all() as $key => $value) {
             session([$key =>  $value]);
         }
-
+        $install = new Installer();
+        //Generate environment variables and save them
+        if(!$install->environment())
+        {
+            Flash::error(trans('installer.failed.env'));
+            return redirect('installer/fail');
+        }
         return redirect('installer/run');
     }
 
@@ -204,13 +210,6 @@ class InstallController extends Controller
     public function postRun(Request $request)
     {
         //run the installations process
-        $install = new Installer();
-        //Generate environment variables and save them
-        if(!$install->environment())
-        {
-            Flash::error(trans('installer.failed.env'));
-            return redirect('installer/fail');
-        }
         if(!\Artisan::call('migrate'))
         {
             Flash::error(trans('installer.failed.migration'));
@@ -219,6 +218,13 @@ class InstallController extends Controller
         if(!\Artisan::call('db:seed'))
         {
             Flash::error(trans('installer.failed.seeding'));
+            return redirect('installer/fail');
+        }
+        $install = new Installer();
+        //Generate environment variables and save them
+        if(!$install->environment(true))
+        {
+            Flash::error(trans('installer.failed.env'));
             return redirect('installer/fail');
         }
         if(!\Artisan::call('key:generate'))

@@ -12,7 +12,7 @@ class Installer
         if(!$final)
         {
             $data = [
-                'APP_ENV=production',
+                'APP_ENV=local',
                 'APP_DEBUG=false',
                 'APP_URL=http://'.app('request')->getHttpHost(),
                 'APP_TIMEZONE='.((app('request')->session()->has('APP_TIMEZONE')) ? session('APP_TIMEZONE'): date_default_timezone_get()),
@@ -70,6 +70,7 @@ class Installer
         $file = implode("\n", $data);
         if(file_put_contents(public_path().'/../.env', $file) != false)
         {
+            chmod(public_path().'/../.env', 775);
             return true;
         }
         else
