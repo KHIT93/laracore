@@ -18,12 +18,16 @@ class CheckForSoftMaintenanceMode
      */
     public function handle($request, Closure $next)
     {
-        if(Schema::hasTable('settings'))
+        try
         {
-            if (Setting::get('site_maintenance') == 1 && !has_permission('access_maintenance')) {
-                throw new HttpException(503);
+            if(Schema::hasTable('settings'))
+            {
+                if (Setting::get('site_maintenance') == 1 && !has_permission('access_maintenance')) {
+                    throw new HttpException(503);
+                }
             }
         }
+        catch(\PDOException $ex) {}
         return $next($request);
     }
 }
