@@ -125,20 +125,21 @@ class InstallController extends Controller
     public function postDatabase(DatabaseCredentialsRequest $request)
     {
         //Save information in temp storeage for later generation of the environment variables
+
+        if($request->input('DB_DRIVER') == 'sqlite')
+        {
+            session(['DB_DRIVER' => 'sqlite']);
+        }
+        else
+        {
+            foreach ($request->all() as $key => $value)
+            {
+                session([$key => $value]);
+            }
+        }
         $dbcheck = $this->dbcheck();
         if($dbcheck === true)
         {
-            if($request->input('DB_DRIVER') == 'sqlite')
-            {
-                session(['DB_DRIVER' => 'sqlite']);
-            }
-            else
-            {
-                foreach ($request->all() as $key => $value)
-                {
-                    session([$key => $value]);
-                }
-            }
             return redirect('installer/site');
         }
         else
