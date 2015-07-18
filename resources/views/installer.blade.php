@@ -48,5 +48,8 @@
 </div>
 <!-- Scripts -->
 <script src="{{ asset('/js/plugins.js') }}"></script>
+@if(Request::path() == 'installer/run')
+<script src="{{ asset('/js/installer.js') }}"></script>
+@endif
 </body>
 </html>

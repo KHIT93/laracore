@@ -18,6 +18,8 @@ class InstallController extends Controller
 {
     public function __construct()
     {
+        //Set locale
+        \App::setLocale(((session('APP_LOCALE')) ? session('APP_LOCALE'): config('app.fallback_locale')));
         //Run middleware to check if the installer has been run before
     }
 
@@ -238,7 +240,7 @@ class InstallController extends Controller
             'name' => (($request->session()->has('name')) ? session('name'): session('email')),
             'enabled' => 1
         ];
-        if(!User::create($admin))
+        if(!User::create($admin)->roles()->attach(1))
         {
             Flash::error(trans('installer.failed.admin'));
             return redirect('installer/fail');
