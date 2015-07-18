@@ -67,7 +67,7 @@ class Installer
             ];
         }
 
-        $file = implode('\n', $data);
+        $file = implode("\n", $data);
         if(file_put_contents(public_path().'/../.env', $file) != false)
         {
             return true;
