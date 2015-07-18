@@ -46,7 +46,12 @@ class Page
         }
         else
         {
-            if($url[0] != 'auth' && $url[0] != 'admin')
+            if(app('request')->path() == '/')
+            {
+                $page->_model = 'node';
+                $page->_id = Setting::get('site_home');
+            }
+            else if($url[0] != 'auth' && $url[0] != 'admin')
             {
                 $entity = PathAlias::whereAlias(app('request')->path())->first()->node()->first();
                 if ($entity instanceof Node)
