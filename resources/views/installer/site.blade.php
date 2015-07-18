@@ -53,7 +53,7 @@
         </div>
         <div class="form-group @if ($errors->has('MAIL_PASSWORD')) has-error @endif">
             {!! Form::label('MAIL_PASSWORD', trans('installer.password')) !!}
-            {!! Form::text('MAIL_PASSWORD', env('MAIL_PASSWORD', null), ['class' => 'form-control']) !!}
+            {!! Form::password('MAIL_PASSWORD', ['class' => 'form-control']) !!}
         </div>
         <div class="form-group @if ($errors->has('MAIL_ENCRYPTION')) has-error @endif">
             {!! Form::label('MAIL_ENCRYPTION', trans('installer.site.email_cfg.encryption')) !!}

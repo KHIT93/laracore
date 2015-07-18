@@ -211,9 +211,19 @@ class InstallController extends Controller
             Flash::error(trans('installer.failed.env'));
             return redirect('installer/fail');
         }
-        if(!\Artisan::call('laracore:install'))
+        if(!\Artisan::call('migrate'))
         {
-            Flash::error(trans('installer.failed.laracore'));
+            Flash::error(trans('installer.failed.migration'));
+            return redirect('installer/fail');
+        }
+        if(!\Artisan::call('db:seed'))
+        {
+            Flash::error(trans('installer.failed.seeding'));
+            return redirect('installer/fail');
+        }
+        if(!\Artisan::call('key:generate'))
+        {
+            Flash::error(trans('installer.failed.app_key'));
             return redirect('installer/fail');
         }
         $admin = [

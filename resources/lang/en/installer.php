@@ -101,7 +101,9 @@ return [
         'header' => 'Installation failed',
         'info' => "The installation and configuration of Laracore has failed.<br>A summary of the errors are below. Otherwise see the log file for details.",
         'env' => 'Could not set up the environment',
-        'laracore' => 'An error occurred during the configuration of the application database. Please see '.storage_path('logs').' for details',
+        'migration' => 'An error occurred during the installation of the application database. Please see '.storage_path('logs').' for details',
+        'seeding' => 'An error occurred during the configuration of the application database. Please see '.storage_path('logs').' for details',
+        'app_key' => 'Could not update the application key',
         'admin' => 'Could not create the administrator account'
     ],
     'php_version' => 'PHP Version',

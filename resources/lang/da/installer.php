@@ -102,7 +102,9 @@ return [
         'header' => 'Installationen fejlede',
         'info' => "Installation og konfiguration af Laracore blev ikke gennemført.<br>Nedenfor vises en oversigt over hvad der gik galt. For flere detaljer, se venligst logfilen.",
         'env' => 'Programmiljøet kunne ikke opsættes',
-        'laracore' => 'Der opstod en fejl under konfiguration af programmets database. Se venligst '.storage_path('logs').' for flere oplysninger',
+        'migration' => 'Der opstod en fejl under installation af programmets database. Se venligst '.storage_path('logs').' for flere oplysninger',
+        'seeding' => 'Der opstod en fejl under konfiguration af programmets database. Se venligst '.storage_path('logs').' for flere oplysninger',
+        'app_key' => 'Kunne ikke opdatere program-nøglen',
         'admin' => 'Kunne ikke oprette administrator konto'
     ],
     'php_version' => 'PHP Version',
