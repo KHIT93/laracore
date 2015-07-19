@@ -4,6 +4,8 @@
 namespace App\Libraries;
 
 
+use Illuminate\Http\Request;
+
 class Installer
 {
     public function environment($final = false)
@@ -24,8 +26,8 @@ class Installer
                 'DB_USERNAME='.((app('request')->session()->has('DB_USERNAME')) ? session('DB_USERNAME'): 'null'),
                 'DB_PASSWORD='.((app('request')->session()->has('DB_PASSWORD')) ? session('DB_PASSWORD'): 'null'),
                 '',
-                'CACHE_DRIVER=database',
-                'SESSION_DRIVER=database',
+                'CACHE_DRIVER=file',
+                'SESSION_DRIVER=file',
                 'QUEUE_DRIVER=sync',
                 '',
                 'MAIL_DRIVER='.session('MAIL_DRIVER'),

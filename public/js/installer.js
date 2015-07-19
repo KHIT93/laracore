@@ -1,5 +1,10 @@
 //AJAX call to submit and install
 $(document).ready(function(){
+    $.ajaxPrefilter(function(options, originalOptions, jqXHR){
+        if (options['type'].toLowerCase() === "post") {
+            jqXHR.setRequestHeader('X-CSRF-TOKEN', $('input[name="_token"]').attr('value'));
+        }
+    });
     var formdata = '';
     //console.log(formdata);
     $.ajax({
