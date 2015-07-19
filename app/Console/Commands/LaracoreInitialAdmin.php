@@ -55,6 +55,10 @@ class LaracoreInitialAdmin extends Command
             if($user->save())
             {
                 $this->info('Administrator has been created');
+                if($user->roles()->attach(1))
+                {
+                    $this->info('User promoted to administrator');
+                }
             }
             else
             {
