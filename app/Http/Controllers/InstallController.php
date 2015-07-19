@@ -212,12 +212,20 @@ class InstallController extends Controller
     public function postRun(Request $request)
     {
         //run the installations process
-        if(!\Artisan::call('migrate'))
+        try
+        {
+            \Artisan::call('migrate');
+        }
+        catch(Exception $ex)
         {
             Flash::error(trans('installer.failed.migration'));
             return redirect('installer/fail');
         }
-        if(!\Artisan::call('db:seed'))
+        try
+        {
+            \Artisan::call('db:seed');
+        }
+        catch(Exception $ex)
         {
             Flash::error(trans('installer.failed.seeding'));
             return redirect('installer/fail');
@@ -229,7 +237,11 @@ class InstallController extends Controller
             Flash::error(trans('installer.failed.env'));
             return redirect('installer/fail');
         }
-        if(!\Artisan::call('key:generate'))
+        try
+        {
+            \Artisan::call('key:generate');
+        }
+        catch(Exception $ex)
         {
             Flash::error(trans('installer.failed.app_key'));
             return redirect('installer/fail');
