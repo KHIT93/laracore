@@ -13,6 +13,7 @@ return [
     |
     */
 
+    'laracore' => 'Installer Laracore',
     'app' => [
         'slogan' => 'CMS til fremtiden'
     ],

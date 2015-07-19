@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Install Laracore | {{ trans('installer.app.slogan') }}</title>
+    <title>{{ trans('installer.laracore') }} | {{ trans('installer.app.slogan') }}</title>
 
     <link href="{{ asset('/css/styles.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/bootstrap.vertical-tabs.min.css') }}" rel="stylesheet">
@@ -25,7 +25,7 @@
     {!! Form::open(['url' => $form_url, 'method' => $form_method]) !!}
     <div class="modal-content">
         <div class="modal-header">
-            <h1>Install Laracore <small>{{ trans('installer.app.slogan') }}</small></h1>
+            <h1>{{ trans('installer.laracore') }} <small>{{ trans('installer.app.slogan') }}</small></h1>
         </div>
         <div class="modal-body">
             <div class="row">

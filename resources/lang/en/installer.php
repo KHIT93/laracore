@@ -12,6 +12,7 @@ return [
     | you want to customize your views to better match your application.
     |
     */
+    'laracore' => 'Install Laracore',
     'app' => [
         'slogan' => 'CMS for the future'
     ],
