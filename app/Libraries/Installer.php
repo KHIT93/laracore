@@ -72,7 +72,7 @@ class Installer
         $file = implode("\n", $data);
         if(file_put_contents(public_path().'/../.env', $file) != false)
         {
-            chmod(public_path().'/../.env', 775);
+            chmod(public_path().'/../.env', 0775);
             return true;
         }
         else
