@@ -34,13 +34,13 @@ class InstallController extends Controller
 
     public function postWelcome(Request $request)
     {
-        session(['APP_LOCALE' => $request->input('langcode')]);
+        $request->session()->put(['APP_LOCALE' => $request->input('langcode')]);
         return redirect('installer/license');
     }
 
     public function license(Request $request)
     {
-        session(['APP_LOCALE' => $request->input('langcode')]);
+        $request->session()->put(['APP_LOCALE' => $request->input('langcode')]);
         return view('installer', [
             'form_method' => 'POST',
             'form_url' => 'installer/license',
@@ -130,13 +130,13 @@ class InstallController extends Controller
 
         if($request->input('DB_DRIVER') == 'sqlite')
         {
-            session(['DB_DRIVER' => 'sqlite']);
+            $request->session()->put(['DB_DRIVER' => 'sqlite']);
         }
         else
         {
             foreach ($request->all() as $key => $value)
             {
-                session([$key => $value]);
+                $request->session()->put([$key => $value]);
             }
         }
         $dbcheck = $this->dbcheck();
@@ -188,7 +188,7 @@ class InstallController extends Controller
     {
         //Save information in temp storeage for later generation of the environment variables
         foreach ($request->all() as $key => $value) {
-            session([$key =>  $value]);
+            $request->session()->put([$key =>  $value]);
         }
         $install = new Installer();
         //Generate environment variables and save them
@@ -263,6 +263,7 @@ class InstallController extends Controller
 
     public function finish()
     {
+        \Request::session()->flush();
         return view('installer', [
             'form_url' => '',
             'form_method' => '',
