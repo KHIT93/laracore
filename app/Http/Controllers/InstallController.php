@@ -221,7 +221,7 @@ class InstallController extends Controller
         }
         catch(Exception $ex)
         {
-            Flash::error(trans('installer.failed.migration'));
+            Flash::error(trans('installer.failed.migration'))->important();
             return redirect('installer/fail');
         }
         try
@@ -230,14 +230,14 @@ class InstallController extends Controller
         }
         catch(Exception $ex)
         {
-            Flash::error(trans('installer.failed.seeding'));
+            Flash::error(trans('installer.failed.seeding'))->important();
             return redirect('installer/fail');
         }
         $install = new Installer();
         //Generate environment variables and save them
         if(!$install->environment(true))
         {
-            Flash::error(trans('installer.failed.env'));
+            Flash::error(trans('installer.failed.env'))->important();
             return redirect('installer/fail');
         }
         try
@@ -246,7 +246,7 @@ class InstallController extends Controller
         }
         catch(Exception $ex)
         {
-            Flash::error(trans('installer.failed.app_key'));
+            Flash::error(trans('installer.failed.app_key'))->important();
             return redirect('installer/fail');
         }
         $admin = [
@@ -257,7 +257,7 @@ class InstallController extends Controller
         ];
         if(!User::create($admin)->roles()->attach(1))
         {
-            Flash::error(trans('installer.failed.admin'));
+            Flash::error(trans('installer.failed.admin'))->important();
             return redirect('installer/fail');
         }
 
