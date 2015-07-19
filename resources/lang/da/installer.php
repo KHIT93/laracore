@@ -36,7 +36,8 @@ return [
             'mcrypt' => 'Mcrypt udvidelsen til PHP er aktiveret',
             'pdo' => 'PDO Database bibilioteket til PHP er aktiveret',
             'mbstring' => 'Mbstring udvidelsen til PHP er aktiveret',
-            'tokenizer' => 'Tokenizer udvidelsen til PHP er aktiveret'
+            'tokenizer' => 'Tokenizer udvidelsen til PHP er aktiveret',
+            'storageperm' => 'Stien :path er skrivbar'
         ],
         'mismatch' => [
             'php_version_match' => 'Din version af PHP er ikke kompatibel med Laracore. Der kræves mindst PHP :version',
@@ -44,7 +45,8 @@ return [
             'mcrypt' => 'Mcrypt udvidelsen til PHP er ikke aktiveret. Aktivér venligst udvidelsen og prøv igen',
             'pdo' => 'PDO Database biblioteket til PHP er ikke aktiveret. Aktivér venligst udvidelsen og prøv igen',
             'mbstring' => 'Mbstring udvidelsen til PHP er ikke aktiveret. Aktivér venligst udvidelsen og prøv igen',
-            'tokenizer' => 'Tokenizer udvidelsen til PHP er ikke aktiveret. Aktivér venligst udvidelsen og prøv igen'
+            'tokenizer' => 'Tokenizer udvidelsen til PHP er ikke aktiveret. Aktivér venligst udvidelsen og prøv igen',
+            'storageperm' => 'Stien :path er ikke skrivbar. Tilret venligst tilladelserne på stien således at ejer og denne gruppe har læse-, skrive- og kørselsrettigheder, mens alle andre har læse- og kørselsrettigheder (0775)'
         ]
     ],
     'check_again' => 'Kontroller igen',

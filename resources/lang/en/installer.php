@@ -35,7 +35,8 @@ return [
             'mcrypt' => 'The Mcrypt extension for PHP is enabled',
             'pdo' => 'The PDO database library extension is enabled',
             'mbstring' => 'The Mbstring extension for PHP is enabled',
-            'tokenizer' => 'The Tokenizer extension for PHP is enabled'
+            'tokenizer' => 'The Tokenizer extension for PHP is enabled',
+            'storageperm' => 'The path :path is writable'
         ],
         'mismatch' => [
             'php_version_match' => 'Your PHP version is not compatible with Laracore. You need at least PHP :version',
@@ -43,7 +44,8 @@ return [
             'mcrypt' => 'The Mcrypt extension for PHP is not enabled. Please enable the extension and try again',
             'pdo' => 'The PDO database library extension is not enabled. Please enable the extension and try again',
             'mbstring' => 'The Mbstring extension for PHP is not enabled. Please enable the extension and try again',
-            'tokenizer' => 'The Tokenizer extension for PHP is not enabled. Please enable the extension and try again'
+            'tokenizer' => 'The Tokenizer extension for PHP is not enabled. Please enable the extension and try again',
+            'storageperm' => 'The path :path is not writable. Please fix the permissions so that the owner and owner group has read + write + execute and others have read + execute (0775)'
         ]
     ],
     'check_again' => 'Check again',

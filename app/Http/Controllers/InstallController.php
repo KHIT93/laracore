@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Libraries\Installer;
+use App\Libraries\RequirementsChecker;
+use App\Libraries\StoragePermissionChecker;
 use Illuminate\Http\Request;
 use App\User;
 use App\Http\Requests;
@@ -52,17 +54,50 @@ class InstallController extends Controller
         return redirect('installer/requirements');
     }
 
-    public function requirements($validation = null)
+    public function requirements()
     {
         \App::setLocale(((session('APP_LOCALE')) ? session('APP_LOCALE'): config('app.fallback_locale')));
         //Check if the requirements are passed, otherwise display requirements page
-        $validation = $this->validateRequirements();
+        $validation = true;
+        $validator = $this->checkRequirementsAndStoragePermisions();
+        foreach ($validator['requirements'] as $validated)
+        {
+            if(!$validated)
+            {
+                $validation = false;
+            }
+        }
+        foreach ($validator['storageperms'] as $validated)
+        {
+            if(!$validated)
+            {
+                $validation = false;
+            }
+        }
+        if(!$validator['php_version'])
+        {
+            $validation = false;
+        }
+
         return ($validation === true) ? redirect('installer/database') : view('installer', [
             'form_method' => 'POST',
             'form_url' => 'installer/requirements',
             'screen' => 'installer.requirements',
-            'validation' => $validation
+            'requirements' => $validator['requirements'],
+            'storageperms' => $validator['storageperms'],
+            'php_version' => $validator['php_version']
         ]);
+    }
+
+    private function checkRequirementsAndStoragePermisions()
+    {
+        $requirements = new RequirementsChecker();
+        $storageperms = new StoragePermissionChecker();
+        return [
+            'php_version' => version_compare(PHP_VERSION, config('requirements.php_version'), '>='),
+            'requirements' => $requirements->check(config('requirements.extensions')),
+            'storageperms' => $storageperms->check(config('requirements.permissions'))
+        ];
     }
 
     private function validateRequirements()
