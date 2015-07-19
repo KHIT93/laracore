@@ -22,10 +22,8 @@
                         <i class="glyphicon glyphicon-remove"></i>
                     </span>
                     {{ trans('installer.requirements.mismatch.php_version_match') }}
+                    @endif
                 </td>
-            </tr>
-            <tr>
-                <td colspan="2"><h3>Storage Permissions</h3></td>
             </tr>
         @foreach($requirements as $requirement => $passed)
             @if($passed)
@@ -52,23 +50,26 @@
                 </tr>
             @endif
         @endforeach
-        @foreach($storageperms as $perm => $passed)
-            @if($passed)
+        <tr>
+            <td colspan="2"><h3>Storage Permissions</h3></td>
+        </tr>
+        @foreach($storageperms as $perm)
+            @if($perm['isSet'])
                 <tr class="bg-success">
                     <td colspan="2">
                         <span class="badge badge-success">
-                            <i class="glyphicon glyphicon-ok"></i>
+                            {{ $perm['folder'] }}
                         </span>
-                        {{ trans('installer.requirements.match.storageperm', ['path' => $perm]) }}
+                        {{ trans('installer.requirements.match.storageperm') }}
                     </td>
                 </tr>
             @else
                 <tr class="bg-danger">
                     <td colspan="2">
                         <span class="badge badge-danger">
-                            <i class="glyphicon glyphicon-remove"></i>
+                            {{ $perm['folder'] }}
                         </span>
-                        {{ trans('installer.requirements.mismatch.storageperm', ['path' => $perm]) }}
+                        {{ trans('installer.requirements.mismatch.storageperm', ['permission' => $perm['permission']]) }}
                     </td>
                 </tr>
             @endif

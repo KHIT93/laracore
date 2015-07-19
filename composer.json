@@ -29,7 +29,9 @@
                 "files": [
                     "app/Support/helpers.php",
                     "app/Libraries/Theme.php",
-                    "app/Libraries/Page.php"
+                    "app/Libraries/Page.php",
+                    "app/Libraries/RequirementsChecker.php",
+                    "app/Libraries/StoragePermissionChecker.php"
                 ]
 	},
 	"autoload-dev": {

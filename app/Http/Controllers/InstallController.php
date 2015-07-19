@@ -79,7 +79,15 @@ class InstallController extends Controller
             $validation = false;
         }
 
-        return ($validation === true) ? redirect('installer/database') : view('installer', [
+        /*return ($validation === true) ? redirect('installer/database') : view('installer', [
+            'form_method' => 'POST',
+            'form_url' => 'installer/requirements',
+            'screen' => 'installer.requirements',
+            'requirements' => $validator['requirements'],
+            'storageperms' => $validator['storageperms'],
+            'php_version' => $validator['php_version']
+        ]);*/
+        return view('installer', [
             'form_method' => 'POST',
             'form_url' => 'installer/requirements',
             'screen' => 'installer.requirements',
@@ -95,8 +103,8 @@ class InstallController extends Controller
         $storageperms = new StoragePermissionChecker();
         return [
             'php_version' => version_compare(PHP_VERSION, config('requirements.php_version'), '>='),
-            'requirements' => $requirements->check(config('requirements.extensions')),
-            'storageperms' => $storageperms->check(config('requirements.permissions'))
+            'requirements' => $requirements->check(config('requirements.extensions'))['requirements'],
+            'storageperms' => $storageperms->check(config('requirements.permissions'))['permissions']
         ];
     }
 
