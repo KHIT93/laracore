@@ -110,4 +110,13 @@ return [
         'admin' => 'Kunne ikke oprette administrator konto'
     ],
     'php_version' => 'PHP Version',
+    'admin' => 'Begynd tilpasningen',
+    'frontend' => 'Besøg din side',
+    'already' => [
+        'header' => 'Laracore er allerede installeret',
+        'info' => 'Laracore er allerede installeret på din hjemmside.<br>Hvis du ønsker at starte forfra, skal du udføre en af følgende opgaver',
+        'startover' => 'Slet alt indhold i den nuværende <strong>database</strong> og fjern de <strong>miljø variabler</strong> der måtte eksistere, såfremt disse blev gemt i en fil på serveren',
+        'artisan' => 'Køre "<strong>php artisan laracore:destroy</strong>" fra kommando-linjen',
+        'mistake' => 'Skulle du være et andet sted?'
+    ]
 ];

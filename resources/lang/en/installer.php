@@ -110,5 +110,12 @@ return [
     ],
     'php_version' => 'PHP Version',
     'admin' => 'Start customizing',
-    'frontend' => 'Visit your site'
+    'frontend' => 'Visit your site',
+    'already' => [
+        'header' => 'Laracore is already installed',
+        'info' => 'Laracore has already been installed on this website.<br>If you want to start over please do one of the following',
+        'startover' => 'Delete all content in the current <strong>database</strong> and remove the <strong>environment variables</strong>, if these are put in a file and not set on the server',
+        'artisan' => 'Run "<strong>php artisan laracore:destroy</strong>" from the command-line',
+        'mistake' => 'Got here by mistake?'
+    ]
 ];

@@ -21,6 +21,7 @@ class InstallController extends Controller
     public function __construct()
     {
         //Run middleware to check if the installer has been run before
+        $this->middleware('installed', ['except' => ['finish', 'fail']]);
     }
 
     public function welcome()
