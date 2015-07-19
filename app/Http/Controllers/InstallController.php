@@ -18,8 +18,6 @@ class InstallController extends Controller
 {
     public function __construct()
     {
-        //Set locale
-        \App::setLocale(((session('APP_LOCALE')) ? session('APP_LOCALE'): config('app.fallback_locale')));
         //Run middleware to check if the installer has been run before
     }
 
@@ -40,6 +38,7 @@ class InstallController extends Controller
 
     public function license(Request $request)
     {
+        \App::setLocale(((session('APP_LOCALE')) ? session('APP_LOCALE'): config('app.fallback_locale')));
         $request->session()->put(['APP_LOCALE' => $request->input('langcode')]);
         return view('installer', [
             'form_method' => 'POST',
@@ -55,6 +54,7 @@ class InstallController extends Controller
 
     public function requirements($validation = null)
     {
+        \App::setLocale(((session('APP_LOCALE')) ? session('APP_LOCALE'): config('app.fallback_locale')));
         //Check if the requirements are passed, otherwise display requirements page
         $validation = $this->validateRequirements();
         return ($validation === true) ? redirect('installer/database') : view('installer', [
@@ -116,6 +116,7 @@ class InstallController extends Controller
 
     public function database($error = null)
     {
+        \App::setLocale(((session('APP_LOCALE')) ? session('APP_LOCALE'): config('app.fallback_locale')));
         return view('installer', [
             'form_method' => 'POST',
             'form_url' => 'installer/database',
@@ -177,6 +178,7 @@ class InstallController extends Controller
 
     public function site()
     {
+        \App::setLocale(((session('APP_LOCALE')) ? session('APP_LOCALE'): config('app.fallback_locale')));
         return view('installer', [
             'form_method' => 'POST',
             'form_url' => 'installer/site',
@@ -202,6 +204,7 @@ class InstallController extends Controller
 
     public function run()
     {
+        \App::setLocale(((session('APP_LOCALE')) ? session('APP_LOCALE'): config('app.fallback_locale')));
         return view('installer', [
             'form_method' => 'POST',
             'form_url' => 'installer/run',
@@ -263,6 +266,7 @@ class InstallController extends Controller
 
     public function finish()
     {
+        \App::setLocale(((session('APP_LOCALE')) ? session('APP_LOCALE'): config('app.fallback_locale')));
         \Request::session()->flush();
         return view('installer', [
             'form_url' => '',
@@ -273,6 +277,7 @@ class InstallController extends Controller
 
     public function fail()
     {
+        \App::setLocale(((session('APP_LOCALE')) ? session('APP_LOCALE'): config('app.fallback_locale')));
         return view('installer', [
             'form_url' => '',
             'form_method' => '',
