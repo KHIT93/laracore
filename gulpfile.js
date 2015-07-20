@@ -17,7 +17,9 @@ elixir(function(mix) {
         'css/app.css',
         'css/custom.css',
         'css/font-awesome.min.css',
-        'js/jquery.select2/select2.min.css'
+        'js/jquery.select2/select2.css',
+        'js/jquery.select2/select2-bootstrap.css',
+        'js/bootstrap.checkbox/bootstrap-checkbox.css'
     ], 'public/css/styles.css', 'resources/assets');
     mix.styles([
         'css/app.css',
@@ -25,12 +27,15 @@ elixir(function(mix) {
         'css/admin/metisMenu.css',
         'css/admin/sb-admin-2.css',
         'css/admin/timeline.css',
-        'js/jquery.select2/select2.min.css'
+        'js/jquery.select2/select2.css',
+        'js/jquery.select2/select2-bootstrap.css',
+        'js/bootstrap.checkbox/bootstrap-checkbox.css'
     ], 'public/css/admin.css', 'resources/assets');
     mix.scripts([
         'jquery.min.js',
         'bootstrap.min.js',
-        'jquery.select2/select2.min.js',
+        'jquery.select2/select2.js',
+        'bootstrap.checkbox/bootstrap-checkbox.js',
         'main.js'
     ], 'public/js/plugins.js', 'resources/assets/js');
     mix.scripts([
@@ -38,7 +43,7 @@ elixir(function(mix) {
         'bootstrap.min.js',
         'admin/metisMenu.js',
         'admin/sb-admin-2.js',
-        'jquery.select2/select2.min.js',
+        'jquery.select2/select2.js',
         'main.js'
     ], 'public/js/admin.plugins.js', 'resources/assets/js');
 });

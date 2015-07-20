@@ -57,18 +57,18 @@
         </div>
         <div class="form-group @if ($errors->has('MAIL_ENCRYPTION')) has-error @endif">
             {!! Form::label('MAIL_ENCRYPTION', trans('installer.site.email_cfg.encryption')) !!}
-            {!! Form::select('MAIL_ENCRYPTION', $mail_encryption, config('mail.encryption'), ['class' => 'form-control']) !!}
+            {!! Form::select('MAIL_ENCRYPTION', $mail_encryption, config('mail.encryption'), ['class' => 'form-control select2']) !!}
         </div>
     </fieldset>
     <fieldset>
         <legend>{{ trans('installer.regional.header') }}</legend>
-        <div class="form-group @if ($errors->has('APP_TIMEZONE')) has-error @endif">
+        <div class="form-group select2-wrapper @if ($errors->has('APP_TIMEZONE')) has-error @endif">
             {!! Form::label('APP_TIMEZONE', trans('installer.site.timezone')) !!}
-            {!! Form::select('APP_TIMEZONE', $timezones, date_default_timezone_get(), ['class' => 'form-control']) !!}
+            {!! Form::select('APP_TIMEZONE', $timezones, date_default_timezone_get(), ['class' => 'form-control select2']) !!}
         </div>
         <div class="form-group @if ($errors->has('site_country')) has-error @endif">
             {!! Form::label('site_country', trans('installer.site.country')) !!}
-            {!! Form::select('site_country', config('countries'), 'US', ['class' => 'form-control']) !!}
+            {!! Form::select('site_country', config('countries'), 'US', ['class' => 'form-control select2']) !!}
         </div>
     </fieldset>
 </div>

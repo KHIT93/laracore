@@ -31,7 +31,7 @@
     <hr>
     <div class="checkbox">
         <label>
-            <input type="checkbox" name="accept_license", value="yes"> {{ trans('installer.license.accept') }}
+            <input type="checkbox" name="application_license" class="checkbox" id="application_license" value="yes"> {{ trans('installer.license.accept') }}
         </label>
     </div>
 </div>

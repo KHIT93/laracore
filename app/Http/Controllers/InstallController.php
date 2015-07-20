@@ -20,8 +20,10 @@ class InstallController extends Controller
 {
     public function __construct()
     {
+        //Set locale
+        \App::setLocale(((session('APP_LOCALE')) ? session('APP_LOCALE'): config('app.locale')));
         //Run middleware to check if the installer has been run before
-        $this->middleware('installed', ['except' => ['finish', 'fail']]);
+        //$this->middleware('installed', ['except' => ['finish', 'fail']]);
     }
 
     public function welcome()
@@ -29,7 +31,12 @@ class InstallController extends Controller
         return view('installer', [
             'form_method' => 'POST',
             'form_url' => 'installer',
-            'screen' => 'installer.welcome'
+            'screen' => 'installer.welcome',
+            'btn_next' => [
+                'text' => trans('installer.btn.start'),
+                'disabled' => false,
+                'render' => true
+            ]
         ]);
     }
 
@@ -41,12 +48,17 @@ class InstallController extends Controller
 
     public function license(Request $request)
     {
-        \App::setLocale(((session('APP_LOCALE')) ? session('APP_LOCALE'): config('app.fallback_locale')));
+
         $request->session()->put(['APP_LOCALE' => $request->input('langcode')]);
         return view('installer', [
             'form_method' => 'POST',
             'form_url' => 'installer/license',
-            'screen' => 'installer.license'
+            'screen' => 'installer.license',
+            'btn_next' => [
+                'text' => trans('installer.btn.next'),
+                'disabled' => true,
+                'render' => true
+            ]
         ]);
     }
 
@@ -57,7 +69,6 @@ class InstallController extends Controller
 
     public function requirements()
     {
-        \App::setLocale(((session('APP_LOCALE')) ? session('APP_LOCALE'): config('app.fallback_locale')));
         //Check if the requirements are passed, otherwise display requirements page
         $validation = true;
         $validator = $this->checkRequirementsAndStoragePermisions();
@@ -79,22 +90,18 @@ class InstallController extends Controller
         {
             $validation = false;
         }
-
-        /*return ($validation === true) ? redirect('installer/database') : view('installer', [
-            'form_method' => 'POST',
-            'form_url' => 'installer/requirements',
-            'screen' => 'installer.requirements',
-            'requirements' => $validator['requirements'],
-            'storageperms' => $validator['storageperms'],
-            'php_version' => $validator['php_version']
-        ]);*/
         return view('installer', [
             'form_method' => 'POST',
             'form_url' => 'installer/requirements',
             'screen' => 'installer.requirements',
             'requirements' => $validator['requirements'],
             'storageperms' => $validator['storageperms'],
-            'php_version' => $validator['php_version']
+            'php_version' => $validator['php_version'],
+            'btn_next' => [
+                'text' => trans('pagination.next'),
+                'disabled' => $validation,
+                'render' => true
+            ]
         ]);
     }
 
@@ -109,63 +116,24 @@ class InstallController extends Controller
         ];
     }
 
-    private function validateRequirements()
-    {
-        //Validate the requirements for the application and return either true or an error/warning list
-        $requirements = [
-            'php_version' => '5.5.9',
-            'php_version_match' => true,
-            'openssl' => true,
-            'mcrypt' => true,
-            'pdo' => true,
-            'mbstring' => true,
-            'tokenizer' => true
-        ];
-        $checklist = [
-            'php_version_match' => version_compare(PHP_VERSION, $requirements['php_version'], '>='),
-            'openssl' => extension_loaded('openssl'),
-            'mcrypt' => extension_loaded('mcrypt'),
-            'pdo' => extension_loaded('pdo'),
-            'mbstring' => extension_loaded('mbstring'),
-            'tokenizer' => extension_loaded('tokenizer')
-        ];
-        $errors = [];
-        $success = [];
-        foreach($checklist as $key => $value)
-        {
-            if($checklist[$key] != $requirements[$key])
-            {
-                if($key == 'php_version_match')
-                {
-                    $errors[] = trans('installer.requirements.mismatch.'.$key, ['version' => PHP_VERSION]);
-                }
-                else
-                {
-                    $errors[] = trans('installer.requirements.mismatch.'.$key);
-                }
-            }
-            else
-            {
-                $success[] = trans('installer.requirements.match.'.$key);
-            }
-        }
-        return (count($errors)) ? ['success' => $success, 'errors' => $errors] : true;
-    }
-
     public function postRequirements(Request $request)
     {
-        $validation = $this->validateRequirements();
+        $validation = $this->checkRequirementsAndStoragePermisions();
         return ($validation === true) ? redirect('installer/database') : $this->requirements();
     }
 
     public function database($error = null)
     {
-        \App::setLocale(((session('APP_LOCALE')) ? session('APP_LOCALE'): config('app.fallback_locale')));
         return view('installer', [
             'form_method' => 'POST',
             'form_url' => 'installer/database',
             'screen' => 'installer.database',
-            'error' => $error
+            'error' => $error,
+            'btn_next' => [
+                'text' => trans('pagination.next'),
+                'disabled' => false,
+                'render' => true
+            ]
         ]);
     }
 
@@ -222,11 +190,15 @@ class InstallController extends Controller
 
     public function site()
     {
-        \App::setLocale(((session('APP_LOCALE')) ? session('APP_LOCALE'): config('app.fallback_locale')));
         return view('installer', [
             'form_method' => 'POST',
             'form_url' => 'installer/site',
-            'screen' => 'installer.site'
+            'screen' => 'installer.site',
+            'btn_next' => [
+                'text' => trans('installer.btn.install'),
+                'disabled' => false,
+                'render' => true
+            ]
         ]);
     }
 
@@ -248,11 +220,15 @@ class InstallController extends Controller
 
     public function run()
     {
-        \App::setLocale(((session('APP_LOCALE')) ? session('APP_LOCALE'): config('app.fallback_locale')));
         return view('installer', [
             'form_method' => 'POST',
             'form_url' => 'installer/run',
-            'screen' => 'installer.install'
+            'screen' => 'installer.install',
+            'btn_next' => [
+                'text' => trans('pagination.next'),
+                'disabled' => false,
+                'render' => false
+            ]
         ]);
     }
 
@@ -310,22 +286,30 @@ class InstallController extends Controller
 
     public function finish()
     {
-        \App::setLocale(((session('APP_LOCALE')) ? session('APP_LOCALE'): config('app.fallback_locale')));
         \Request::session()->flush();
         return view('installer', [
             'form_url' => '',
             'form_method' => '',
-            'screen' => 'installer.finish'
+            'screen' => 'installer.finish',
+            'btn_next' => [
+                'text' => trans('pagination.next'),
+                'disabled' => false,
+                'render' => false
+            ]
         ]);
     }
 
     public function fail()
     {
-        \App::setLocale(((session('APP_LOCALE')) ? session('APP_LOCALE'): config('app.fallback_locale')));
         return view('installer', [
             'form_url' => '',
             'form_method' => '',
-            'screen' => 'installer.failed'
+            'screen' => 'installer.failed',
+            'btn_next' => [
+                'text' => trans('pagination.next'),
+                'disabled' => false,
+                'render' => false
+            ]
         ]);
     }
 }

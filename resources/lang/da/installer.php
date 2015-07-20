@@ -17,6 +17,11 @@ return [
     'app' => [
         'slogan' => 'CMS til fremtiden'
     ],
+    'btn' => [
+        'start' => 'Start',
+        'next' => trans('pagination.next'),
+        'install' => 'Installer'
+    ],
     'welcome' => [
         'header' => 'Velkommen',
         'intro'     => 'Du er nu igang med at installere Laracore på denne hjemmeside',
@@ -54,9 +59,17 @@ return [
     'database' => [
         'header' => 'Konfigurer database',
         'intro' => 'Vælg venligst den korrekte type database til dette website',
-        'mysql' => 'MySQL eller MariaDB',
-        'sqlsrv' => 'Microsoft SQL Server',
-        'sqlite' => 'SQLite',
+        'mysql' => [
+            'name' =>'MySQL eller MariaDB'
+        ],
+        'sqlsrv' => [
+            'name' => 'Microsoft SQL Server',
+            'note' => 'Bemærk at Microsoft SQL Server kun fungerer med Mixed-mode authentication'
+        ],
+        'sqlite' => [
+            'name' => 'SQLite',
+            'note' => 'Bemærk at SQLite kun virker ud fra en prædefineret placering, som er '.config('database.connections.sqlite.database')
+        ],
         'db_database' => 'Databasenavn',
         'db_username' => 'Databasebruger',
         'db_password' => 'Database adgangskode',

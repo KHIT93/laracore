@@ -4,19 +4,21 @@
     @include('errors._form_list')
     <div class="radio">
         <label>
-            <input type="radio" name="DB_DRIVER" value="mysql"> {{ trans('installer.database.mysql') }}
+            <input type="radio" class="DB_DRIVER" name="DB_DRIVER" id="mysql" value="mysql"> {{ trans('installer.database.mysql.name') }}
         </label>
     </div>
     <div class="radio">
         <label>
-            <input type="radio" name="DB_DRIVER" value="sqlsrv"> {{ trans('installer.database.sqlsrv') }}
+            <input type="radio" class="DB_DRIVER" name="DB_DRIVER" id="sqlsrv" value="sqlsrv"> {{ trans('installer.database.sqlsrv.name') }}
         </label>
     </div>
     <div class="radio">
         <label>
-            <input type="radio" name="DB_DRIVER" value="sqlite"> {{ trans('installer.database.sqlite') }}
+            <input type="radio" class="DB_DRIVER" name="DB_DRIVER" id="sqlite" value="sqlite"> {{ trans('installer.database.sqlite.name') }}
         </label>
     </div>
+    <p id="sqlite_notes" class="alert alert-info">{{ trans('installer.database.sqlite.note') }}</p>
+    <p id="sqlsrv_notes" class="alert alert-info">{{ trans('installer.database.sqlsrv.note') }}</p>
     <div class="form-group @if ($errors->has('DB_DATABASE')) has-error @endif">
         {!! Form::label('DB_DATABASE', trans('installer.database.db_database')) !!}
         {!! Form::text('DB_DATABASE', null, ['class' => 'form-control', 'required']) !!}

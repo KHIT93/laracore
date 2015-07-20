@@ -24,7 +24,7 @@ class AcceptLicenseRequest extends Request
     public function rules()
     {
         return [
-            'accept_license' => 'accepted'
+            'application_license' => 'accepted'
         ];
     }
 }

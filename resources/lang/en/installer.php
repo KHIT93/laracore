@@ -16,6 +16,11 @@ return [
     'app' => [
         'slogan' => 'CMS for the future'
     ],
+    'btn' => [
+        'start' => 'Start',
+        'next' => trans('pagination.next'),
+        'install' => 'Install'
+    ],
     'welcome' => [
         'header' => 'Welcome',
         'intro'     => 'You are about to install Laracore onto this website',
@@ -53,9 +58,17 @@ return [
     'database' => [
         'header' => 'Set up database',
         'intro' => 'Please choose the type of database that you will be using for this website',
-        'mysql' => 'MySQL or MariaDB',
-        'sqlsrv' => 'Microsoft SQL Server',
-        'sqlite' => 'SQLite',
+        'mysql' => [
+            'name' =>'MySQL or MariaDB'
+        ],
+        'sqlsrv' => [
+            'name' => 'Microsoft SQL Server',
+            'note' => 'Please note that Microsoft SQL Server does only work with Mixed-mode authentication enabled'
+        ],
+        'sqlite' => [
+            'name' => 'SQLite',
+            'note' => 'Please note that SQLite will only run from the preconfigured location, which is '.config('database.connections.sqlite.database')
+        ],
         'db_database' => 'Database name',
         'db_username' => 'Database username',
         'db_password' => 'Database password',

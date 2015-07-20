@@ -40,16 +40,13 @@
             </div>
         </div>
         <div class="modal-footer">
-            <a href="previous" class="btn btn-default">{{ trans('pagination.previous') }}</a>
-            <button type="submit" class="btn btn-laravel">{{ trans('pagination.next') }}</button>
+            @if($btn_next['render']) <button type="submit" id="btn_next" class="btn btn-laravel" @if($btn_next['disabled']) disabled="disabled" @endif>{{ $btn_next['text'] }}</button> @endif
         </div>
     </div>
     {!! Form::close() !!}
 </div>
 <!-- Scripts -->
 <script src="{{ asset('/js/plugins.js') }}"></script>
-@if(Request::path() == 'installer/run')
-<script src="{{ asset('/js/installer.js') }}"></script>
-@endif
+@include('installer._js')
 </body>
 </html>
