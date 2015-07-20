@@ -23,7 +23,7 @@ class InstallController extends Controller
         //Set locale
         \App::setLocale(((session('APP_LOCALE')) ? session('APP_LOCALE'): config('app.locale')));
         //Run middleware to check if the installer has been run before
-        //$this->middleware('installed', ['except' => ['finish', 'fail']]);
+        $this->middleware('installed', ['except' => ['finish', 'fail']]);
     }
 
     public function welcome()

@@ -17,6 +17,7 @@ class Kernel extends ConsoleKernel
         'App\Console\Commands\LaracoreInitialAdmin',
         'App\Console\Commands\LaracoreMaintenanceEnable',
         'App\Console\Commands\LaracoreMaintenanceDisable',
+        'App\Console\Commands\LaracoreReset',
     ];
 
     /**
