@@ -14,10 +14,17 @@ class AppIsInstalled
      */
     public function handle($request, Closure $next)
     {
-        $tables = DB::select('SHOW TABLES');
-        if(!empty($tables))
+        try
         {
-            return view('installer.alreadyinstalled');
+            $tables = DB::select('SHOW TABLES');
+            if(!empty($tables))
+            {
+                return view('installer.alreadyinstalled');
+            }
+        }
+        catch(\Exception $ex)
+        {
+            logger('Warning: Application is not installed');
         }
         return $next($request);
     }
