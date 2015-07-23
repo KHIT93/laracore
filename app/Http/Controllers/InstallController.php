@@ -68,26 +68,8 @@ class InstallController extends Controller
     public function requirements()
     {
         //Check if the requirements are passed, otherwise display requirements page
-        $validation = true;
         $validator = $this->checkRequirementsAndStoragePermisions();
-        foreach ($validator['requirements'] as $validated)
-        {
-            if(!$validated)
-            {
-                $validation = false;
-            }
-        }
-        foreach ($validator['storageperms'] as $validated)
-        {
-            if(!$validated)
-            {
-                $validation = false;
-            }
-        }
-        if(!$validator['php_version'])
-        {
-            $validation = false;
-        }
+        $validation = $this->verifyRequirementsValidation($validator);
         return view('installer', [
             'form_method' => 'POST',
             'form_url' => 'installer/requirements',
@@ -97,7 +79,7 @@ class InstallController extends Controller
             'php_version' => $validator['php_version'],
             'btn_next' => [
                 'text' => trans('pagination.next'),
-                'disabled' => $validation,
+                'disabled' => $this->verifyRequirementsValidation($validator),
                 'render' => true
             ]
         ]);
@@ -114,10 +96,34 @@ class InstallController extends Controller
         ];
     }
 
+    /**
+     * @param $validator
+     * @return bool
+     */
+    private function verifyRequirementsValidation($validator)
+    {
+        $validation = true;
+        foreach ($validator['requirements'] as $validated) {
+            if (!$validated) {
+                $validation = false;
+            }
+        }
+        foreach ($validator['storageperms'] as $validated) {
+            if (!$validated) {
+                $validation = false;
+            }
+        }
+        if (!$validator['php_version']) {
+            $validation = false;
+            return $validation;
+        }
+        return !$validation;
+    }
+
     public function postRequirements(Request $request)
     {
         $validation = $this->checkRequirementsAndStoragePermisions();
-        return ($validation === true) ? redirect('installer/database') : $this->requirements();
+        return ($this->verifyRequirementsValidation($validation)) ? $this->requirements() : redirect('installer/database');
     }
 
     public function database($error = null)
@@ -255,6 +261,7 @@ class InstallController extends Controller
         //Generate environment variables and save them
         if(!$install->environment(true))
         {
+            logger('Installer.ERROR: Could not do the final config of ENV');
             Flash::error(trans('installer.failed.env'))->important();
             return redirect('installer/fail');
         }
@@ -273,10 +280,23 @@ class InstallController extends Controller
             'name' => (($request->session()->has('name')) ? session('name'): session('email')),
             'enabled' => 1
         ];
-        if(!User::create($admin)->roles()->attach(1))
+        if(User::create($admin) == false)
         {
+            logger('Could not create the administrator account');
             Flash::error(trans('installer.failed.admin'))->important();
             return redirect('installer/fail');
+        }
+        else
+        {
+            try
+            {
+                User::find(1)->roles()->attach(1);
+            }
+            catch(\Exception $ex)
+            {
+                Flash::error(trans('installer.failed.admin'))->important();
+                return redirect('installer/fail');
+            }
         }
 
         return redirect('installer/finish');

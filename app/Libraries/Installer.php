@@ -14,10 +14,10 @@ class Installer
         if($final)
         {
             $content = file_get_contents(base_path('.env'));
-            str_replace('APP_ENV=local', 'APP_ENV=production', $content);
-            str_replace('CACHE_DRIVER=file', 'CACHE_DRIVER=database', $content);
-            str_replace('SESSION_DRIVER=file', 'SESSION_DRIVER=database', $content);
-            file_put_contents(base_path('.env'), $content);
+            $content = str_replace('APP_ENV=local', 'APP_ENV=production', $content);
+            $content = str_replace('CACHE_DRIVER=file', 'CACHE_DRIVER=database', $content);
+            $content = str_replace('SESSION_DRIVER=file', 'SESSION_DRIVER=database', $content);
+            $data[] = $content;
         }
         else
         {
@@ -50,13 +50,14 @@ class Installer
         }
 
         $file = implode("\n", $data);
-        if(file_put_contents(base_path('.env'), $file) != false)
+        try
         {
-            chmod(base_path('.env'), 0775);
+            file_put_contents(base_path('.env'), $file);
             return true;
         }
-        else
+        catch(\Exception $ex)
         {
+            logger('Installer.EXCEPTION.ERROR: '.$ex->getMessage());
             return false;
         }
     }
