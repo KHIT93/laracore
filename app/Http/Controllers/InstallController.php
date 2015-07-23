@@ -46,10 +46,8 @@ class InstallController extends Controller
         return redirect('installer/license');
     }
 
-    public function license(Request $request)
+    public function license()
     {
-
-        $request->session()->put(['APP_LOCALE' => $request->input('langcode')]);
         return view('installer', [
             'form_method' => 'POST',
             'form_url' => 'installer/license',
