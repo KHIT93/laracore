@@ -131,5 +131,12 @@ return [
         'startover' => 'Delete all content in the current <strong>database</strong> and remove the <strong>environment variables</strong>, if these are put in a file and not set on the server',
         'artisan' => 'Run "<strong>php artisan laracore:destroy</strong>" from the command-line',
         'mistake' => 'Got here by mistake?'
+    ],
+    'update' => [
+        'run' => 'Run updates',
+        'intro' => 'Use this tool to update your Laracore installation.<br>This tool needs to be run everytime you update Laracore itself, or any modules that might be associated with your installation.',
+        'steps' => '1. Make a backup of your installation<br>2. Enable maintenance mode for your website<br>3. Run the updates',
+        'tasks' => 'Tasks',
+        'laracore' => 'Update Laracore'
     ]
 ];

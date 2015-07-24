@@ -5,6 +5,8 @@ namespace App\Libraries;
 
 
 use Illuminate\Http\Request;
+use App\Libraries\RequirementsChecker;
+use App\Libraries\StoragePermissionChecker;
 
 class Installer
 {
@@ -60,5 +62,43 @@ class Installer
             logger('Installer.EXCEPTION.ERROR: '.$ex->getMessage());
             return false;
         }
+    }
+
+    /**
+     * @return array
+     */
+    public function checkRequirementsAndStoragePermisions()
+    {
+        $requirements = new RequirementsChecker();
+        $storageperms = new StoragePermissionChecker();
+        return [
+            'php_version' => version_compare(PHP_VERSION, config('requirements.php_version'), '>='),
+            'requirements' => $requirements->check(config('requirements.extensions'))['requirements'],
+            'storageperms' => $storageperms->check(config('requirements.permissions'))['permissions']
+        ];
+    }
+
+    /**
+     * @param $validator
+     * @return bool
+     */
+    public function verifyRequirementsValidation($validator)
+    {
+        $validation = true;
+        foreach ($validator['requirements'] as $validated) {
+            if (!$validated) {
+                $validation = false;
+            }
+        }
+        foreach ($validator['storageperms'] as $validated) {
+            if (!$validated) {
+                $validation = false;
+            }
+        }
+        if (!$validator['php_version']) {
+            $validation = false;
+            return $validation;
+        }
+        return !$validation;
     }
 }

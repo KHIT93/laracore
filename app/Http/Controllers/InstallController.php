@@ -67,9 +67,10 @@ class InstallController extends Controller
 
     public function requirements()
     {
+        $installer = new Installer();
         //Check if the requirements are passed, otherwise display requirements page
-        $validator = $this->checkRequirementsAndStoragePermisions();
-        $validation = $this->verifyRequirementsValidation($validator);
+        $validator = $installer->checkRequirementsAndStoragePermisions();
+        $validation = $installer->verifyRequirementsValidation($validator);
         return view('installer', [
             'form_method' => 'POST',
             'form_url' => 'installer/requirements',
@@ -79,51 +80,17 @@ class InstallController extends Controller
             'php_version' => $validator['php_version'],
             'btn_next' => [
                 'text' => trans('pagination.next'),
-                'disabled' => $this->verifyRequirementsValidation($validator),
+                'disabled' => $validation,
                 'render' => true
             ]
         ]);
     }
 
-    private function checkRequirementsAndStoragePermisions()
-    {
-        $requirements = new RequirementsChecker();
-        $storageperms = new StoragePermissionChecker();
-        return [
-            'php_version' => version_compare(PHP_VERSION, config('requirements.php_version'), '>='),
-            'requirements' => $requirements->check(config('requirements.extensions'))['requirements'],
-            'storageperms' => $storageperms->check(config('requirements.permissions'))['permissions']
-        ];
-    }
-
-    /**
-     * @param $validator
-     * @return bool
-     */
-    private function verifyRequirementsValidation($validator)
-    {
-        $validation = true;
-        foreach ($validator['requirements'] as $validated) {
-            if (!$validated) {
-                $validation = false;
-            }
-        }
-        foreach ($validator['storageperms'] as $validated) {
-            if (!$validated) {
-                $validation = false;
-            }
-        }
-        if (!$validator['php_version']) {
-            $validation = false;
-            return $validation;
-        }
-        return !$validation;
-    }
-
     public function postRequirements(Request $request)
     {
-        $validation = $this->checkRequirementsAndStoragePermisions();
-        return ($this->verifyRequirementsValidation($validation)) ? $this->requirements() : redirect('installer/database');
+        $installer = new Installer();
+        $validation = $installer->checkRequirementsAndStoragePermisions();
+        return ($installer->verifyRequirementsValidation($validation)) ? $this->requirements() : redirect('installer/database');
     }
 
     public function database($error = null)

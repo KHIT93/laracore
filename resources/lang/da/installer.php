@@ -132,5 +132,12 @@ return [
         'startover' => 'Slet alt indhold i den nuværende <strong>database</strong> og fjern de <strong>miljø variabler</strong> der måtte eksistere, såfremt disse blev gemt i en fil på serveren',
         'artisan' => 'Køre "<strong>php artisan laracore:destroy</strong>" fra kommando-linjen',
         'mistake' => 'Skulle du være et andet sted?'
+    ],
+    'update' => [
+        'run' => 'Kør opdateringer',
+        'intro' => 'Brug dette værktøj til at opdatere din Laracore installation<br>Værktøjet skal køres hver gang der installeres en opdatering til Laracore eller et af de installerede moduler',
+        'steps' => '1. Tag en backup af din installation<br>2. Sæt dit website i vedligeholdelsestilstand<br>3. Installer opdateringerne',
+        'tasks' => 'Opgaver',
+        'laracore' => 'Opdater Laracore'
     ]
 ];

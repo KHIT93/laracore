@@ -68,6 +68,12 @@ Route::get('admin/users', 'UserController@index');
 Route::get('user', 'UserController@showCurrent');
 
 Route::get('user/{user}', 'UserController@show');
+
+Route::get('update', 'UpdateController@index');
+
+Route::post('update', 'UpdateController@run');
+
+Route::get('update/finish', 'UpdateController@finish');
 /**
  * Routing for nodes.
  */
