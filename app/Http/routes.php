@@ -71,6 +71,8 @@ Route::get('user/{user}', 'UserController@show');
 
 Route::get('update', 'UpdateController@index');
 
+Route::get('update/tasks', 'UpdateController@tasks');
+
 Route::post('update', 'UpdateController@run');
 
 Route::get('update/finish', 'UpdateController@finish');

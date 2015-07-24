@@ -1,4 +1,4 @@
-@extends('installer.update.layout')
+@extends('update')
 
 @section('content')
     <div class="col-md-12">

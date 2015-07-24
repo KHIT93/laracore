@@ -138,6 +138,9 @@ return [
         'intro' => 'Brug dette værktøj til at opdatere din Laracore installation<br>Værktøjet skal køres hver gang der installeres en opdatering til Laracore eller et af de installerede moduler',
         'steps' => '1. Tag en backup af din installation<br>2. Sæt dit website i vedligeholdelsestilstand<br>3. Installer opdateringerne',
         'tasks' => 'Opgaver',
-        'laracore' => 'Opdater Laracore'
-    ]
+        'tasknotes' => 'De følgende opgaver bliver udført på dit website når du fortsætter med opdateringen',
+        'laracore' => 'Opdater Laracore',
+        'finish' => 'Opdateringen er nu gennemført. Evt. fejl er vist nedenfor'
+    ],
+    'home' => 'Til forsiden'
 ];

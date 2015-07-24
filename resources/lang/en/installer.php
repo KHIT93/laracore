@@ -137,6 +137,9 @@ return [
         'intro' => 'Use this tool to update your Laracore installation.<br>This tool needs to be run everytime you update Laracore itself, or any modules that might be associated with your installation.',
         'steps' => '1. Make a backup of your installation<br>2. Enable maintenance mode for your website<br>3. Run the updates',
         'tasks' => 'Tasks',
-        'laracore' => 'Update Laracore'
-    ]
+        'tasknotes' => 'The following tasks will be performed on your website once you continue',
+        'laracore' => 'Update Laracore',
+        'finish' => 'The update has finished. Any errors will be listed below'
+    ],
+    'home' => 'Go home'
 ];

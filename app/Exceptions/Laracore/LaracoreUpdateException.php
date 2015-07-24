@@ -1,12 +1,12 @@
 <?php
 
 
-namespace app\Exceptions\Laracore;
+namespace App\Exceptions\Laracore;
 
 
-class LaracoreUpdateException extends \Exception
+class LaracoreUpdateException extends LaracoreException
 {
-    public function __construct($message)
+    public function __construct($message = LaracoreException::GENERIC_UPDATE_ERROR)
     {
         parent::__construct($message);
     }

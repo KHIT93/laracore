@@ -32,11 +32,11 @@
                 <div class="col-md-4 col-xs-1">
                     <ul class="nav nav-tabs tabs-left">
                         <ul class="nav nav-tabs tabs-left">
-                            <li><a>{!! FA::icon('check') !!} {{ trans('installer.requirements.header') }}</a></li>
-                            <li @if(Request::path() == 'update')  class="active" @endif><a>{{ trans('installer.welcome.header') }}</a></li>
-                            <li><a>{!! FA::icon('list-ul') !!} {{ trans('installer.update.tasks') }}</a></li>
-                            <li><a>@if(Request::path() == 'update/run') <i class="fa fa-circle-o-notch fa-spin"></i> @else {!! FA::icon('fa-circle-o-notch') !!} @endif {{ trans('installer.install') }}</a></li>
-                            <li><a>{!! FA::icon('check-circle') !!} {{ trans('installer.done') }}</a></li>
+                            <li @if($active == 'requirements') class="active" @endif ><a>{!! FA::icon('check') !!} {{ trans('installer.requirements.header') }}</a></li>
+                            <li @if($active == 'welcome') class="active" @endif ><a>{{ trans('installer.welcome.header') }}</a></li>
+                            <li @if($active == 'tasks') class="active" @endif ><a>{!! FA::icon('list-ul') !!} {{ trans('installer.update.tasks') }}</a></li>
+                            <li @if($active == 'run') class="active" @endif ><a>{!! FA::icon('terminal') !!} {{ trans('installer.install') }}</a></li>
+                            <li @if($active == 'finish') class="active" @endif ><a>{!! FA::icon('check-circle') !!} {{ trans('installer.done') }}</a></li>
                         </ul>
                     </ul>
                 </div>
@@ -46,7 +46,7 @@
             </div>
         </div>
         <div class="modal-footer">
-            @if($update) <button type="submit" id="btn_next" class="btn btn-laravel">{{ trans('installer.update.run') }}</button> @endif
+            @if(isset($update) && $update == true) <button type="submit" id="btn_next" class="btn btn-laravel">{{ trans('installer.update.run') }}</button> @endif
         </div>
     </div>
     {!! Form::close() !!}
