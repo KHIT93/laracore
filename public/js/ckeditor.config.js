@@ -8,6 +8,7 @@ CKEDITOR.editorConfig = function( config ) {
 $(document).ready(function(){
     CKEDITOR.replace( '.wysiwyg', {
         filebrowserBrowseUrl : '/elfinder/ckeditor',
-        filebrowserImageBrowseUrl : '/elfinder/ckeditor'
+        filebrowserImageBrowseUrl : '/elfinder/ckeditor',
+
     });
 });

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Libraries\Installer;
 use App\Libraries\RequirementsChecker;
 use App\Libraries\StoragePermissionChecker;
+use App\Setting;
 use Illuminate\Http\Request;
 use App\User;
 use App\Http\Requests;
@@ -264,6 +265,18 @@ class InstallController extends Controller
                 Flash::error(trans('installer.failed.admin'))->important();
                 return redirect('installer/fail');
             }
+        }
+        try
+        {
+            Setting::create(['key' => 'site_name', 'value' => session('site_name')]);
+            Setting::create(['key' => 'site_slogan', 'value' => '']);
+            Setting::create(['key' => 'site_email', 'value' => session('site_email')]);
+            Setting::create(['key' => 'site_country', 'value' => session('site_country')]);
+        }
+        catch(\Exception $ex)
+        {
+            Flash::error(trans('installer.failed.settings'))->important();
+            return redirect('installer/fail');
         }
 
         return redirect('installer/finish');

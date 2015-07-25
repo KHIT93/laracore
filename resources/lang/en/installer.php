@@ -120,7 +120,8 @@ return [
         'migration' => 'An error occurred during the installation of the application database. Please see '.storage_path('logs').' for details',
         'seeding' => 'An error occurred during the configuration of the application database. Please see '.storage_path('logs').' for details',
         'app_key' => 'Could not update the application key',
-        'admin' => 'Could not create the administrator account'
+        'admin' => 'Could not create the administrator account',
+        'settings' => 'Could not configure the site settings'
     ],
     'php_version' => 'PHP Version',
     'admin' => 'Start customizing',

@@ -121,7 +121,8 @@ return [
         'migration' => 'Der opstod en fejl under installation af programmets database. Se venligst '.storage_path('logs').' for flere oplysninger',
         'seeding' => 'Der opstod en fejl under konfiguration af programmets database. Se venligst '.storage_path('logs').' for flere oplysninger',
         'app_key' => 'Kunne ikke opdatere program-nøglen',
-        'admin' => 'Kunne ikke oprette administrator konto'
+        'admin' => 'Kunne ikke oprette administrator konto',
+        'settings' => 'Kunne ikke foretage konfiguration af websites indstillinger'
     ],
     'php_version' => 'PHP Version',
     'admin' => 'Begynd tilpasningen',
