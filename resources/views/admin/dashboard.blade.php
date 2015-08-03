@@ -21,7 +21,7 @@
                         <span class="fa fa-pencil fa-5x"></span>
                     </div>
                     <div class="col-xs-9 text-right">
-                    <div class="huge">2</div>
+                    <div class="huge">{{ count(\App\Node::all()) }}</div>
                     <div>Nodes</div>
                     </div>
                 </div>
@@ -43,7 +43,7 @@
                         <span class="fa fa-user fa-5x"></span>
                     </div>
                     <div class="col-xs-9 text-right">
-                    <div class="huge">5</div>
+                    <div class="huge">{{ count(\App\User::all()) }}</div>
                     <div>Users</div>
                     </div>
                 </div>
