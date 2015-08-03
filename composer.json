@@ -13,7 +13,8 @@
         "khill/fontawesomephp" : "1.0.x",
 		"overtrue/laravel-lang": "dev-master",
         "zizaco/entrust": "dev-laravel-5",
-        "orangehill/iseed": "dev-master"
+        "orangehill/iseed": "dev-master",
+		"caffeinated/modules": "~2.0"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",
