@@ -153,6 +153,13 @@ Route::get('admin/themes/{theme}', 'ThemeController@apply');
 /**
  * Routing for Module Management.
  */
+Route::get('admin/modules', 'ModulesController@index');
+
+Route::get('admin/modules/{slug}/enable', 'ModulesController@enable');
+
+Route::get('admin/modules/{slug}/disable', 'ModulesController@disable');
+
+Route::post('admin/modules/{slug}/disable', 'ModulesController@postDisable');
 
 /**
  * Routing for User Management.
