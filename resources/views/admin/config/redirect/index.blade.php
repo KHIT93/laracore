@@ -23,7 +23,7 @@
                     @foreach($redirects as $redirect)
                     <tr>
                         <td>{{ $redirect->alias }}</td>
-                        <td>{{ $redirect->node()->first()->title }}</td>
+                        <td>{{ $redirect->source }}</td>
                         <td>{{ $redirect->created_at->diffForHumans() }}</td>
                         <td>{!! Html::link('admin/config/redirect/'.$redirect->id.'/delete', 'Delete', ['class' => 'btn btn-danger']) !!}</td>
                     </tr>
@@ -39,11 +39,11 @@
             {!! Form::open(['url' => 'admin/config/redirect/add']) !!}
             <div class="form-group">
                 {!! Form::label('alias', 'Path') !!}
-                {!! Form::text('alias', null, ['class' => 'form-control']) !!}
+                {!! Form::text('alias', null, ['class' => 'form-control', 'required']) !!}
             </div>
             <div class="form-group @if ($errors->has('meta.robots')) has-error @endif">
-                {!! Form::label('nid', 'Select content') !!}
-                {!! Form::select('nid', \App\Node::all()->lists('title', 'nid'), null, ['class' => 'form-control']) !!}
+                {!! Form::label('source', 'Choose source') !!}
+                {!! Form::text('source', null, ['class' => 'form-control', 'required']) !!}
             </div>
             <div class="form-group">
                 {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}

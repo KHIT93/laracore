@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Requests\CreateRedirectRequest;
 use App\Http\Controllers\Controller;
 use App\PathAlias;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Redirect;
 
 class RedirectController extends Controller
@@ -26,5 +27,10 @@ class RedirectController extends Controller
         PathAlias::create($request->all());
         \Flash::success('New redirection has been created');
         return redirect('admin/config/redirect');
+    }
+
+    public function resolve(PathAlias $path_alias)
+    {
+        return Route::dispatchToRoute(\Illuminate\Http\Request::create($path_alias->source));
     }
 }

@@ -53,7 +53,8 @@ class Page
             }
             else if($url[0] != 'auth' && $url[0] != 'admin')
             {
-                $entity = PathAlias::whereAlias(app('request')->path())->first()->node()->first();
+                $pathalias = PathAlias::whereAlias(app('request')->path())->first();
+                $entity = Node::find(explode('/', $pathalias->source)[1]);
                 if ($entity instanceof Node)
                 {
                     $page->_model = 'node';

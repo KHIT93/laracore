@@ -3,6 +3,7 @@
     {!! Form::label('alias', 'Path') !!}
     {!! Form::text('alias', null, ['class' => 'form-control']) !!}
 </div>
+<input type="hidden" name="source" value="{{ $source }}">
 <div class="form-group">
     {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
 </div>

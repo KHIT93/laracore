@@ -44,15 +44,6 @@ class Node extends Model
     }
 
     /**
-     * Gets all path aliases for this node.
-     * @return Array
-     */
-    public function aliases()
-    {
-        return $this->hasMany('App\PathAlias', 'nid');
-    }
-
-    /**
      * Gets all nodes that are published
      * @param $query
      */

@@ -23,24 +23,7 @@
             <div class="tab-pane fade in active" id="tab-main">
                 <br>
                 @include('admin.partials._content_form')
-                @if(count($urls))
-                <fieldset>
-                    <legend>URL</legend>
-                    <table class="table table-striped">
-                        <tbody>
-                            @foreach($urls as $url)
-                            <tr>
-                                <td>{{ $url->alias }}</td>
-                                <td>{!! Html::link('admin/config/redirects/'.$url->id.'/delete', 'Delete', ['class' => 'btn btn-danger']) !!}</td>
-                            </tr>
-                            @endforeach
-                            <tr>
-                                <td colspan="2">{!! Form::button('Add', ['class' => 'btn btn-info', 'data-toggle' => 'modal', 'data-target' => '#redirectModal']) !!}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </fieldset>
-                @endif
+
             </div>
             @include('admin.partials._content_form_metadata')
         </div>
@@ -60,7 +43,7 @@
               <h4 class="modal-title" id="myModalLabel">Add new URL alias for node {{ $node->title }}</h4>
             </div>
             <div class="modal-body">
-              @include('admin.partials._redirect_form')
+              @include('admin.partials._redirect_form', ['source' => 'node/'.$node->nid])
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

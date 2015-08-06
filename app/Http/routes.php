@@ -254,8 +254,8 @@ Route::get('installer/run', 'InstallController@run');
 Route::post('installer/run', 'InstallController@postRun');
 Route::get('installer/finish', 'InstallController@finish');
 Route::get('installer/fail', 'InstallController@fail');
-
 /*
  * Default route for using path aliases instead of node/{nid}.
  */
-Route::get('{path_alias}', 'NodeController@resolve');
+//Route::get('{path_alias}', 'NodeController@resolve');
+Route::get('{path_alias}', 'RedirectController@resolve');

@@ -63,7 +63,7 @@ class NodeController extends Controller
         $metadata = Metadata::create($data['meta']);
         $url_trim = trim($data['url']['alias']);
         $url = (empty($url_trim) || $url_trim == '') ? Str::slug($node->title) : Str::slug($data['url']['alias']);
-        PathAlias::create(['nid' => $node->nid, 'alias' => $url]);
+        PathAlias::create(['source' => 'node/'.$node->nid, 'alias' => $url]);
         \Flash::success('The new node has been created');
         return redirect('admin/content');
     }
@@ -125,8 +125,7 @@ class NodeController extends Controller
     {
         eval_permission('access_admin_content');
         $meta = $node->metadata()->first();
-        $urls = $node->aliases()->getResults();
-        return view('admin.node.form_edit', compact('node', 'meta', 'urls'));
+        return view('admin.node.form_edit', compact('node', 'meta'));
     }
 
     /**
