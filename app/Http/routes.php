@@ -27,9 +27,12 @@ Route::bind('path_alias', function ($value) {
     }*/
 });
 Route::bind('node', function ($nid) {
-    try {
+    try
+    {
         return App\Node::findOrFail($nid);
-    } catch (Illuminate\Database\Eloquent\ModelNotFoundException $ex) {
+    }
+    catch (Illuminate\Database\Eloquent\ModelNotFoundException $ex)
+    {
         throw new \Symfony\Component\HttpKernel\Exception\HttpException(404);
     }
 });
@@ -43,7 +46,14 @@ Route::bind('block', function ($bid) {
     return App\Block::findorFail($bid);
 });
 Route::bind('user', function ($uid) {
-    return App\User::findOrFail($uid);
+    try
+    {
+        return App\User::findOrFail($uid);
+    }
+    catch(\Illuminate\Database\Eloquent\ModelNotFoundException $ex)
+    {
+        throw new \Symfony\Component\HttpKernel\Exception\HttpException(404);
+    }
 });
 Route::bind('role', function ($rid) {
     return App\Role::findOrFail($rid);
