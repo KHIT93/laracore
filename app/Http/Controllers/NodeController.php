@@ -34,8 +34,7 @@ class NodeController extends Controller
     public function index()
     {
         eval_permission('access_admin_content');
-        $data = Node::all();
-        return view('admin.node.index', ['nodes' => $data]);
+        return view('admin.node.index', ['nodes' => Node::paginate(25)]);
     }
 
     /**

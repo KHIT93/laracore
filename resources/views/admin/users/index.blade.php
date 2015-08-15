@@ -50,6 +50,7 @@
                         @endforeach
                     </tbody>
                 </table>
+                {!! $users->render() !!}
                 @else
                 <p>There are currently no users on the website. If you see this message, please contact your system administrator right away as your website og webserver might have been compromised.</p>
                 @endif

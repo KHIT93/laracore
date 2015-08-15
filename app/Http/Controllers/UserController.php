@@ -27,7 +27,7 @@ class UserController extends Controller
     public function index()
     {
         eval_permission('access_admin_users');
-        return view('admin.users.index', ['users' => User::all()]);
+        return view('admin.users.index', ['users' => User::paginate(25)]);
     }
 
     /**

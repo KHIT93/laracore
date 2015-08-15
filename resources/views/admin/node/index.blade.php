@@ -39,6 +39,7 @@
                 @endforeach
             </tbody>
         </table>
+        {!! $nodes->render() !!}
         @else
         <p>There is currently no content on the website. Why not {!! Html::link('node/add', 'create') !!} something for your visitors to look at?</p>
         @endif
