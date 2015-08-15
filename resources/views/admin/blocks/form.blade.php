@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
     <div class="col-sm-12">
-        <h1 class="page-header">@if($block && !is_null($block->bid)) Edit <em>$block->title</em> @else Add new block @endif</h1>
+        <h1 class="page-header">@if($block && !is_null($block->bid)) Edit <em>{{ $block->title }}</em> @else Add new block @endif</h1>
     </div>
 </div>
 <div class="row">
@@ -38,13 +38,7 @@
                 </div>
                 <div class="form-group @if ($errors->has('section')) has-error @endif">
                     {!! Form::label('section', 'Section') !!}
-                    {!! Form::select('section', [
-                        0 => '- None -',
-                        'header' => 'Header',
-                        'navigation' => 'Navigation',
-                        'content' => 'Content',
-                        'footer' => 'Footer',
-                    ],0, ['class' => 'form-control']) !!}
+                    {!! Form::select('section', Theme::sections(), (($block->section) ? $block->section : 0), ['class' => 'form-control']) !!}
                 </div>
             </div>
             <div class="tab-pane fade in" id="tab-meta">
