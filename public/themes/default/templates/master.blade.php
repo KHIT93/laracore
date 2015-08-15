@@ -22,6 +22,6 @@
     @yield('page')
     <!-- Scripts -->
     <script src="{{ asset('/js/plugins.js') }}"></script>
-    {{ Theme::scripts() }}
+    {!! Theme::scripts() !!}
 </body>
 </html>

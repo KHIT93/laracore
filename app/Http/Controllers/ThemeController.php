@@ -22,7 +22,7 @@ class ThemeController extends Controller
     {
         $themes = \File::directories(base_path('public/themes'));
         foreach ($themes as $key => $theme) {
-            $themes[$key] = Yaml::parse(file_get_contents($theme . '/' . str_replace(base_path('public/themes') . '/', '', $theme) . '.yml'));
+            $themes[$key] = json_decode(file_get_contents($theme . '/' . str_replace(base_path('public/themes') . '/', '', $theme) . '.json'), true);
             $themes[$key]['machine'] = str_replace(base_path('public/themes') . '/', '', $theme);
         }
 

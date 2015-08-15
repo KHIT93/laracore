@@ -29,7 +29,7 @@ class Theme
         } else if (view()->exists(self::current() . '.templates.' . $view_name)) {
             return self::current() . '.templates.' . $view_name;
         } else {
-            return 'default.' . $view_name;
+            return 'default.templates.' . $view_name;
         }
     }
 
@@ -40,8 +40,8 @@ class Theme
      */
     public static function info($theme_name)
     {
-        if (file_exists(public_path('themes/' . $theme_name . '/' . $theme_name . '.yml'))) {
-            return Yaml::parse(file_get_contents(public_path('themes/' . $theme_name . '/' . $theme_name . '.yml')));
+        if (file_exists(public_path('themes/' . $theme_name . '/' . $theme_name . '.json'))) {
+            return json_decode(file_get_contents(public_path('themes/' . $theme_name . '/' . $theme_name . '.json')), true);
         }
         return null;
     }
@@ -67,7 +67,7 @@ class Theme
         if ($theme_name == null) {
             $theme_info_yml = self::info(self::current());
             if (isset($theme_info_yml['css'])) {
-                foreach ($theme_info_yml['css'] as $path => $name) {
+                foreach ($theme_info_yml['css'] as $path) {
                     $styles .= view('partials._style', ['stylesheet' => 'themes/' . self::current() . '/' . $path]) . "\n";
                 }
             }
@@ -75,7 +75,7 @@ class Theme
         } else {
             $theme_info_yml = self::info($theme_name);
             if (isset($theme_info_yml['css'])) {
-                foreach ($theme_info_yml['css'] as $path => $name) {
+                foreach ($theme_info_yml['css'] as $path) {
                     $styles .= view('partials._style', ['stylesheet' => 'themes/' . $theme_name . '/' . $path]) . "\n";
                 }
             }
@@ -94,14 +94,14 @@ class Theme
         if ($theme_name == null) {
             $theme_info_yml = self::info(self::current());
             if (isset($theme_info_yml['js'])) {
-                foreach ($theme_info_yml['js'] as $path => $name) {
+                foreach ($theme_info_yml['js'] as $path) {
                     $scripts .= view('partials._script', ['script' => 'themes/' . self::current() . '/' . $path]) . "\n";
                 }
             }
         } else {
             $theme_info_yml = self::info($theme_name);
             if (isset($theme_info_yml['js'])) {
-                foreach ($theme_info_yml['js'] as $path => $name) {
+                foreach ($theme_info_yml['js'] as $path) {
                     $scripts .= view('partials._script', ['script' => 'themes/' . $theme_name . '/' . $path]) . "\n";
                 }
             }

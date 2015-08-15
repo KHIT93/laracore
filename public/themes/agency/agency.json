@@ -1,0 +1,30 @@
+{
+  "name": "Agency",
+  "description": "Agency is a stylish, Bootstrap theme for agencies and small businesses.",
+  "core": "5.x",
+  "sections":
+  {
+    "navigation": "Navigation",
+    "header": "Top Bar",
+    "highlighted": "Highlighted",
+    "help": "Help",
+    "content": "Content",
+    "sidebar_first": "Primary",
+    "sidebar_second": "Secondary",
+    "footer": "Footer",
+    "page_top": "Page top",
+    "page_bottom": "Page bottom"
+  },
+  "css":
+  [
+    "css/agency.css"
+  ],
+  "js":
+  [
+    "js/bootstrap.min.js",
+    "js/agency.js",
+    "js/classie.js",
+    "js/cbpAnimatedHeader.js",
+    "js/jqBootstrapValidation.js"
+  ]
+}

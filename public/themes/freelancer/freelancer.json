@@ -1,0 +1,32 @@
+{
+  "name": "Freelancer",
+  "description": "Freelancer is a one page Bootstrap portfolio theme for freelancers.",
+  "version": "1.0",
+  "core": "5.x",
+  "sections":
+  {
+    "navigation": "Navigation",
+    "header": "Top Bar",
+    "highlighted": "Highlighted",
+    "help": "Help",
+    "content": "Content",
+    "sidebar_first": "Primary",
+    "sidebar_second": "Secondary",
+    "footer": "Footer",
+    "page_top": "Page top",
+    "page_bottom": "Page bottom"
+  },
+  "css":
+  [
+    "css/bootstrap.min.css",
+    "css/freelancer.css",
+    "font-awesome/css/font-awesome.min.css"
+  ],
+  "js":
+  [
+    "js/freelancer.js",
+    "js/classie.js",
+    "js/cbpAnimatedHeader.js",
+    "js/jqBootstrapValidation.js"
+  ]
+}
