@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Requests\BlockRequest;
 use App\Http\Controllers\Controller;
 use App\Block;
+use App\Libraries\Theme;
 use App\Setting;
 use Illuminate\Http\Request;
 
@@ -26,7 +27,11 @@ class BlockController extends Controller
     public function index()
     {
         eval_permission('access_admin_blocks');
-        return view('admin.blocks.index', ['blocks' => Block::all()]);
+        $blocks = array();
+        foreach (Theme::sections() as $key => $name) {
+            $blocks[$key] = Block::whereSection($key)->get();
+        }
+        return view('admin.blocks.index', ['blocks' => $blocks]);
     }
 
     /**

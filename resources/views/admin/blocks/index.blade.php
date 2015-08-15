@@ -24,17 +24,11 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($blocks as $block)
-                <tr>
-                    <td>
-                        {{ $block->description }}
-                    </td>
-                    <td>{{ ucfirst($block->section) }}</td>
-                    <td>
-                        {!! Html::link('admin/blocks/'.$block->bid.'/edit', 'Edit', ['class' => 'btn btn-primary']) !!}
-                        {!! Html::link('admin/blocks/'.$block->bid.'/delete', 'Delete', ['class' => 'btn btn-danger']) !!}
-                    </td>
-                </tr>
+                @foreach(Theme::sections() as $key => $section)
+                    <tr>
+                        <td colspan="3" class="bg-info">{{ $section }}</td>
+                    </tr>
+                    @include('admin.blocks.partials._blocks', ['content' => $blocks[$key]])
                 @endforeach
             </tbody>
         </table>
