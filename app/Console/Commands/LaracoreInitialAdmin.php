@@ -50,7 +50,7 @@ class LaracoreInitialAdmin extends Command
             $user->uid = 1;
             $user->name = ($this->option('name') != '') ? $this->option('name') : 'Administrator';
             $user->email = $this->argument('email');
-            $user->password = bcrypt($this->argument('password'));
+            $user->password = $this->argument('password');
             $user->enabled = 1;
             if($user->save())
             {
