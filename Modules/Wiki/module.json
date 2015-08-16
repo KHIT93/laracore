@@ -1,0 +1,7 @@
+{
+	"name": "Wiki pages",
+	"slug": "wiki",
+	"version": "1.0",
+	"description": "This is the description for the Wiki module.",
+	"enabled": false
+}
