@@ -13,7 +13,7 @@ class Block extends Model
         'theme',
         'position',
         'section',
-        'visbility',
+        'visibility',
         'pages',
         'title',
         'description',
