@@ -12,13 +12,13 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        'App\Console\Commands\Inspire',
-        'App\Console\Commands\LaracoreInitialization',
-        'App\Console\Commands\LaracoreInitialAdmin',
-        'App\Console\Commands\LaracoreMaintenanceEnable',
-        'App\Console\Commands\LaracoreMaintenanceDisable',
-        'App\Console\Commands\LaracoreReset',
-        'App\Console\Commands\LaracoreUpdate',
+        \App\Console\Commands\Inspire::class,
+        \App\Console\Commands\LaracoreInitialization::class,
+        \App\Console\Commands\LaracoreInitialAdmin::class,
+        \App\Console\Commands\LaracoreMaintenanceEnable::class,
+        \App\Console\Commands\LaracoreMaintenanceDisable::class,
+        \App\Console\Commands\LaracoreReset::class,
+        \App\Console\Commands\LaracoreUpdate::class,
     ];
 
     /**
