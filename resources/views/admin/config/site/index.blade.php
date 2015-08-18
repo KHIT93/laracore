@@ -25,7 +25,7 @@
         </div>
         <div class="form-group @if ($errors->has('site_home')) has-error @endif">
             {!! Form::label('site_home', 'Select homepage') !!}
-            {!! Form::select('site_home', $nodes, Setting::get('site_home'), ['class' => 'form-control']) !!}
+            {!! Form::text('site_home', Setting::get('site_home'), ['class' => 'form-control']) !!}
         </div>
         <hr>
         <div class="form-group">

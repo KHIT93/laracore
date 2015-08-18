@@ -42,7 +42,7 @@
                 {!! Form::text('alias', null, ['class' => 'form-control', 'required']) !!}
             </div>
             <div class="form-group @if ($errors->has('meta.robots')) has-error @endif">
-                {!! Form::label('source', 'Choose source') !!}
+                {!! Form::label('source', 'Destination') !!}
                 {!! Form::text('source', null, ['class' => 'form-control', 'required']) !!}
             </div>
             <div class="form-group">

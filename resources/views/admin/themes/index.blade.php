@@ -21,24 +21,22 @@
     <div class="col-sm-12">
         @if(count($themes))
         @foreach($themes as $theme)
-        <div class="col-sm-6">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">{{ $theme['name'] }}</h3>
-                </div>
-                <div class="panel-body">
-                    @if(file_exists(base_path('public/themes/'.$theme['machine']).'/screenshot.jpg'))
+        <div class="row">
+            <div class="col-md-6">
+                @if(file_exists(base_path('public/themes/'.$theme['machine']).'/screenshot.png'))
+                    <img src="{{ asset('themes/'.$theme['machine'].'/screenshot.png') }}" class="img-responsive" title="{{ $theme['description'] }}">
+                @endif
+                @if(file_exists(base_path('public/themes/'.$theme['machine']).'/screenshot.jpg'))
                     <img src="{{ asset('themes/'.$theme['machine'].'/screenshot.jpg') }}" class="img-responsive" title="{{ $theme['description'] }}">
-                    @endif
-                    @if(file_exists(base_path('public/themes/'.$theme['machine']).'/screenshot.png'))
-                        <img src="{{ asset('themes/'.$theme['machine'].'/screenshot.png') }}" class="img-responsive" title="{{ $theme['description'] }}">
-                    @endif
-                </div>
-                <div class="panel-footer">
-                    {!! Html::link('admin/themes/'.$theme['machine'], 'Apply theme', ['class' => 'btn btn-info']) !!}
-                </div>
+                @endif
+            </div>
+            <div class="col-md-6">
+                <h3>{{ $theme['name'] }}</h3>
+                <p>{{ $theme['description'] }}</p>
+                {!! Html::link('admin/themes/'.$theme['machine'], 'Apply theme', ['class' => 'btn btn-info']) !!}
             </div>
         </div>
+        <hr>
         @endforeach
         @else
         <p>There are currently no custom themes installed</p>

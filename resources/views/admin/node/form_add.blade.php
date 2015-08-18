@@ -84,3 +84,7 @@
     </div>
 </div>
 @stop
+@section('bottom-scripts')
+    <script src="{{ asset('/js/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('/js/ckeditor.config.js') }}"></script>
+@endsection
