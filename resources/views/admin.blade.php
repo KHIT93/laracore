@@ -7,6 +7,7 @@
 	<title>Administration</title>
 
 	<link href="{{ asset('/css/admin.css') }}" rel="stylesheet">
+	<link href="{{ asset('/css/admin-extra.css') }}" rel="stylesheet">
     <link href="{{ asset('/favicon.ico') }}" rel="shortcut icon" type="image/x-icon">
     @yield('header-styles')
 	<!-- Fonts -->

@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @yield('header_info', '<title>Laracore - undefined title</title>')
-    <link href="{{ asset('/css/styles.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/addons.css') }}" rel="stylesheet">
     {!! Theme::styles() !!}
     <link href="{{ asset('/favicon.ico') }}" rel="shortcut icon" type="image/x-icon">
     <!-- Fonts -->

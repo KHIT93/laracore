@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ trans('installer.update.laracore') }} | {{ App\Setting::get('site_name') }}</title>
 
-    <link href="{{ asset('/css/styles.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/addons.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/bootstrap.vertical-tabs.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/installer.css') }}" rel="stylesheet">
     <link href="{{ asset('/favicon.ico') }}" rel="shortcut icon" type="image/x-icon">

@@ -12,7 +12,9 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.less('app.less', 'resources/assets/css');
+    //mix.less('app.less', 'resources/assets/css');
+    mix.sass('app.scss', 'public/css/app.css');
+    mix.sass('admin.scss', 'public/css/admin.css')
     mix.styles([
         'css/app.css',
         'css/custom.css',
@@ -20,17 +22,17 @@ elixir(function(mix) {
         'js/jquery.select2/select2.css',
         'js/jquery.select2/select2-bootstrap.css',
         'js/bootstrap.checkbox/bootstrap-checkbox.css'
-    ], 'public/css/styles.css', 'resources/assets');
+    ], 'public/css/addons.css', 'resources/assets');
     mix.styles([
-        'css/app.css',
-        'css/font-awesome.min.css',
-        'css/admin/metisMenu.css',
-        'css/admin/sb-admin-2.css',
-        'css/admin/timeline.css',
+        //'css/app.css',
+        //'css/font-awesome.min.css',
+        //'css/admin/metisMenu.css',
+        //'css/admin/sb-admin-2.css',
+        //'css/admin/timeline.css',
         'js/jquery.select2/select2.css',
         'js/jquery.select2/select2-bootstrap.css',
         'js/bootstrap.checkbox/bootstrap-checkbox.css'
-    ], 'public/css/admin.css', 'resources/assets');
+    ], 'public/css/admin-extra.css', 'resources/assets');
     mix.scripts([
         'jquery.min.js',
         'bootstrap.min.js',
