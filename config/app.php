@@ -99,6 +99,18 @@ return [
 
 	/*
 	|--------------------------------------------------------------------------
+	| Application Core Version
+	|--------------------------------------------------------------------------
+	|
+	| The Laracore Version defines which version of Laracore is being used and
+	| will primarily be used to compare the installed version with the version
+	| in the Github Repository, so that users can be notified to update
+	|
+	*/
+
+	'laracore_version' => '1.0.0',
+	/*
+	|--------------------------------------------------------------------------
 	| Autoloaded Service Providers
 	|--------------------------------------------------------------------------
 	|
