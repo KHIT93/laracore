@@ -1,12 +1,15 @@
 <?php namespace App\Libraries;
 
+use App\LogEntry;
 use App\Metadata;
 use App\Node;
 use App\Setting;
 use App\User;
 use App\PathAlias;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 //use App\Metadata;
 
@@ -30,47 +33,69 @@ class Page
     {
         $page = (self::$_instance instanceof Page) ? self::$_instance : new Page();
         $url = explode('/', app('request')->path());
-        if (in_array($url[0], self::$_models))
+        if(app(\Illuminate\Http\Response::class)->getStatusCode() != 200)
         {
-            $page->_model = $url[0];
-            if ($page->entity instanceof Node)
+            if (in_array($url[0], self::$_models))
             {
-                $page->_model = 'node';
-                $page->_id = $page->entity->nid;
-            }
-            else if($page->entity instanceof User)
-            {
-                $page->_model = 'user';
-                $page->_id = $page->entity->uid;
-            }
-        }
-        else
-        {
-            if(app('request')->path() == '/')
-            {
-                $page->_model = 'node';
-                $page->_id = Setting::get('site_home');
-            }
-            else if($url[0] != 'auth' && $url[0] != 'admin')
-            {
-                $pathalias = PathAlias::whereAlias(app('request')->path())->first();
-                $entity = Node::find(explode('/', $pathalias->source)[1]);
-                if ($entity instanceof Node)
+                $page->_model = $url[0];
+                if ($page->entity instanceof Node)
                 {
                     $page->_model = 'node';
-                    $page->_id = $entity->nid;
+                    $page->_id = $page->entity->nid;
                 }
-                else if($entity instanceof User)
+                else if($page->entity instanceof User)
                 {
                     $page->_model = 'user';
-                    $page->_id = $entity->uid;
+                    $page->_id = $page->entity->uid;
                 }
             }
+            else
+            {
+                self::initFromAlias($page, $url);
+            }
+            $page->title = ($page->title) ? $page->title : Setting::get(('site_name'));
+            $page->getMetaData();
         }
-        $page->title = ($page->title) ? $page->title : Setting::get(('site_name'));
-        $page->getMetaData();
         self::$_instance = $page;
         return self::$_instance;
+    }
+
+    protected static function initFromAlias(Page $page, $url)
+    {
+        if(app('request')->path() == '/')
+        {
+            $page->_model = 'node';
+            $page->_id = Setting::get('site_home');
+        }
+        else if($url[0] != 'auth' && $url[0] != 'admin')
+        {
+            $pathalias = PathAlias::whereAlias(app('request')->path())->first();
+            $entity = null;
+            try
+            {
+                $entity = Node::findorFail(explode('/', $pathalias->source)[1]);
+            }
+            catch(ModelNotFoundException $ex)
+            {
+                LogEntry::exception($ex);
+                throw new \Symfony\Component\HttpKernel\Exception\HttpException(404);
+            }
+            catch(\ErrorException $ex)
+            {
+                LogEntry::exception($ex);
+                throw new \Symfony\Component\HttpKernel\Exception\HttpException(404);
+            }
+            if ($entity instanceof Node)
+            {
+                $page->_model = 'node';
+                $page->_id = $entity->nid;
+            }
+            else if($entity instanceof User)
+            {
+                $page->_model = 'user';
+                $page->_id = $entity->uid;
+            }
+        }
     }
 
     public static function getInstance()

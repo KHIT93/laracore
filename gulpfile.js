@@ -16,9 +16,9 @@ elixir(function(mix) {
     mix.sass('app.scss', 'public/css/app.css');
     mix.sass('admin.scss', 'public/css/admin.css')
     mix.styles([
-        'css/app.css',
-        'css/custom.css',
-        'css/font-awesome.min.css',
+        //'css/app.css',
+        //'css/custom.css',
+        //'css/font-awesome.min.css',
         'js/jquery.select2/select2.css',
         'js/jquery.select2/select2-bootstrap.css',
         'js/bootstrap.checkbox/bootstrap-checkbox.css'

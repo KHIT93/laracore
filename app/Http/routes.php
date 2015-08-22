@@ -16,15 +16,23 @@
  */
 
 Route::bind('path_alias', function ($value) {
-    return App\PathAlias::where('alias', $value)->first();
-    /*try
+    /*$alias = App\PathAlias::where('alias', $value)->first();
+    if($alias instanceof App\PathAlias)
     {
-        return App\PathAlias::where('alias', $value)->first();
+        return $alias;
+    }
+    else
+    {
+        throw new \Symfony\Component\HttpKernel\Exception\HttpException(404);
+    }*/
+    try
+    {
+        return App\PathAlias::whereAlias($value)->firstOrFail();
     }
     catch(Illuminate\Database\Eloquent\ModelNotFoundException $ex)
     {
         throw new \Symfony\Component\HttpKernel\Exception\HttpException(404);
-    }*/
+    }
 });
 Route::bind('node', function ($nid) {
     try
@@ -241,9 +249,10 @@ Route::post('admin/config/regional/translate/{translation}', 'RegionalController
  * Default controller routes from Laravel.
  */
 Route::controllers([
-    'auth' => 'Auth\AuthController',
-    'password' => 'Auth\PasswordController',
-    'admin/config/system' => 'ConfigurationController'
+    'auth'                  => 'Auth\AuthController',
+    'password'              => 'Auth\PasswordController',
+    'admin/config/system'   => 'ConfigurationController',
+    'admin/reports'         => 'ReportController'
 ]);
 
 /**

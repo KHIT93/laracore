@@ -1,6 +1,7 @@
 <?php namespace App\Exceptions;
 
 use App\Libraries\Page;
+use App\LogEntry;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\HttpException;
@@ -27,6 +28,7 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $e)
     {
+        LogEntry::exception($e);
         return parent::report($e);
     }
 
