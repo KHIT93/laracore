@@ -30,7 +30,7 @@ class AdminController extends Controller
             }
         }
         //dd(\App\MenuItem::where('mid', '=', 2)->get());
-        return view('admin.dashboard', ['items' => $items]);
+        return view('admin.dashboard', ['items' => $items, 'updates' => [], 'issues' => []]);
     }
 
 }

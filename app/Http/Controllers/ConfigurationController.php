@@ -67,25 +67,6 @@ class ConfigurationController extends Controller
         return redirect('admin/config');
     }
 
-    public function getCron()
-    {
-        return view('admin.config.maintenance.cron', ['tasks' => ScheduledTask::all()]);
-    }
-
-    public function getCronExecute()
-    {
-        \Artisan::call('schedule:run');
-        \Flash::info('Cron execution has been started. Any errors are shown below');
-        return redirect('admin/config/system/cron');
-    }
-
-    public function postCron(Request $request)
-    {
-        ScheduledTask::create($request->all());
-        \Flash::success('The new task has been created');
-        return redirect('admin/config/system/cron');
-    }
-
     public function textFormats()
     {
         return view('admin.config.textformats.index');

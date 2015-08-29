@@ -25,7 +25,6 @@ class SettingsTableSeeder extends Seeder
         Setting::create(['key' => 'site_theme', 'value' => 'default']);
         Setting::create(['key' => 'site_maintenance', 'value' => '0']);
         Setting::create(['key' => 'maintenance_text', 'value' => 'We are currently making some changes and will be back shortly.']);
-        Setting::create(['key' => 'cron_interval', 'value' => '10800']);
     }
 
 }
