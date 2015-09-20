@@ -1,10 +1,10 @@
 <?php namespace App\Exceptions;
 
-use App\Libraries\Page;
-use App\LogEntry;
 use Exception;
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use App\LogEntry;
+use App\Libraries\Page;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
 {
