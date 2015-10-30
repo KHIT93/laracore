@@ -1,7 +1,7 @@
 <?php namespace App\Libraries;
 
-use App\Block;
-use App\Setting;
+use App\Models\Block;
+use App\Models\Setting;
 use Symfony\Component\Yaml\Yaml;
 
 class Theme

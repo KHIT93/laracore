@@ -22,7 +22,7 @@ class AdminController extends Controller
     public function index()
     {
         eval_permission('access_admin_dashboard');
-        $items = \App\MenuItem::where('mid', '=', 2)->get();
+        $items = \App\Models\MenuItem::where('mid', '=', 2)->get();
         foreach ($items as $key => $item) {
             if ($item->parent > 0) {
                 $items[$item->parent]->childs[] = $item;

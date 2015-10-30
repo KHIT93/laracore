@@ -4,7 +4,7 @@ use App\Http\Requests;
 use App\Http\Requests\UserRequest;
 use App\Http\Controllers\Controller;
 use App\Libraries\Page;
-use App\User;
+use App\Models\User;
 
 use Illuminate\Http\Request;
 

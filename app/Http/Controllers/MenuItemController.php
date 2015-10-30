@@ -2,8 +2,8 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\MenuItem;
-use App\Menu;
+use App\Models\MenuItem;
+use App\Models\Menu;
 use App\Http\Requests\MenuItemRequest;
 
 use Illuminate\Http\Request;

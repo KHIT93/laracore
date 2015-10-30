@@ -206,7 +206,7 @@ return [
         'Html'      => Collective\Html\HtmlFacade::class,
         'Flash'     => Laracasts\Flash\Flash::class,
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
-        'Setting'   => App\Setting::class,
+        'Setting'   => App\Models\Setting::class,
         'Theme'     => App\Libraries\Theme::class
 
 	],

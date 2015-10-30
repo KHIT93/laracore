@@ -1,7 +1,7 @@
 <?php namespace App\Exceptions;
 
 use Exception;
-use App\LogEntry;
+use App\Models\LogEntry;
 use App\Libraries\Page;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;

@@ -1,4 +1,4 @@
-<?php namespace App;
+<?php namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -19,17 +19,17 @@ class MenuItem extends Model
 
     public function menu()
     {
-        return $this->belongsTo('App\Menu', 'mid');
+        return $this->belongsTo(\App\Models\Menu::class, 'mid');
     }
 
     public function children()
     {
-        return $this->hasMany('App\MenuItem', 'parent', 'id');
+        return $this->hasMany(\App\Models\MenuItem::class, 'parent', 'id');
     }
 
     public function parent()
     {
-        return $this->belongsTo('App\MenuItem', 'id', 'parent');
+        return $this->belongsTo(\App\Models\MenuItem::class, 'id', 'parent');
     }
 
 }

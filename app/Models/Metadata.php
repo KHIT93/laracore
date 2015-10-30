@@ -1,4 +1,4 @@
-<?php namespace App;
+<?php namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -27,6 +27,6 @@ class Metadata extends Model
      */
     public function node()
     {
-        return $this->belongsTo('App\Node', 'nid', 'nid');
+        return $this->belongsTo(\App\Models\Node::class, 'nid', 'nid');
     }
 }

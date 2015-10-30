@@ -3,9 +3,9 @@
 use App\Http\Requests;
 use App\Http\Requests\BlockRequest;
 use App\Http\Controllers\Controller;
-use App\Block;
+use App\Models\Block;
 use App\Libraries\Theme;
-use App\Setting;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 
 class BlockController extends Controller

@@ -5,10 +5,10 @@ use App\Http\Requests\NodeRequest;
 use App\Http\Controllers\Controller;
 use App\Libraries\Page;
 use App\Libraries\Theme;
-use App\Node;
-use App\Metadata;
-use App\PathAlias;
-use App\Setting;
+use App\Models\Node;
+use App\Models\Metadata;
+use App\Models\PathAlias;
+use App\Models\Setting;
 
 use Collective\Html\HtmlFacade;
 use Illuminate\Http\Request;

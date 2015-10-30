@@ -1,7 +1,7 @@
 <?php namespace App\Libraries;
 
-use App\Setting;
-use App\Translation;
+use App\Models\Setting;
+use App\Models\Translation;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class UI

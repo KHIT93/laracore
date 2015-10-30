@@ -4,8 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Symfony\Component\Yaml\Yaml;
 use Illuminate\Http\Request;
-use App\Setting;
-use KHIT\Theme;
+use App\Models\Setting;
 
 class ThemeController extends Controller
 {

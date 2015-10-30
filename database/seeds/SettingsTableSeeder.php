@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
-use App\Setting;
+use App\Models\Setting;
 
 class SettingsTableSeeder extends Seeder
 {

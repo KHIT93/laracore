@@ -16,7 +16,7 @@
  */
 
 Route::bind('path_alias', function ($value) {
-    /*$alias = App\PathAlias::where('alias', $value)->first();
+    /*$alias = App\Models\PathAlias::where('alias', $value)->first();
     if($alias instanceof App\PathAlias)
     {
         return $alias;
@@ -27,7 +27,7 @@ Route::bind('path_alias', function ($value) {
     }*/
     try
     {
-        return App\PathAlias::whereAlias($value)->firstOrFail();
+        return App\Models\PathAlias::whereAlias($value)->firstOrFail();
     }
     catch(Illuminate\Database\Eloquent\ModelNotFoundException $ex)
     {
@@ -37,7 +37,7 @@ Route::bind('path_alias', function ($value) {
 Route::bind('node', function ($nid) {
     try
     {
-        return App\Node::findOrFail($nid);
+        return App\Models\Node::findOrFail($nid);
     }
     catch (Illuminate\Database\Eloquent\ModelNotFoundException $ex)
     {
@@ -45,18 +45,18 @@ Route::bind('node', function ($nid) {
     }
 });
 Route::bind('menu', function ($mid) {
-    return App\Menu::findOrFail($mid);
+    return App\Models\Menu::findOrFail($mid);
 });
 Route::bind('menu_item', function ($id) {
-    return App\MenuItem::findOrFail($id);
+    return App\Models\MenuItem::findOrFail($id);
 });
 Route::bind('block', function ($bid) {
-    return App\Block::findorFail($bid);
+    return App\Models\Block::findorFail($bid);
 });
 Route::bind('user', function ($uid) {
     try
     {
-        return App\User::findOrFail($uid);
+        return App\Models\User::findOrFail($uid);
     }
     catch(\Illuminate\Database\Eloquent\ModelNotFoundException $ex)
     {
@@ -64,10 +64,10 @@ Route::bind('user', function ($uid) {
     }
 });
 Route::bind('role', function ($rid) {
-    return App\Role::findOrFail($rid);
+    return App\Models\Role::findOrFail($rid);
 });
 Route::bind('translation', function($id){
-    return App\Translation::findOrFail($id);
+    return App\Models\Translation::findOrFail($id);
 });
 
 /**

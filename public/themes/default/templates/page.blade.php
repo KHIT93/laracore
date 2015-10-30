@@ -52,7 +52,7 @@
                         {!! $page->sidebar_first !!}
                     </aside>  <!-- End first aside. -->
                 @endif
-                <section>
+                <section class="@if($page->sidebar_first && $page->sidebar_second) col-md-6 @elseif(($page->sidebar_first && !$page->sidebar_second) || (!$page->sidebar_first && $page->sidebar_second)) col-md-9 @else col-md-12" @endif>
                     @if($page->highlighted)
                         <div class="highlighted jumbotron">{!! $page->highlighted !!}</div>
                     @endif

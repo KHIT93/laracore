@@ -7,9 +7,9 @@ namespace App\Composers\Views;
 use App\Libraries\Page;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Schema;
-use App\Setting;
+use App\Models\Setting;
 use App\Libraries\Theme;
-use App\Block;
+use App\Models\Block;
 
 class InstallerViewComposer implements ViewComposer
 {

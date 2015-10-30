@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Symfony\Component\HttpKernel\Exception\HttpException;
@@ -13,7 +13,7 @@ class LogEntry extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\User', 'uid', 'uid');
+        return $this->belongsTo(\App\Models\User::class, 'uid', 'uid');
     }
 
     public static function exception(\Exception $ex)

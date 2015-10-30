@@ -2,8 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Setting;
-use App\ScheduledTask;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 
 class ConfigurationController extends Controller
@@ -26,7 +25,7 @@ class ConfigurationController extends Controller
     public function getSite()
     {
         eval_permission('access_admin_config');
-        return view('admin.config.site.index', ['nodes' => \App\Node::all()->lists('title', 'nid')]);
+        return view('admin.config.site.index', ['nodes' => \App\Models\Node::all()->lists('title', 'nid')]);
     }
 
     public function postSite(Request $request)

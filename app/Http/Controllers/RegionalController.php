@@ -3,9 +3,9 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Translation;
+use App\Models\Translation;
 use Illuminate\Http\Request;
-use App\Setting;
+use App\Models\Setting;
 
 class RegionalController extends Controller
 {

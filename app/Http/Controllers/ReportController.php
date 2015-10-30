@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\LogEntry;
+use App\Models\LogEntry;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;

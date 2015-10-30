@@ -1,4 +1,4 @@
-<?php namespace App;
+<?php namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -31,7 +31,7 @@ class Node extends Model
      */
     public function author()
     {
-        return $this->belongsTo('App\User', 'author', 'uid');
+        return $this->belongsTo(\App\Models\User::class, 'author', 'uid');
     }
 
     /**
@@ -40,7 +40,7 @@ class Node extends Model
      */
     public function metadata()
     {
-        return $this->hasOne('App\Metadata', 'nid', 'nid');
+        return $this->hasOne(\App\Models\Metadata::class, 'nid', 'nid');
     }
 
     /**

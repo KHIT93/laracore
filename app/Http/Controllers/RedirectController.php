@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\CreateRedirectRequest;
 use App\Http\Controllers\Controller;
-use App\PathAlias;
+use App\Models\PathAlias;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Redirect;
 

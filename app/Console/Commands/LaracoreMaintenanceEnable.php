@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Setting;
+use App\Models\Setting;
 use Illuminate\Console\Command;
 
 class LaracoreMaintenanceEnable extends Command

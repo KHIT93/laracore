@@ -1,4 +1,4 @@
-<?php namespace App;
+<?php namespace App\Models;
 
 use App\Libraries\Page;
 use App\Libraries\Theme;
@@ -41,7 +41,7 @@ class Block extends Model
         }
         else
         {*/
-            $pages = explode(',', $this->pages);
+        $pages = explode(',', $this->pages);
             if ($this->visibility == 0)
             {
                 if (in_array(app('request')->path(), $pages))

@@ -2,7 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Menu;
+use App\Models\Menu;
 use App\Http\MenuRequest;
 
 use Illuminate\Http\Request;

@@ -1,4 +1,4 @@
-<?php namespace App;
+<?php namespace App\Models;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
@@ -43,7 +43,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
 
     public function nodes()
     {
-        return $this->hasMany('App\Node', 'author', 'uid');
+        return $this->hasMany(\App\Models\Node::class, 'author', 'uid');
     }
 
     public function setPasswordAttribute($password)

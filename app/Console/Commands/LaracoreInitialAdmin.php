@@ -4,7 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use App\User;
+use App\Models\User;
 
 class LaracoreInitialAdmin extends Command
 {
