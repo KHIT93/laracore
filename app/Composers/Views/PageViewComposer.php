@@ -32,7 +32,7 @@ class PageViewComposer implements ViewComposer
                 ->with('site_home', '/')
                 ->with('site_name', Setting::get('site_name'))
                 ->with('site_slogan', Setting::get('site_slogan'))
-                ->with('primary_nav', view(Theme::template('primary_navigation'), ['menu' => \App\Menu::find(1)]))
+                ->with('primary_nav', view(Theme::template('primary_navigation'), ['menu' => \App\Models\Menu::find(1)]))
                 ->with('secondary_nav', view(Theme::template('secondary_navigation')))
                 ->with('breadcrumb', '')
                 ->with('title', $page->getTitle())

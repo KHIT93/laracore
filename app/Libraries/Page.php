@@ -1,11 +1,11 @@
 <?php namespace App\Libraries;
 
-use App\LogEntry;
-use App\Metadata;
-use App\Node;
-use App\Setting;
-use App\User;
-use App\PathAlias;
+use App\Models\LogEntry;
+use App\Models\Metadata;
+use App\Models\Node;
+use App\Models\Setting;
+use App\Models\User;
+use App\Models\PathAlias;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Symfony\Component\HttpFoundation\Response;

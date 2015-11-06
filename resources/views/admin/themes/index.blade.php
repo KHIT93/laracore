@@ -8,7 +8,7 @@
             Choose how your content will be displayed to your visitors by choosing one of the themes below.<br>
             If you do not want to use any of the themes that are installed from 3rd party sources you can always revert to the {!! Html::link('admin/themes/default', 'default theme') !!}.
         </p>
-        <p>{!! Form::button('Create new theme', ['class' => 'btn btn-default', 'data-toggle' => 'modal', 'data-target' => '#newThemeModal']) !!}</p>
+        <!-- <p>{!! Form::button('Add theme', ['class' => 'btn btn-default', 'data-toggle' => 'modal', 'data-target' => '#newThemeModal']) !!}</p> -->
     </div>
 </div>
 <div class="row">
@@ -33,7 +33,11 @@
             <div class="col-md-6">
                 <h3>{{ $theme['name'] }}</h3>
                 <p>{{ $theme['description'] }}</p>
-                {!! Html::link('admin/themes/'.$theme['machine'], 'Apply theme', ['class' => 'btn btn-info']) !!}
+                @if(Setting::get('site_theme') == $theme['machine'])
+                    {!! Html::link('admin/themes/'.$theme['machine'], 'Current theme', ['class' => 'btn btn-success disabled']) !!}
+                @else
+                    {!! Html::link('admin/themes/'.$theme['machine'], 'Apply theme', ['class' => 'btn btn-info']) !!}
+                @endif
             </div>
         </div>
         <hr>
