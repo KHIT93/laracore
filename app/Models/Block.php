@@ -25,43 +25,82 @@ class Block extends Model
      */
     protected $primaryKey = 'bid';
 
+    /**
+     * Render block
+     * @return View|string
+     */
     public function render()
     {
-        /*if ($this->module == 'system' && $this->delta == 'main')
-        {
-            if(Page::getInstance()->entity instanceof \App\Node)
-            {
-                return view(Theme::template('node'), ['node' => Page::getInstance()->entity]);
-            }
-            else if(Page::getInstance() instanceof \App\User)
-            {
-                return view('users.profile', ['user' => Page::getInstance()->entity]);
-            }
-
-        }
-        else
-        {*/
         $pages = explode(',', $this->pages);
-        $raw = app('request')->path();
-        $extract = substr($raw, 0, strpos($raw, "/*"));
-        $url = $raw;
+        $url = app('request')->path();
+        $regex = '/\*.*$/';
+        /**
+         * The block should only show when
+         * the current url is in the listed
+         * pages
+         */
         if ($this->visibility == 0)
         {
-            if (in_array($url, $pages))
+            $result = false;
+            foreach($pages as $page)
+            {
+                $item = preg_replace($regex, '', $page);
+                $citem = substr($url, 0, strlen($item));
+                if ($citem == $item)
+                {
+                    $result = true;
+                    break;
+                }
+            }
+            /**
+             * URL matches the pattern and $this->pages is not blank
+             */
+            if ($result && $pages[0] != '')
             {
                 return view(Theme::template('block'), ['block' => $this]);
             }
+            /**
+             * We are on the frontpage
+             * show the block if the
+             * <front placeholder
+             * is in the array
+             */
             else if ($url == '/' && in_array('<front>', $pages))
             {
                 return view(Theme::template('block'), ['block' => $this]);
             }
         }
+        /**
+         * The block should only show when
+         * the current url is not in the
+         * listed pages
+         */
         else if ($this->visibility == 1) {
-            if (!in_array($url, $pages) && !($url == '/' && in_array('<front>', $pages)))
+            /**
+             * $this->pages is blank and if we are on the frontpage
+             * the placeholder <front> is not in the array
+             */
+            if ($pages[0] == '' && !($url == '/' && in_array('<front>', $pages)))
             {
                 return view(Theme::template('block'), ['block' => $this]);
             }
+            /**
+             * If the URL matches the pattern then it should not show
+             */
+            else
+            {
+                $result = true;
+                foreach($pages as $page)
+                {
+                    $item = preg_replace($regex, '', $page);
+                    $citem = substr($url, 0, strlen($item));
+                    if ($citem == $item)
+                    {
+                        $result = false;
+                    }
+                }
+                return ($result) ? view(Theme::template('block'), ['block' => $this]) : '';
+            }
         }
-        //}
     }
 }
