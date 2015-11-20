@@ -7,6 +7,7 @@ use App\Libraries\Page;
 use App\Libraries\Theme;
 use App\Models\Node;
 use App\Models\Metadata;
+use App\Models\NodeRevision;
 use App\Models\PathAlias;
 use App\Models\Setting;
 
@@ -84,6 +85,23 @@ class NodeController extends Controller
         }
     }
 
+    /**
+     * Display the specified revision of the resource.
+     * @param Node $parent
+     * @param NodeRevision $revision
+     * @return View
+     */
+    public function revision(Node $parent, NodeRevision $revision)
+    {
+        $node = new Node();
+        $node->nid = $revision->nid;
+        $node->title = $revision->title;
+        $node->body = $revision->body;
+        $node->author = $revision->node->author()->first()->uid;
+        $node->published = $revision->published;
+        return $this->show($node);
+    }
+
     public function showDefault()
     {
         $node = null;
@@ -137,6 +155,7 @@ class NodeController extends Controller
     public function update(Node $node, NodeRequest $request)
     {
         $data = $request->all();
+        $node->revision();
         $node->update($data['content']);
         $metadata = $node->metadata()->first();
         $metadata->update($data['meta']);
@@ -166,6 +185,19 @@ class NodeController extends Controller
         $node->delete();
         \Flash::success('The node has been deleted');
         return redirect('admin/content');
+    }
+
+    /**
+     * Remove the specified revision of the resource from storage.
+     *
+     * @param  Node $node
+     * @return Redirect
+     */
+    public function destroyRevision(Node $node, NodeRevision $revision)
+    {
+        $revision->delete();
+        \Flash::success('The node revision has been deleted');
+        return redirect('node/'.$node-nid.'/edit');
     }
 
 }

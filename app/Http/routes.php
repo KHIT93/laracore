@@ -44,6 +44,16 @@ Route::bind('node', function ($nid) {
         throw new \Symfony\Component\HttpKernel\Exception\HttpException(404);
     }
 });
+Route::bind('node_revision', function ($rid) {
+    try
+    {
+        return App\Models\NodeRevision::findOrFail($rid);
+    }
+    catch (Illuminate\Database\Eloquent\ModelNotFoundException $ex)
+    {
+        throw new \Symfony\Component\HttpKernel\Exception\HttpException(404);
+    }
+});
 Route::bind('menu', function ($mid) {
     return App\Models\Menu::findOrFail($mid);
 });
@@ -112,6 +122,10 @@ Route::post('node/{node}/edit', 'NodeController@update');
 Route::get('node/{node}/delete', 'NodeController@remove');
 
 Route::post('node/{node}/delete', 'NodeController@destroy');
+
+Route::get('node/{node}/revision/{node_revision}', 'NodeController@revision');
+
+Route::post('node/{node}/revision/{node_revision}/delete', 'NodeController@destroyRevision');
 
 /**
  * Routing for Menu management.
@@ -222,6 +236,10 @@ Route::post('admin/users/permissions', 'PermissionController@update');
 Route::get('admin/config', 'ConfigurationController@index');
 
 Route::get('admin/config/text-formats', 'ConfigurationController@textFormats');
+
+Route::get('admin/config/content', 'ConfigurationController@content');
+
+Route::post('admin/config/content', 'ConfigurationController@postContent');
 
 /**
  * Routing for Redirect/PathAlias management

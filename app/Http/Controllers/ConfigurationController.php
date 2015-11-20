@@ -70,4 +70,22 @@ class ConfigurationController extends Controller
     {
         return view('admin.config.textformats.index');
     }
+
+    public function content()
+    {
+        return view('admin.config.content.index');
+    }
+
+    public function postContent(Request $request)
+    {
+        $setting = Setting::whereKey('node_revision')->first();
+        if($setting instanceof Setting)
+        {
+            $setting->update(['value' => $request->input('node_revision')]);
+        }
+        else
+        {
+            Setting::create(['key' => 'node_revision', 'value' => $request->input('node_revision')]);
+        }
+    }
 }

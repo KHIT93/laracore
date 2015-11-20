@@ -44,6 +44,15 @@ class Node extends Model
     }
 
     /**
+     * Gets all revisions of this node.
+     * @return Collection
+     */
+    public function revisions()
+    {
+        return $this->hasMany(\App\Models\NodeRevision::class, 'nid', 'nid');
+    }
+
+    /**
      * Gets all nodes that are published
      * @param $query
      */
@@ -52,12 +61,27 @@ class Node extends Model
         $query->where('published', '=', 1);
     }
 
-    /**Gets all nodes that are unpublished
+    /**
+     * Gets all nodes that are unpublished
      * @param $query
      */
     public function scopeUnpublished($query)
     {
         $query->where('published', '=', 0);
+    }
+
+    /**
+     * Create new revision
+     */
+    public function revision()
+    {
+        $this->revisions()->create([
+            'nid' => $this->nid,
+            'title' => $this->title,
+            'body' => $this->body,
+            'editor' => \Auth::user()->uid,
+            'published' => $this->published
+        ]);
     }
 
     public function header()

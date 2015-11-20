@@ -29,6 +29,10 @@
         <div class="panel panel-default">
             <div class="panel-heading">Content authoring</div>
             <div class="list-group">
+                <a href="/admin/config/content" class="list-group-item">
+                    <h4 class="list-group-item-heading"><i class="fa fa-arrow-circle-right"></i> General</h4>
+                    <p class="list-group-item-text">Configure general content authoring options, such as node revisions.</p>
+                </a>
                 <a href="/admin/config/text-formats" class="list-group-item">
                     <h4 class="list-group-item-heading"><i class="fa fa-arrow-circle-right"></i> Text formats and Wysiwyg</h4>
                     <p class="list-group-item-text">Configure how user-contributed content is filtered and formatted, as well as the text editor user interface (WYSIWYGs or toolbars).</p>

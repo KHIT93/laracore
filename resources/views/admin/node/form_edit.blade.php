@@ -18,6 +18,7 @@
         <ul class="nav nav-tabs">
             <li class="active"><a href="#tab-main" data-target="#tab-main" data-toggle="tab" aria-expanded="true">Content</a></li>
             <li><a href="#tab-meta" data-target="#tab-meta" data-toggle="tab" aria-expanded="false">Metadata</a></li>
+            @if(count($node->revisions)) <li><a href="#tab-revision" data-target="#tab-revision" data-toggle="tab" aria-expanded="false">Revisions</a></li> @endif
         </ul>
         <div class="tab-content">
             <div class="tab-pane fade in active" id="tab-main">
@@ -26,6 +27,7 @@
 
             </div>
             @include('admin.partials._content_form_metadata')
+            @if(count($node->revisions)) @include('admin.partials._content_revisions') @endif
         </div>
         <hr>
         <div class="form-group">
