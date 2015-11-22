@@ -18,25 +18,32 @@ class LogEntry extends Model
 
     public static function exception(\Exception $ex)
     {
-        if($ex instanceof HttpException)
+        try
         {
-            self::create([
-                'uid' => ((auth()->check()) ? \Auth::user()->uid : 0),
-                'type' => $ex->getStatusCode(),
-                'url' => \Request::getRequestUri(),
-                'hostname' => \Request::getClientIp(),
-                'message' => $ex->getMessage()
-            ]);
+            if($ex instanceof HttpException)
+            {
+                self::create([
+                    'uid' => ((auth()->check()) ? \Auth::user()->uid : 0),
+                    'type' => $ex->getStatusCode(),
+                    'url' => \Request::getRequestUri(),
+                    'hostname' => \Request::getClientIp(),
+                    'message' => $ex->getMessage()
+                ]);
+            }
+            else
+            {
+                self::create([
+                    'uid' => ((auth()->check()) ? \Auth::user()->uid : 0),
+                    'type' => $ex->getCode(),
+                    'url' => \Request::getRequestUri(),
+                    'hostname' => \Request::getClientIp(),
+                    'message' => $ex->getMessage()
+                ]);
+            }
         }
-        else
+        catch (\PDOException $e)
         {
-            self::create([
-                'uid' => ((auth()->check()) ? \Auth::user()->uid : 0),
-                'type' => $ex->getCode(),
-                'url' => \Request::getRequestUri(),
-                'hostname' => \Request::getClientIp(),
-                'message' => $ex->getMessage()
-            ]);
+            logger()->error($e->getMessage());
         }
     }
 }
