@@ -48,3 +48,19 @@ if (!function_exists('eval_permission')) {
         }
     }
 }
+
+if(!function_exists('variable_get'))
+{
+    function variable_get($class = null, $name = null)
+    {
+        return \App\Models\Variable::get($class, $name);
+    }
+}
+
+if(!function_exists('variable_set'))
+{
+    function variable_set($class, $name, $value)
+    {
+        return \App\Models\Variable::create(compact('class', 'name', 'value'));
+    }
+}
