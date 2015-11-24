@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
+use App\Models\TextFilter;
 use Illuminate\Http\Request;
 
 class ConfigurationController extends Controller
@@ -68,7 +69,45 @@ class ConfigurationController extends Controller
 
     public function textFormats()
     {
-        return view('admin.config.textformats.index');
+        return view('admin.config.textformats.index', ['text_filters' => TextFilter::weighted()]);
+    }
+
+    public function editTextFormat(TextFilter $filter)
+    {
+        return view('admin.config.textformats.form', ['filter' => $filter]);
+    }
+
+    public function updateTextFormat(TextFilter $filter, Request $request)
+    {
+        $filter->update($request->all());
+        \Flash::success('Text filter updated');
+    }
+
+    public function deleteTextFormat(TextFilter $filter)
+    {
+        if(in_array($filter->internal_name, TextFilter::defaults()))
+        {
+            \Flash::warning(string_format('The filter <i>@filter</i> cannot be deleted, since it is a default filter', ['@filter' => $filter->name]));
+            return redirect('admin/config/text-formats');
+        }
+        else
+        {
+            return view('admin.config.textformats.delete');
+        }
+    }
+
+    public function destroyTextFormat(TextFilter $filter, Request $request)
+    {
+        if(in_array($filter->internal_name, TextFilter::defaults()))
+        {
+            \Flash::warning(string_format('The filter <i>@filter</i> cannot be deleted, since it is a default filter', ['@filter' => $filter->name]));
+        }
+        else
+        {
+            $filter->delete();
+            \Flash::success('The filter has been deleted');
+        }
+        return redirect('admin/config/text-formats');
     }
 
     public function content()

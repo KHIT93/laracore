@@ -14,10 +14,12 @@ class CreateTextFiltersTable extends Migration
     {
         Schema::create('text_filters', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('internal_name')->unique();
             $table->string('name');
             $table->text('description');
             $table->string('type');
             $table->text('allowed_tags')->nullable();
+            $table->integer('weight');
             $table->timestamps();
         });
     }

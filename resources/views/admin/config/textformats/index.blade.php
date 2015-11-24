@@ -15,8 +15,7 @@
     <div class="col-sm-12">
         <p>Below is a list of all the text formats that have been created for this website.<br>
             Feel free to modify any of them to your liking or create your own custom text formats and filters.<br>
-            Please note that the default formats have limited options for modifications.<br>x
-            This is a security feature in order to keep a high level of security in the application.
+            Please note that the default formats have limited options for modifications.<br>
         </p>
         <table class="table">
             <thead>
@@ -26,36 +25,22 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>
-                        Full HTML<br>
-                        <small><em>This text formatting filter gives almost unrestricted access for writing HTML code</em></small>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-default">Edit</a>
-                        <a href="#" class="btn btn-danger">Delete</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Restricted HTML<br>
-                        <small><em>This text formatting filter gives access to the usage of basic html tags that are commonly used by content authors</em></small>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-default">Edit</a>
-                        <a href="#" class="btn btn-danger">Delete</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Only text<br>
-                        <small><em>This text formatting filter does not allow any html tags. Html tags that are written in the textfield will be showed as text. This is normally used for comments and other content that is not authored by authorized users</em></small>
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-default">Edit</a>
-                        <a href="#" class="btn btn-danger">Delete</a>
-                    </td>
-                </tr>
+                @if(count($text_filters))
+                @foreach($text_filters as $filter)
+                    <tr>
+                        <td>
+                            {{ $filter->name }}<br>
+                            <small><em>{{ $filter->description }}</em></small>
+                        </td>
+                        <td>
+                            @if($filter->type == \App\Libraries\StrFilter::RESTRICTED_HTML){!! Html::link('admin/config/text-formats/'.$filter->id, 'Edit', ['class' => 'btn btn-default']) !!}@endif
+                            {!! Html::link('admin/config/text-formats/'.$filter->id.'/delete', 'Delete', ['class' => 'btn btn-danger']) !!}
+                        </td>
+                    </tr>
+                @endforeach
+                @else
+                    <p>There seems to be a problem with the installation as no text filters are installed</p>
+                @endif
             </tbody>
         </table>
     </div>

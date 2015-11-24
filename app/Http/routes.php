@@ -80,6 +80,17 @@ Route::bind('translation', function($id){
     return App\Models\Translation::findOrFail($id);
 });
 
+Route::bind('textfilter', function ($filter_id) {
+    try
+    {
+        return App\Models\TextFilter::findOrFail($filter_id);
+    }
+    catch (Illuminate\Database\Eloquent\ModelNotFoundException $ex)
+    {
+        throw new \Symfony\Component\HttpKernel\Exception\HttpException(404);
+    }
+});
+
 /**
  *  Generic routes.
  */
@@ -236,6 +247,14 @@ Route::post('admin/users/permissions', 'PermissionController@update');
 Route::get('admin/config', 'ConfigurationController@index');
 
 Route::get('admin/config/text-formats', 'ConfigurationController@textFormats');
+
+Route::get('admin/config/text-formats/{textfilter}', 'ConfigurationController@editTextFormat');
+
+Route::post('admin/config/text-formats/{textfilter}', 'ConfigurationController@updateTextFormat');
+
+Route::get('admin/config/text-formats/{textfilter}/delete', 'ConfigurationController@deleteTextFormat');
+
+Route::post('admin/config/text-formats/{textfilter}/delete', 'ConfigurationController@destroyTextFormat');
 
 Route::get('admin/config/content', 'ConfigurationController@content');
 

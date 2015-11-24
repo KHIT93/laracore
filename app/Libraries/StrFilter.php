@@ -1,6 +1,8 @@
 <?php namespace App\Libraries;
 
 
+use App\Models\TextFilter;
+
 class StrFilter
 {
 
@@ -28,12 +30,12 @@ class StrFilter
      * certain tags to be used
      * Used with Laracore restricted html filter
      * @param $string
-     * @param $allowed_tags
+     * @param \App\Models\TextFilter $filter|$filter
      * @return string
      */
-    public static function some($string, $allowed_tags)
+    public static function some($string, $filter)
     {
-        return strip_tags($string, $allowed_tags);
+        return strip_tags($string, (($filter instanceof TextFilter) ? $filter->allowed_tags : $filter));
     }
 
     /**
