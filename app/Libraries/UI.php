@@ -2,6 +2,7 @@
 
 use App\Models\Setting;
 use App\Models\Translation;
+use App\Libraries\StrFilter;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class UI
@@ -44,7 +45,7 @@ class UI
             switch ($key[0]) {
                 case '@':
                     // Escaped only.
-                    $args[$key] = check_plain($value);
+                    $args[$key] = StrFilter::all($value);
                     //$args[$key] = $value;
                     break;
 
