@@ -310,6 +310,15 @@ Route::get('installer/run', 'InstallController@run');
 Route::post('installer/run', 'InstallController@postRun');
 Route::get('installer/finish', 'InstallController@finish');
 Route::get('installer/fail', 'InstallController@fail');
+
+/**
+ * Routing for debugging
+ */
+Route::group(['middleware' => 'debugmode', 'prefix' => 'debug'], function(){
+    Route::controllers([
+        'variables' => 'Debugging\VariablesController'
+    ]);
+});
 /*
  * Default route for using path aliases instead of node/{nid}.
  */

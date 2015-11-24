@@ -29,7 +29,8 @@ class Kernel extends HttpKernel
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
-        'installed' => \App\Http\Middleware\AppIsInstalled::class
+        'installed' => \App\Http\Middleware\AppIsInstalled::class,
+        'debugmode' => \App\Http\Middleware\DebugModeEnabled::class
     ];
 
 }
