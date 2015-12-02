@@ -25,6 +25,15 @@ class Block extends Model
      */
     protected $primaryKey = 'bid';
 
+
+    /**
+     * Gets all user created blocks
+     * @param $query
+     */
+    public function scopeCustom($query)
+    {
+        $query->where('module', '=', 'block');
+    }
     /**
      * Render block
      * @return View|string

@@ -33,7 +33,7 @@
         </div>
         <div class="form-group @if ($errors->has('meta.robots')) has-error @endif">
             {!! Form::label('role', 'Select user role') !!}
-            {!! Form::select('role', $roles, ((isset($user->roles()->first()->id)) ? $user->roles()->first()->id : 4), ['class' => 'form-control']) !!}
+            {!! Form::select('role', $roles, ((isset($user->roles()->first()->id)) ? $user->roles()->first()->id : 4), ['class' => 'form-control select2']) !!}
         </div>
         <div class="form-group">
             <div class="checkbox">

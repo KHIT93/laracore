@@ -34,6 +34,33 @@ class BlockController extends Controller
         return view('admin.blocks.index', ['blocks' => $blocks]);
     }
 
+    public function indexCustom()
+    {
+        eval_permission('access_admin_blocks');
+        return view('admin.blocks.custom', ['blocks' => Block::custom()->paginate(25)]);
+    }
+
+    /**
+     * Bulk update all blocks in the request
+     * @param Request $request
+     */
+    public function updatePositions(Request $request)
+    {
+        foreach ($request->input('blocks') as $update)
+        {
+            try
+            {
+                $block = Block::findOrFail($update['bid']);
+                $block->update($update);
+            }
+            catch(\Illuminate\Database\Eloquent\ModelNotFoundException $ex)
+            {
+                \Flash::error('The block <i>'.$block->title.'</i> was not updated due to an error.<strong>'.$ex->getMessage().'</strong>');
+            }
+        }
+        \Flash::success('The block information has been updated');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

@@ -30,6 +30,29 @@ class MenuItemController extends Controller
     }
 
     /**
+     * Bulk update all menu items in the request
+     * @param Request $request
+     */
+    public function updatePositions(Request $request)
+    {
+        dd($request->input('items'));
+        foreach ($request->input('items') as $update)
+        {
+            $update['active'] = (isset($update['active']) && !is_null($update['active'])) ? 1 : 0;
+            try
+            {
+                $item = MenuItem::findOrFail($update['bid']);
+                $item->update($update);
+            }
+            catch(\Illuminate\Database\Eloquent\ModelNotFoundException $ex)
+            {
+                \Flash::error('The menu item <i>'.$item->name.'</i> was not updated due to an error.<strong>'.$ex->getMessage().'</strong>');
+            }
+        }
+        \Flash::success('The menu settings have been updated');
+    }
+
+    /**
      * Store a newly created resource in storage.
      * @param MenuItemRequest $request
      * @return Redirect

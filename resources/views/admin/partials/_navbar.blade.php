@@ -10,7 +10,7 @@
 <ul class="nav navbar-nav">
     <li><a href="{{ url('/') }}">Home</a></li>
 </ul>
-<ul class="nav navbar-top-links navbar-right">
+<ul class="nav navbar-nav navbar-top-links navbar-right">
     @if (Auth::guest())
     <li><a href="{{ url('/auth/login') }}">Login</a></li>
     <li><a href="{{ url('/auth/register') }}">Register</a></li>

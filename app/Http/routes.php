@@ -1,30 +1,9 @@
 <?php
-
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
-
 /**
  * Create Route-Model Bindings.
  */
 
 Route::bind('path_alias', function ($value) {
-    /*$alias = App\Models\PathAlias::where('alias', $value)->first();
-    if($alias instanceof App\PathAlias)
-    {
-        return $alias;
-    }
-    else
-    {
-        throw new \Symfony\Component\HttpKernel\Exception\HttpException(404);
-    }*/
     try
     {
         return App\Models\PathAlias::whereAlias($value)->firstOrFail();
@@ -157,6 +136,8 @@ Route::post('admin/menus/{menu}/delete', 'MenuController@destroy');
 
 Route::get('admin/menus/{menu}/links', 'MenuController@show');
 
+Route::post('admin/menus/{menu}/links', 'MenuItemController@updatePositions');
+
 Route::get('admin/menus/{menu}/links/add', 'MenuItemController@create');
 
 Route::post('admin/menus/{menu}/links/add', 'MenuItemController@store');
@@ -173,6 +154,10 @@ Route::post('admin/menus/{menu}/{menu_item}/delete', 'MenuItemController@destroy
  * Routing for Block Management.
  */
 Route::get('admin/blocks', 'BlockController@index');
+
+Route::get('admin/blocks/custom', 'BlockController@indexCustom');
+
+Route::post('admin/blocks', 'BlockController@updatePositions');
 
 Route::get('admin/blocks/add', 'BlockController@create');
 
@@ -191,12 +176,21 @@ Route::post('admin/blocks/{block}/delete', 'BlockController@destroy');
  */
 Route::get('admin/themes', 'ThemeController@index');
 
-Route::get('admin/themes/{theme}', 'ThemeController@apply');
+Route::get('admin/themes/add', 'ThemeController@add');
 
+Route::post('admin/themes/add', 'ThemeController@install');
+
+Route::get('admin/themes/{theme}', 'ThemeController@apply');
 /**
  * Routing for Module Management.
  */
 Route::get('admin/modules', 'ModulesController@index');
+
+Route::post('admin/modules', 'ModulesController@bulkChange');
+
+Route::get('admin/modules/add', 'ModulesController@add');
+
+Route::post('admin/modules/add', 'ModulesController@install');
 
 Route::get('admin/modules/{slug}/enable', 'ModulesController@enable');
 

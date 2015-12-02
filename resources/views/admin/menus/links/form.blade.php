@@ -25,11 +25,11 @@
         </div>
         <div class="form-group @if ($errors->has('parent')) has-error @endif">
             {!! Form::label('parent', 'Parent link') !!}
-            {!! Form::select('parent', $menu->item_list(), 0, ['class' => 'form-control']) !!}
+            {!! Form::select('parent', $menu->item_list(), 0, ['class' => 'form-control select2']) !!}
         </div>
         <div class="form-group @if ($errors->has('position')) has-error @endif">
             {!! Form::label('position', 'Position') !!}
-            {!! Form::select('position', [range(-50, 50)], 50, ['class' => 'form-control']) !!}
+            {!! Form::select('position', [range(-50, 50)], 50, ['class' => 'form-control select2']) !!}
         </div>
         <div class="form-group">
             <div class="checkbox">

@@ -17,7 +17,7 @@
             {!! Form::open() !!}
             <div class="form-group @if ($errors->has('site_home')) has-error @endif">
                 {!! Form::label('site_language', 'Select homepage') !!}
-                {!! Form::select('site_language', ['en' => 'English', 'da' => 'Dansk', 'de' => 'Deutsch'], Setting::get('site_language'), ['class' => 'form-control']) !!}
+                {!! Form::select('site_language', ['en' => 'English', 'da' => 'Dansk', 'de' => 'Deutsch'], Setting::get('site_language'), ['class' => 'form-control select2']) !!}
             </div>
             <hr>
             <div class="form-group">

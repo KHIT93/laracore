@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-sm-12">
         <h1 class="page-header">{!! FA::icon('files-o') !!} Content Management</h1>
-        <p><a href="{{ url('node/add') }}" class="btn btn-default">Create</a></p>
+        <p><a href="{{ url('node/add') }}" class="btn btn-default">{!! FA::icon('plus') !!} Create</a></p>
     </div>
 </div>
 <div class="row">

@@ -6,8 +6,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Administration</title>
 
-	<link href="{{ asset('/css/admin.css') }}" rel="stylesheet">
-	<link href="{{ asset('/css/admin-extra.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/admin.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/admin-extra.css') }}" rel="stylesheet">
     <link href="{{ asset('/favicon.ico') }}" rel="shortcut icon" type="image/x-icon">
     @yield('header-styles')
 	<!-- Fonts -->
@@ -24,7 +24,7 @@
 </head>
 <body>
     <div id="wrapper">
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <nav class="navbar navbar-inverse navbar-static-top" role="navigation" style="margin-bottom: 0">
             @include('admin.partials._navbar')
             @include('admin.partials._sidebar')
         </nav>

@@ -38,7 +38,11 @@
                 </div>
                 <div class="form-group @if ($errors->has('section')) has-error @endif">
                     {!! Form::label('section', 'Section') !!}
-                    {!! Form::select('section', Theme::sections(), (($block->section) ? $block->section : 0), ['class' => 'form-control']) !!}
+                    {!! Form::select('section', Theme::sections(), (($block->section) ? $block->section : 0), ['class' => 'form-control select2']) !!}
+                </div>
+                <div class="form-group @if ($errors->has('position')) has-error @endif">
+                    {!! Form::label('position', 'Position') !!}
+                    {!! Form::select('position', range(0, 15), 0, ['class' => 'form-control select2']) !!}
                 </div>
             </div>
             <div class="tab-pane fade in" id="tab-meta">

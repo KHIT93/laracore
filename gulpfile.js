@@ -15,6 +15,7 @@ elixir(function(mix) {
     //mix.less('app.less', 'resources/assets/css');
     mix.sass('app.scss', 'public/css/app.css');
     mix.sass('admin.scss', 'public/css/admin.css')
+    mix.sass('installer.scss', 'public/css/installer.css')
     mix.styles([
         //'css/app.css',
         //'css/custom.css',

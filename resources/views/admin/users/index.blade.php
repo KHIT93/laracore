@@ -22,7 +22,7 @@
         <div class="tab-content">
             <div class="tab-pane fade in active">
                 <br>
-                <p><a href="{{ url('admin/users/add') }}" class="btn btn-default">Create</a></p>
+                <p><a href="{{ url('admin/users/add') }}" class="btn btn-default">{!! FA::icon('plus') !!} Create</a></p>
                 @if(count($users))
                 <table class="table table-striped">
                     <thead>

@@ -16,6 +16,31 @@ class ModulesController extends Controller
         return view('admin.modules.index', ['modules' => Module::all()]);
     }
 
+    public function bulkChange(Request $request)
+    {
+        foreach ($request->input('modules') as $module)
+        {
+            if(isset($module['enabled']) && !Module::isEnabled($module['slug']))
+            {
+                $this->enable($module['slug']);
+            }
+            else if(Module::isEnabled($module['slug']))
+            {
+                $this->disable($module['slug']);
+            }
+        }
+    }
+
+    public function add()
+    {
+        return view('admin.modules.add');
+    }
+
+    public function install(Request $request)
+    {
+        dd($request->all());
+    }
+
     public function enable($slug)
     {
         if(Module::enable($slug))

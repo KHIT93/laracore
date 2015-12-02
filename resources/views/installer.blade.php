@@ -6,10 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ trans('installer.laracore') }} | {{ trans('installer.app.slogan') }}</title>
 
-    <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/installer.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/addons.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/bootstrap.vertical-tabs.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('/css/installer.css') }}" rel="stylesheet">
     <link href="{{ asset('/favicon.ico') }}" rel="shortcut icon" type="image/x-icon">
     <!-- Fonts -->
     <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>

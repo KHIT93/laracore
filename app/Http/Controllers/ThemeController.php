@@ -28,6 +28,16 @@ class ThemeController extends Controller
         return view('admin.themes.index', compact('themes'));
     }
 
+    public function add()
+    {
+        return view('admin.themes.add');
+    }
+
+    public function install(Request $request)
+    {
+        dd($request->all());
+    }
+
     public function apply($theme)
     {
         if (is_dir(base_path('public/themes/' . $theme)) || $theme == 'default') {

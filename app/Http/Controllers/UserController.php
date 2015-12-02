@@ -38,7 +38,7 @@ class UserController extends Controller
     public function create()
     {
         eval_permission('access_admin_users');
-        foreach (\App\Role::all() as $role) {
+        foreach (\App\Models\Role::all() as $role) {
             if ($role->name != 'anonymous') {
                 $roles[$role->id] = $role->display_name;
             }
@@ -91,7 +91,7 @@ class UserController extends Controller
     public function edit(User $user)
     {
         eval_permission('access_admin_users');
-        foreach (\App\Role::all() as $role) {
+        foreach (\App\Models\Role::all() as $role) {
             if ($role->name != 'anonymous') {
                 $roles[$role->id] = $role->display_name;
             }
