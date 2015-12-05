@@ -1,6 +1,9 @@
 $('.select2').select2({
     placeholder: 'Choose'
 });
+$('.select2-basic').select2({
+    minimumResultsForSearch: Infinity
+});
 /*$('input[type="checkbox"].checkbox').checkbox({
     buttonStyle: 'btn-link btn-large',
     checkedClass: 'icon-check',

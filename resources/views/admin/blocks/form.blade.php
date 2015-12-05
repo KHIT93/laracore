@@ -42,7 +42,7 @@
                 </div>
                 <div class="form-group @if ($errors->has('position')) has-error @endif">
                     {!! Form::label('position', 'Position') !!}
-                    {!! Form::select('position', range(0, 15), 0, ['class' => 'form-control select2']) !!}
+                    {!! Form::select('position', range(0, 15), 0, ['class' => 'form-control select2-basic']) !!}
                 </div>
             </div>
             <div class="tab-pane fade in" id="tab-meta">

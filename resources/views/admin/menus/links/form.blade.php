@@ -25,7 +25,7 @@
         </div>
         <div class="form-group @if ($errors->has('parent')) has-error @endif">
             {!! Form::label('parent', 'Parent link') !!}
-            {!! Form::select('parent', $menu->item_list(), 0, ['class' => 'form-control select2']) !!}
+            {!! Form::select('parent', $menu->item_list(), 0, ['class' => 'form-control select2-basic']) !!}
         </div>
         <div class="form-group @if ($errors->has('position')) has-error @endif">
             {!! Form::label('position', 'Position') !!}

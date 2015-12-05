@@ -19,6 +19,6 @@
             'index,nofollow' => 'Index, but do not follow',
             'noindex,follow' => 'Follow, but do not index',
             'index,follow' => 'Index and Follow',
-        ],null, ['class' => 'form-control select2']) !!}
+        ],null, ['class' => 'form-control select2-basic']) !!}
     </div>
 </div>
