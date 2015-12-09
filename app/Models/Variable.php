@@ -40,4 +40,14 @@ class Variable extends Model
     {
         $this->attributes['class'] = (is_object($class)) ? get_class($class) : $class;
     }
+
+    public function setValueAttribute($value)
+    {
+        $this->attributes['value'] = serialize($value);
+    }
+
+    public function getValueAttribute($value)
+    {
+        return unserialize($value);
+    }
 }
