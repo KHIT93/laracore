@@ -15,7 +15,7 @@
 <div class="row">
     <div class="col-sm-12">
         <ul class="nav nav-tabs">
-            <li><a href="/admin/blocks">Block layout</a></li>
+            <li><a href="/admin/blocks">Block placement</a></li>
             <li class="active"><a href="/admin/blocks/custom">Custom blocks</a></li>
         </ul><br>
         <p><a href="{{ url('admin/blocks/add') }}" class="btn btn-default">{!! FA::icon('plus') !!} Create custom block</a></p>
@@ -43,7 +43,7 @@
         </table>
         {!! $blocks->render() !!}
         @else
-        <p>There is currently no content on the website. Why not {!! Html::link('block/add', 'create') !!} something for your visitors to look at?</p>
+        <p>There is currently no content on the website. Why not {!! Html::link('admin/blocks/add', 'create') !!} something for your visitors to look at?</p>
         @endif
     </div>
 </div>
