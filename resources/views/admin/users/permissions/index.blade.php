@@ -1,5 +1,7 @@
 @extends('admin')
-
+@section('header_info')
+    Permission Assignment
+@endsection
 @section('content')
 
 <div class="row">

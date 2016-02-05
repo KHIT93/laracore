@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Setting;
 use App\Models\TextFilter;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 
 class ConfigurationController extends Controller
 {
@@ -126,5 +127,41 @@ class ConfigurationController extends Controller
         {
             Setting::create(['key' => 'node_revision', 'value' => $request->input('node_revision')]);
         }
+    }
+
+    public function getCaching()
+    {
+        return view('admin.config.cache.index');
+    }
+
+    public function postCaching()
+    {
+        $flag = false;
+        try
+        {
+            \Cache::Flush();
+            \Artisan::call('view:clear');
+            \Artisan::call('route:clear');
+            \Artisan::call('module:cache');
+            \Artisan::call('config:clear');
+            \Artisan::call('optimize');
+            $flag = true;
+        }
+        catch (\Exception $ex)
+        {
+            $flag = false;
+        }
+        finally
+        {
+            if($flag)
+            {
+                \Flash::success('All application caches have been cleared');
+            }
+            else
+            {
+                \Flash::error('There was an error clearing the caches. See the error log for details');
+            }
+        }
+        return redirect('admin/config/system/caching');
     }
 }

@@ -1,5 +1,7 @@
 @extends('admin')
-
+@section('header_info')
+    Regional settings
+@endsection
 @section('content')
     <div class="row">
         <div class="col-sm-12">

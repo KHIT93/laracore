@@ -1,5 +1,7 @@
 @extends('admin')
-
+@section('header_info')
+    URL Aliases
+@endsection
 @section('content')
 <div class="col-sm-12">
     <h1>URL Aliases</h1>

@@ -1,9 +1,11 @@
 @extends('admin')
-
+@section('header_info')
+    Translate resource
+@endsection
 @section('content')
     <div class="row">
         <div class="col-sm-12">
-            <h1 class="page-header">Regional settings</h1>
+            <h1 class="page-header">Translate resource</h1>
         </div>
     </div>
     <div class="row">

@@ -1,5 +1,7 @@
 @extends('admin')
-
+@section('header_info')
+    User Management
+@endsection
 @section('content')
 
 <div class="row">

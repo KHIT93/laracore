@@ -1,5 +1,7 @@
 @extends('admin')
-
+@section('header_info')
+    Delete {{ $item->name }}
+@endsection
 @section('content')
 <div class="row">
     <div class="col-sm-12">

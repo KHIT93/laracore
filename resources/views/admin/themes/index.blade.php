@@ -1,4 +1,7 @@
 @extends('admin')
+@section('header_info')
+    Appearance
+@endsection
 @section('content')
 
 <div class="row">

@@ -1,5 +1,7 @@
 @extends('admin')
-
+@section('header_info')
+    Configuration
+@endsection
 @section('content')
 
 <div class="row">
@@ -20,6 +22,10 @@
                 <a href="/admin/config/system/maintenance" class="list-group-item">
                     <h4 class="list-group-item-heading"><i class="fa fa-arrow-circle-right"></i> Maintenance mode</h4>
                     <p class="list-group-item-text">Take the site offline for maintenance or bring it back online.</p>
+                </a>
+                <a href="/admin/config/system/caching" class="list-group-item">
+                    <h4 class="list-group-item-heading"><i class="fa fa-arrow-circle-right"></i> Cache</h4>
+                    <p class="list-group-item-text">Manage the caching settings for the website</p>
                 </a>
             </div>
         </div>

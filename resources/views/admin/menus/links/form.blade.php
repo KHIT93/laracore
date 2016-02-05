@@ -1,9 +1,11 @@
 @extends('admin')
-
+@section('header_info')
+    @if(is_null($item->mlid))Add new menu item @else Edit menu item: {{ $item->name }} @endif
+@endsection
 @section('content')
 <div class="row">
     <div class="col-sm-12">
-        <h1 class="page-header">Add new menu item</h1>
+        <h1 class="page-header">@if(is_null($item->mlid))Add new menu item @else Edit menu item: <em>{{ $item->name }}</em> @endif</h1>
     </div>
 </div>
 <div class="row">

@@ -1,5 +1,7 @@
 @extends('admin')
-
+@section('header_info')
+    Blocks
+@endsection
 @section('content')
 <div class="row">
     <div class="col-sm-12">

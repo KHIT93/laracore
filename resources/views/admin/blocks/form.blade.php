@@ -1,5 +1,7 @@
 @extends('admin')
-
+@section('header_info')
+    @if($block && !is_null($block->bid)) Edit {{ $block->title }} @else Add new block @endif
+@endsection
 @section('content')
 <div class="row">
     <div class="col-sm-12">

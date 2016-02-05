@@ -1,9 +1,11 @@
 @extends('admin')
-
+@section('header_info')
+    Edit text filter: {{ $filter->name }}
+@endsection
 @section('content')
 <div class="row">
     <div class="col-sm-12">
-        <h1 class="page-header">Edit text filter {{ $filter->name }}</h1>
+        <h1 class="page-header">Edit text filter: <em>{{ $filter->name }}</em></h1>
     </div>
 </div>
 <div class="row">

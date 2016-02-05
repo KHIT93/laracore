@@ -1,9 +1,11 @@
 @extends('admin')
-
+@section('header_info')
+    @if(is_null($menu->mid))Add new menu @else Edit menu: {{ $menu->name }} @endif
+@endsection
 @section('content')
 <div class="row">
     <div class="col-sm-12">
-        <h1 class="page-header">Add new menu</h1>
+        <h1 class="page-header">@if(is_null($menu->mid))Add new menu @else Edit menu: <em>{{ $menu->name }}</em> @endif</h1>
     </div>
 </div>
 <div class="row">
