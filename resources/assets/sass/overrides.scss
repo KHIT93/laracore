@@ -31,3 +31,9 @@
 .panel-red a {
     color: #d9534f;
 }
+.ui-sortable tr {
+    cursor:pointer;
+}
+.ui-sortable tr:active {
+    background:rgba(244,251,17,0.45);
+}
