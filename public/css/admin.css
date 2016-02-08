@@ -9046,11 +9046,13 @@ table.dataTable thead .sorting:after {
   color: #d9534f; }
 
 .ui-sortable tr {
-  cursor:pointer;
-}
+  cursor: pointer; }
+
 .ui-sortable tr:active {
-  background:rgba(244,251,17,0.45);
-}
+  background: rgba(244, 251, 17, 0.45); }
+
+.hidden-all {
+  display: none !important; }
 
 /* Custom Overrides END */
 

@@ -1,4 +1,7 @@
 <tr>
+    <td class=" move-icon hidden-all">
+        {!! FA::icon('arrows') !!}
+    </td>
     <td>
         {!! Html::link($item->link, $item->name) !!}
     </td>
@@ -7,7 +10,7 @@
     </td>
     <td>
         {!! Form::hidden('items['.$item->id.'][id]', $item->id) !!}
-        {!! Form::select('items['.$item->id.'][position]', range(0, 100), $item->position, ['class' => 'form-control select2']) !!}
+        {!! Form::select('items['.$item->id.'][position]', range(0, 100), $item->position, ['class' => 'form-control sortable-position select2']) !!}
     </td>
     <td>
         {!! Html::link('admin/menus/'.$menu->mid.'/'.$item->id.'/edit', 'Edit', ['class' => 'btn btn-primary']) !!}

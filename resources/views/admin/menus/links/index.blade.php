@@ -18,13 +18,15 @@
     <div class="col-sm-12">
         @if(count($menu->items()))
         {!! Form::open() !!}
+            <a class="sortable-display-toggle pull-right" onclick="togglePositionInputDisplay()">Toggle display</a>
             <table class="table table-striped table-sortable">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Enabled</th>
-                        <th>Position</th>
-                        <th>Actions</th>
+                        <th id="table-menu-item-move-icon" class="hidden-all"></th>
+                        <th id="table-menu-item-name">Name</th>
+                        <th id="table-menu-item-enable">Enabled</th>
+                        <th id="table-menu-item-position">Position</th>
+                        <th id="table-menu-item-actions">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -49,6 +51,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
+            //Hide input fields for position
+            togglePositionInputDisplay();
             //Helper function to keep table row from collapsing when being sorted
             var fixHelperModified = function(e, tr) {
                 var $originals = tr.children();
@@ -74,6 +78,44 @@
                 $(this).find('.select2').select2('val', count);
                 $(this).find('.priority').html(count);
             });
+        }
+        function togglePositionInputDisplay()
+        {
+            if($("th#table-menu-item-position").hasClass('hidden-all'))
+            {
+                $("th#table-menu-item-position").removeClass('hidden-all');
+            }
+            else
+            {
+                $("th#table-menu-item-position").addClass('hidden-all');
+            }
+
+            $("select.sortable-position").each(function(){
+                if($(this.parentNode).hasClass('hidden-all'))
+                {
+                    $(this.parentNode).removeClass('hidden-all');
+                }
+                else
+                {
+                    $(this.parentNode).addClass('hidden-all');
+                }
+            });
+            if($("th#table-menu-item-move-icon").hasClass('hidden-all'))
+            {
+                $("th#table-menu-item-move-icon").removeClass('hidden-all');
+            }
+            else
+            {
+                $("th#table-menu-item-move-icon").addClass('hidden-all');
+            }
+            if($("td.move-icon").hasClass('hidden-all'))
+            {
+                $("td.move-icon").removeClass('hidden-all');
+            }
+            else
+            {
+                $("td.move-icon").addClass('hidden-all');
+            }
         }
     </script>
 @stop
