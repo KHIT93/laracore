@@ -23,7 +23,7 @@
         <p>Block placement is specific to each theme on your site. Changes will not be saved until you click Save blocks at the bottom of the page.</p>
         @if(count($blocks))
         {!! Form::open() !!}
-            <table class="table table-striped">
+            <table class="table table-striped table-sortable">
                 <thead>
                     <tr>
                         <th>Name</th>

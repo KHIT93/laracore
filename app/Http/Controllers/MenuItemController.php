@@ -35,13 +35,13 @@ class MenuItemController extends Controller
      */
     public function updatePositions(Request $request)
     {
-        dd($request->input('items'));
+        //dd($request->input('items'));
         foreach ($request->input('items') as $update)
         {
             $update['active'] = (isset($update['active']) && !is_null($update['active'])) ? 1 : 0;
             try
             {
-                $item = MenuItem::findOrFail($update['bid']);
+                $item = MenuItem::findOrFail($update['id']);
                 $item->update($update);
             }
             catch(\Illuminate\Database\Eloquent\ModelNotFoundException $ex)
@@ -50,6 +50,7 @@ class MenuItemController extends Controller
             }
         }
         \Flash::success('The menu settings have been updated');
+        return \Redirect::back();
     }
 
     /**
