@@ -153,6 +153,7 @@ return [
         Zizaco\Entrust\EntrustServiceProvider::class,
         Orangehill\Iseed\IseedServiceProvider::class,
 		Msurguy\Honeypot\HoneypotServiceProvider::class,
+		DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
 
 	],
 
@@ -209,7 +210,8 @@ return [
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
         'Setting'   => App\Models\Setting::class,
         'Theme'     => App\Libraries\Theme::class,
-        'Honeypot'  => Msurguy\Honeypot\HoneypotFacade::class
+        'Honeypot'  => Msurguy\Honeypot\HoneypotFacade::class,
+        'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facade::class,
 
 	],
 

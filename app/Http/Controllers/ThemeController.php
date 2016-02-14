@@ -38,7 +38,7 @@ class ThemeController extends Controller
         dd($request->all());
     }
 
-    public function apply($theme)
+    public function apply($theme, Request $request)
     {
         if (is_dir(base_path('public/themes/' . $theme)) || $theme == 'default') {
             $setting = Setting::whereKey('site_theme');

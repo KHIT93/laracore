@@ -34,10 +34,13 @@
                         <td>{{ $module['name'] }}<br><small>({{ $module['slug'] }})</small></td>
                         <td>{{ $module['description'] }}<br><small>Version: {{ $module['version'] }}</small></td>
                         <td>
+
                             @if(Module::isEnabled($module['slug']))
                                 {!! Html::link('admin/modules/'.$module['slug'].'/disable', 'Disable', ['class' => 'btn btn-danger']) !!}
                             @else
-                                {!! Html::link('admin/modules/'.$module['slug'].'/enable', 'Enable', ['class' => 'btn btn-primary']) !!}
+                                {!! Form::open(['url' => 'admin/modules/'.$module['slug'].'/enable', 'method' => 'POST']) !!}
+                                {!! Form::submit('Enable', ['class' => 'btn btn-primary']) !!}
+                                {!! Form::close() !!}
                             @endif
                         </td>
                     </tr>

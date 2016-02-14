@@ -17,7 +17,8 @@
         "zizaco/entrust": "dev-laravel-5",
         "orangehill/iseed": "dev-master",
 		"caffeinated/modules": "~2.0",
-		"msurguy/honeypot": "dev-master"
+		"msurguy/honeypot": "dev-master",
+		"davejamesmiller/laravel-breadcrumbs": "^3.0"
 	},
 	"require-dev": {
 	  "fzaninotto/faker": "~1.4",

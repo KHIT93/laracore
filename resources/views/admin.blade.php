@@ -29,6 +29,7 @@
             @include('admin.partials._sidebar')
         </nav>
         <div id="page-wrapper">
+            {!! Breadcrumbs::renderIfExists() !!}
             @yield('content')
         </div>
     </div>

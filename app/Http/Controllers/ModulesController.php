@@ -41,7 +41,7 @@ class ModulesController extends Controller
         dd($request->all());
     }
 
-    public function enable($slug)
+    public function enable($slug, Request $request)
     {
         if(Module::enable($slug))
         {

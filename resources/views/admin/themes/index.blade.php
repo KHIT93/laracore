@@ -36,11 +36,15 @@
             <div class="col-md-6">
                 <h3>{{ $theme['name'] }}</h3>
                 <p>{{ $theme['description'] }}</p>
+                {!! Form::open(['url' => 'admin/themes/'.$theme['machine'], 'method' => 'POST']) !!}
                 @if(Setting::get('site_theme') == $theme['machine'])
                     {!! Html::link('admin/themes/'.$theme['machine'], 'Current theme', ['class' => 'btn btn-success disabled']) !!}
+                    {!! Form::submit('Current theme', ['class' => 'btn btn-success disabled', 'disabled' => 'disabled']) !!}
                 @else
-                    {!! Html::link('admin/themes/'.$theme['machine'], 'Apply theme', ['class' => 'btn btn-info']) !!}
+                    {!! Form::submit('Apply theme', ['class' => 'btn btn-info']) !!}
                 @endif
+                {!! Form::close() !!}
+
             </div>
         </div>
         <hr>
