@@ -134,7 +134,7 @@ class ConfigurationController extends Controller
         return view('admin.config.cache.index');
     }
 
-    public function postCaching()
+    public function postCaching(Request $request)
     {
         $flag = false;
         try

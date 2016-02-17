@@ -240,6 +240,18 @@ Route::post('admin/users/permissions', 'PermissionController@update');
  */
 Route::get('admin/config', ['as' => 'admin.config', 'uses' => 'ConfigurationController@index']);
 
+Route::get('admin/config/system/site', ['as' => 'admin.config.system.site', 'uses' => 'ConfigurationController@getSite']);
+
+Route::post('admin/config/system/site', 'ConfigurationController@postSite');
+
+Route::get('admin/config/system/maintenance', ['as' => 'admin.config.system.maintenance', 'uses' => 'ConfigurationController@getMaintenance']);
+
+Route::post('admin/config/system/maintenance', 'ConfigurationController@postMaintenance');
+
+Route::get('admin/config/system/caching', ['as' => 'admin.config.system.caching', 'uses' => 'ConfigurationController@getCaching']);
+
+Route::post('admin/config/system/caching', 'ConfigurationController@postCaching');
+
 Route::get('admin/config/text-formats', ['as' => 'admin.config.textformats', 'uses' => 'ConfigurationController@textFormats']);
 
 Route::get('admin/config/text-formats/{textfilter}', ['as' => 'admin.config.textformats.edit', 'uses' => 'ConfigurationController@editTextFormat']);
@@ -277,13 +289,26 @@ Route::get('admin/config/regional/translate/{translation}', ['as' => 'admin.conf
 Route::post('admin/config/regional/translate/{translation}', 'RegionalController@updateTranslation');
 
 /**
+ * Routing for reports
+ */
+Route::get('admin/reports', ['as' => 'admin.reports.index', 'uses' => 'ReportController@getIndex']);
+
+Route::get('admin/reports/status', ['as' => 'admin.reports.status', 'uses' => 'ReportController@getStatus']);
+
+Route::get('admin/reports/log', ['as' => 'admin.reports.log', 'uses' => 'ReportController@getLog']);
+
+Route::post('admin/reports/log', 'ReportController@postClearLog');
+
+Route::get('admin/reports/updates', ['as' => 'admin.reports.updates', 'uses' => 'ReportController@getUpdates']);
+
+Route::get('admin/reports/page-not-found', ['as' => 'admin.reports.404', 'uses' => 'ReportController@getPageNotFound']);
+
+/**
  * Default controller routes from Laravel.
  */
 Route::controllers([
     'auth'                  => 'Auth\AuthController',
     'password'              => 'Auth\PasswordController',
-    'admin/config/system'   => 'ConfigurationController',
-    'admin/reports'         => 'ReportController'
 ]);
 
 /**

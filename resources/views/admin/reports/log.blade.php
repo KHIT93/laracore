@@ -22,7 +22,11 @@
     </div>
     <div class="row">
         <div class="col-sm-12">
-            <p><a href="{{ url('admin/reports/clear-log') }}" class="btn btn-default">Clear log</a></p>
+            {!! Form::open() !!}
+            <p>
+                {!! Form::submit('Clear log', ['class' => 'btn btn-default']) !!}
+            </p>
+            {!! Form::close() !!}
             @if(count($entries))
                 <table class="table table-hover">
                     <thead>

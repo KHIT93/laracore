@@ -11,6 +11,14 @@ use App\Libraries\Installer;
 
 class ReportController extends Controller
 {
+    /**
+     * Constructor for adding middleware.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function getIndex()
     {
         return view('admin.reports.index');
@@ -33,7 +41,7 @@ class ReportController extends Controller
         return view('admin.reports.log', ['entries' => LogEntry::paginate(25)]);
     }
 
-    public function getClearLog()
+    public function postClearLog(Request $request)
     {
         \DB::table('log')->truncate();
         \Flash::info('Application log is cleared');
