@@ -12,9 +12,12 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'event.name' => [
-            'EventListener',
+        'App\Events\NewUserRegistered' => [
+            'App\Listeners\NewUserRegisteredEventListener'
         ],
+        'App\Events\UserAccountActivated' => [
+            'App\Listeners\UserAccountActivatedEventListener'
+        ]
     ];
 
     /**
