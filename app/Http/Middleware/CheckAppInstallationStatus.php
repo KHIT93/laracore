@@ -1,8 +1,10 @@
-<?php namespace App\Http\Middleware;
+<?php
+
+namespace App\Http\Middleware;
 
 use Closure;
 
-class AppIsInstalled
+class CheckAppInstallationStatus
 {
     /**
      * Handle an incoming request.
@@ -13,18 +15,29 @@ class AppIsInstalled
      */
     public function handle($request, Closure $next)
     {
+        $installed = true;
         try
         {
             $tables = \DB::select('SHOW TABLES');
-            if(!empty($tables))
+            if(empty($tables))
             {
-                return view('installer.alreadyinstalled');
+                $installed = false;
             }
         }
         catch(\Exception $ex)
         {
+            $installed = false;
             logger('Warning: Application is not installed');
         }
-        return $next($request);
+
+        if(!$installed)
+        {
+            if ($request->url() == route('install.index'))
+            {
+                return $next($request);
+            }
+        }
+
+        return ($installed) ? $next($request) : redirect()->route('install.index');
     }
 }

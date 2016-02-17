@@ -20,10 +20,13 @@ class CheckForSoftMaintenanceMode
     {
         try
         {
-            if(Schema::hasTable('settings'))
+            if (\DB::getDatabaseName())
             {
-                if (Setting::get('site_maintenance') == 1 && !has_permission('access_maintenance')) {
-                    throw new HttpException(503);
+                if(Schema::hasTable('settings'))
+                {
+                    if (Setting::get('site_maintenance') == 1 && !has_permission('access_maintenance')) {
+                        throw new HttpException(503);
+                    }
                 }
             }
         }
