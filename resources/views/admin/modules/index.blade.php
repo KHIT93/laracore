@@ -2,13 +2,20 @@
 @section('header_info')
     Modules
 @endsection
-@section('content')
+
+@section('header')
+
 <div class="row">
     <div class="col-sm-12">
         <h1 class="page-header">{!! FA::icon('files-o') !!} Modules</h1>
         <p><a href="{{ url('admin/modules/add') }}" class="btn btn-default">{!! FA::icon('plus') !!} Add</a></p>
     </div>
 </div>
+
+@stop
+
+@section('content')
+
 <div class="row">
     <div class="col-sm-12">
         @include('flash::message')

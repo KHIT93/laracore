@@ -2,12 +2,18 @@
 @section('header_info')
     Regional settings
 @endsection
-@section('content')
+
+@section('header')
     <div class="row">
         <div class="col-sm-12">
             <h1 class="page-header">Regional settings</h1>
         </div>
     </div>
+
+@stop
+
+@section('content')
+
     <div class="row">
         <div class="col-sm-12">
             @include('flash::message')

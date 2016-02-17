@@ -2,12 +2,19 @@
 @section('header_info')
     @if(is_null($user->uid))Add new user @else Edit user: {{ $user->name }} @endif
 @endsection
-@section('content')
+
+@section('header')
+
 <div class="row">
     <div class="col-sm-12">
         <h1 class="page-header">@if(is_null($user->uid))Add new user @else Edit user: <i>{{ $user->name }}</i> @endif</h1>
     </div>
 </div>
+
+@stop
+
+@section('content')
+
 <div class="row">
     <div class="col-sm-12">
         @include('flash::message')

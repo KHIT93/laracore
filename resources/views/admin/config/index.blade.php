@@ -2,6 +2,15 @@
 @section('header_info')
     Configuration
 @endsection
+
+@section('header')
+    <div class="row">
+        <div class="col-sm-12">
+            <h1 class="page-header"></h1>
+        </div>
+    </div>
+@stop
+
 @section('content')
 
 <div class="row">
@@ -9,7 +18,6 @@
         @include('flash::message')
     </div>
 </div>
-<hr>
 <div class="row">
     <div class="col-sm-6">
         <div class="panel panel-default">

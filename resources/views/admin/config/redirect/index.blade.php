@@ -2,10 +2,18 @@
 @section('header_info')
     URL Aliases
 @endsection
+
+@section('header')
+    <div class="row">
+        <div class="col-sm-12">
+            <h1 class="page-header">URL Aliases</h1>
+        </div>
+    </div>
+
+@stop
+
 @section('content')
-<div class="col-sm-12">
-    <h1>URL Aliases</h1>
-</div>
+
 @include('flash::message')
 @include('errors._form_list')
 <div class="col-sm-12">

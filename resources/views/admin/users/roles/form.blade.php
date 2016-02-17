@@ -2,12 +2,19 @@
 @section('header_info')
     Edit role: {{ $role->name }}
 @endsection
-@section('content')
+
+@section('header')
+
 <div class="row">
     <div class="col-sm-12">
         <h1 class="page-header">Edit role: <em>{{ $role->name }}</em></h1>
     </div>
 </div>
+
+@stop
+
+@section('content')
+
 <div class="row">
     <div class="col-sm-12">
         @include('flash::message')

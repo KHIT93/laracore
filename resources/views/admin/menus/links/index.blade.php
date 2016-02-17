@@ -2,13 +2,20 @@
 @section('header_info')
     Edit menu: {{ $menu->name }}
 @endsection
-@section('content')
+
+@section('header')
+
 <div class="row">
     <div class="col-sm-12">
         <h1 class="page-header">Edit menu: <em>{{ $menu->name }}</em></h1>
         <p><a href="{{ url('admin/menus/'.$menu->mid.'/links/add') }}" class="btn btn-default">{!! FA::icon('plus') !!} Create</a></p>
     </div>
 </div>
+
+@stop
+
+@section('content')
+
 <div class="row">
     <div class="col-sm-12">
         @include('flash::message')

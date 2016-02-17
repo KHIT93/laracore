@@ -2,12 +2,18 @@
 @section('header_info')
     @if($block && !is_null($block->bid)) Edit {{ $block->title }} @else Add new block @endif
 @endsection
-@section('content')
+
+@section('header')
 <div class="row">
     <div class="col-sm-12">
         <h1 class="page-header">@if($block && !is_null($block->bid)) Edit <em>{{ $block->title }}</em> @else Add new block @endif</h1>
     </div>
 </div>
+
+@stop
+
+@section('content')
+
 <div class="row">
     <div class="col-sm-12">
         @include('flash::message')

@@ -2,13 +2,20 @@
 @section('header_info')
     Content Management
 @endsection
-@section('content')
+
+@section('header')
+
 <div class="row">
     <div class="col-sm-12">
         <h1 class="page-header">{!! FA::icon('files-o') !!} Content Management</h1>
         <p><a href="{{ url('node/add') }}" class="btn btn-default">{!! FA::icon('plus') !!} Create</a></p>
     </div>
 </div>
+
+@stop
+
+@section('content')
+
 <div class="row">
     <div class="col-sm-12">
         @include('flash::message')
