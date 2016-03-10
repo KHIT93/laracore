@@ -1,26 +1,19 @@
 <?php namespace App\Models;
 
-//use Illuminate\Database\Eloquent\Model;
-use Zizaco\Entrust\EntrustPermission;
+use Illuminate\Database\Eloquent\Model;
 
-class Permission extends EntrustPermission
+class Permission extends Model
 {
 
-    /*protected $fillable = [
-        'permission',
+    protected $fillable = [
         'name',
-        'description',
-        'roles'
-    ];*/
+        'display_name',
+        'description'
+    ];
 
-    /**
-     * Alter the primary key
-     * @var string
-     */
-    /*protected $primaryKey = 'pid';
 
     public function roles()
     {
-        return $this->belongsToMany('App\Role', 'permission_role', 'permission', 'rid');
-    }*/
+        return $this->belongsToMany('App\Models\Role', 'permission_role');
+    }
 }

@@ -1,11 +1,11 @@
 <?php namespace App\Models;
 
-use Zizaco\Entrust\EntrustRole;
+use Illuminate\Database\Eloquent\Model;
 
-class Role extends EntrustRole
+class Role extends Model
 {
 
-    public function permissions()
+    public function listPermissions()
     {
         $permissionList = $this->perms;
         $output = array();
@@ -14,5 +14,15 @@ class Role extends EntrustRole
         }
 
         return $output;
+    }
+
+    public function permissions()
+    {
+        return $this->belongsToMany('App\Models\Permission', 'permission_role');
+    }
+
+    public function hasPermission($permission)
+    {
+        return $this->permissions->contains($permission);
     }
 }

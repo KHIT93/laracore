@@ -54,7 +54,7 @@
                             <td>
                                 <div class="checkbox">
                                     <label>
-                                        {!! Form::checkbox('permission['.$role->id.'][]', $permission->id, ((in_array($permission->id, $role->permissions())) ? true : false)) !!}
+                                        {!! Form::checkbox('permission['.$role->id.'][]', $permission->id, (($role->hasPermission($permission)) ? true : false)) !!}
                                     </label>
                                 </div>
                             </td>
