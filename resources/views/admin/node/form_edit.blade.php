@@ -40,8 +40,8 @@
         </div>
         <hr>
         <div class="form-group">
-            {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-            {!! Html::link('admin/content', 'Cancel', ['class' => 'btn btn-default']) !!}
+            {!! Form::submit('Save', ['class' => 'btn btn-raised btn-primary']) !!}
+            {!! Html::link('admin/content', 'Cancel', ['class' => 'btn btn-raised btn-default']) !!}
         </div>
         {!! Form::close() !!}
     </div>
@@ -57,7 +57,7 @@
               @include('admin.partials._redirect_form', ['source' => 'node/'.$node->nid])
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-raised btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>

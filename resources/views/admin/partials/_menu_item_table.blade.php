@@ -13,7 +13,7 @@
         {!! Form::select('items['.$item->id.'][position]', range(0, 100), $item->position, ['class' => 'form-control sortable-position select2']) !!}
     </td>
     <td>
-        {!! Html::link('admin/menus/'.$menu->mid.'/'.$item->id.'/edit', 'Edit', ['class' => 'btn btn-primary']) !!}
-        {!! Html::link('admin/menus/'.$menu->mid.'/'.$item->id.'/delete', 'Delete', ['class' => 'btn btn-danger']) !!}
+        {!! Html::link('admin/menus/'.$menu->mid.'/'.$item->id.'/edit', 'Edit', ['class' => 'btn btn-raised btn-primary']) !!}
+        {!! Html::link('admin/menus/'.$menu->mid.'/'.$item->id.'/delete', 'Delete', ['class' => 'btn btn-raised btn-danger']) !!}
     </td>
 </tr>

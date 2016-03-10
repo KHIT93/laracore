@@ -12,7 +12,7 @@
             Choose how your content will be displayed to your visitors by choosing one of the themes below.<br>
             If you do not want to use any of the themes that are installed from 3rd party sources you can always revert to the {!! Html::link('admin/themes/default', 'default theme') !!}.
         </p>
-        <!-- <p>{!! Form::button('Add theme', ['class' => 'btn btn-default', 'data-toggle' => 'modal', 'data-target' => '#newThemeModal']) !!}</p> -->
+        <!-- <p>{!! Form::button('Add theme', ['class' => 'btn btn-raised btn-default', 'data-toggle' => 'modal', 'data-target' => '#newThemeModal']) !!}</p> -->
     </div>
 </div>
 
@@ -45,10 +45,10 @@
                 <p>{{ $theme['description'] }}</p>
                 {!! Form::open(['url' => 'admin/themes/'.$theme['machine'], 'method' => 'POST']) !!}
                 @if(Setting::get('site_theme') == $theme['machine'])
-                    {!! Html::link('admin/themes/'.$theme['machine'], 'Current theme', ['class' => 'btn btn-success disabled']) !!}
+                    {!! Html::link('admin/themes/'.$theme['machine'], 'Current theme', ['class' => 'btn btn-raised btn-success disabled']) !!}
                     {!! Form::submit('Current theme', ['class' => 'btn btn-success disabled', 'disabled' => 'disabled']) !!}
                 @else
-                    {!! Form::submit('Apply theme', ['class' => 'btn btn-info']) !!}
+                    {!! Form::submit('Apply theme', ['class' => 'btn btn-raised btn-info']) !!}
                 @endif
                 {!! Form::close() !!}
 
@@ -76,8 +76,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                {!! Form::submit('Create theme', ['class' => 'btn btn-primary']) !!}
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                {!! Form::submit('Create theme', ['class' => 'btn btn-raised btn-primary']) !!}
+                <button type="button" class="btn btn-raised btn-default" data-dismiss="modal">Close</button>
             </div>
             {!! Form::close() !!}
         </div>

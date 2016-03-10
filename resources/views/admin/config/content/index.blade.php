@@ -35,7 +35,7 @@
         </div>
         <hr>
         <div class="form-group">
-            {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+            {!! Form::submit('Save', ['class' => 'btn btn-raised btn-primary']) !!}
         </div>
         {!! Form::close() !!}
     </div>

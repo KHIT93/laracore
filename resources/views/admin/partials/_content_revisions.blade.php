@@ -16,7 +16,7 @@
                 <td>{{ $revision->editor()->first()->name }}</td>
                 <td>{{ $revision->created_at->diffForHumans() }}</td>
                 <td>
-                    {!! Html::link('node/'.$revision->nid.'/revision/'.$revision->rid.'/delete', 'Delete', ['class' => 'btn btn-danger']) !!}
+                    {!! Html::link('node/'.$revision->nid.'/revision/'.$revision->rid.'/delete', 'Delete', ['class' => 'btn btn-raised btn-danger']) !!}
                 </td>
             </tr>
         @endforeach

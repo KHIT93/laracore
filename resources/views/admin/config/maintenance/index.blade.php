@@ -24,20 +24,20 @@
     <div class="col-sm-12">
         {!! Form::open() !!}
         <div class="form-group">
-            <div class="checkbox">
+            <div class="togglebutton">
                 <label>
                     {!! Form::checkbox('site_maintenance', 1, Setting::get('site_maintenance')) !!}
                     Put site into maintenance
                 </label>
             </div>
         </div>
-        <div class="form-group @if ($errors->has('maintenance_text')) has-error @endif">
-            {!! Form::label('maintenance_text', 'Site slogan') !!}
+        <div class="form-group label-floating @if ($errors->has('maintenance_text')) has-error @endif">
+            {!! Form::label('maintenance_text', 'Maintenance message', ['class' => 'control-label']) !!}
             {!! Form::textarea('maintenance_text', Setting::get('maintenance_text'), ['class' => 'form-control', 'required']) !!}
         </div>
         <hr>
         <div class="form-group">
-            {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+            {!! Form::submit('Save', ['class' => 'btn btn-raised btn-primary']) !!}
         </div>
         {!! Form::close() !!}
     </div>

@@ -24,7 +24,7 @@
         <div class="col-sm-12">
             {!! Form::open() !!}
             <p>
-                {!! Form::submit('Clear log', ['class' => 'btn btn-default']) !!}
+                {!! Form::submit('Clear log', ['class' => 'btn btn-raised btn-default']) !!}
             </p>
             {!! Form::close() !!}
             @if(count($entries))

@@ -26,7 +26,7 @@
             <li><a href="/admin/blocks">Block placement</a></li>
             <li class="active"><a href="/admin/blocks/custom">Custom blocks</a></li>
         </ul><br>
-        <p><a href="{{ url('admin/blocks/add') }}" class="btn btn-default">{!! FA::icon('plus') !!} Create custom block</a></p>
+        <p><a href="{{ url('admin/blocks/add') }}" class="btn btn-raised btn-default">{!! FA::icon('plus') !!} Create custom block</a></p>
         @if(count($blocks))
         <table class="table table-striped">
             <thead>
@@ -42,8 +42,8 @@
                     <td>{!! Html::link('admin/blocks/'.$block->bid.'/edit', $block->title) !!}</td>
                     <td>{{ $block->updated_at->diffForHumans() }}</td>
                     <td>
-                        {!! Html::link('admin/blocks/'.$block->bid.'/edit', 'Edit', ['class' => 'btn btn-primary']) !!}
-                        {!! Html::link('admin/blocks/'.$block->bid.'/delete', 'Delete', ['class' => 'btn btn-danger']) !!}
+                        {!! Html::link('admin/blocks/'.$block->bid.'/edit', 'Edit', ['class' => 'btn btn-raised btn-primary']) !!}
+                        {!! Html::link('admin/blocks/'.$block->bid.'/delete', 'Delete', ['class' => 'btn btn-raised btn-danger']) !!}
                     </td>
                 </tr>
                 @endforeach

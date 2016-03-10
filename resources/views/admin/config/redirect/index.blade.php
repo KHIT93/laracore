@@ -35,7 +35,7 @@
                         <td>{{ $redirect->alias }}</td>
                         <td>{{ $redirect->source }}</td>
                         <td>{{ $redirect->created_at->diffForHumans() }}</td>
-                        <td>{!! Html::link('admin/config/redirect/'.$redirect->id.'/delete', 'Delete', ['class' => 'btn btn-danger']) !!}</td>
+                        <td>{!! Html::link('admin/config/redirect/'.$redirect->id.'/delete', 'Delete', ['class' => 'btn btn-raised btn-danger']) !!}</td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -47,16 +47,16 @@
             <h2>Create new redirection</h2>
             <hr>
             {!! Form::open(['url' => 'admin/config/redirect/add']) !!}
-            <div class="form-group">
-                {!! Form::label('alias', 'Path') !!}
+            <div class="form-group label-floating">
+                {!! Form::label('alias', 'Path', ['class' => 'control-label']) !!}
                 {!! Form::text('alias', null, ['class' => 'form-control', 'required']) !!}
             </div>
-            <div class="form-group @if ($errors->has('meta.robots')) has-error @endif">
-                {!! Form::label('source', 'Destination') !!}
+            <div class="form-group label-floating @if ($errors->has('meta.robots')) has-error @endif">
+                {!! Form::label('source', 'Destination', ['class' => 'control-label']) !!}
                 {!! Form::text('source', null, ['class' => 'form-control', 'required']) !!}
             </div>
             <div class="form-group">
-                {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+                {!! Form::submit('Save', ['class' => 'btn btn-raised btn-primary']) !!}
             </div>
             {!! Form::close() !!}
         </div>

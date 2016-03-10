@@ -24,7 +24,7 @@
             <p>Manage the application caches</p>
             {!! Form::open() !!}
             <div class="form-group">
-                {!! Form::submit('Clear all application caches', ['class' => 'btn btn-primary']) !!}
+                {!! Form::submit('Clear all application caches', ['class' => 'btn btn-raised btn-primary']) !!}
             </div>
             {!! Form::close() !!}
         </div>

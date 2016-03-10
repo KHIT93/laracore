@@ -46,18 +46,26 @@
                                 <span data-toggle="tooltip" data-placement="right" title="{{ $role->description }}">{{ $role->display_name }}</span>
                             </td>
                             <td>
-                                {!! Html::link('admin/users/roles/'.$role->id.'/edit', 'Edit', ['class' => 'btn btn-primary']) !!}
-                                {!! Html::link('admin/users/roles/'.$role->id.'/delete', 'Delete', ['class' => 'btn btn-danger']) !!}
+                                {!! Html::link('admin/users/roles/'.$role->id.'/edit', 'Edit', ['class' => 'btn btn-raised btn-primary']) !!}
+                                {!! Html::link('admin/users/roles/'.$role->id.'/delete', 'Delete', ['class' => 'btn btn-raised btn-danger']) !!}
                             </td>
                         </tr>
                         @endforeach
                         {!! Form::open() !!}
                         <tr>
                             <td>
-                                {!! Form::text('display_name', null, ['class' => 'form-control', 'placeholder' => 'Input new role name']) !!}
-                                {!! Form::text('description', null, ['class' => 'form-control', 'placeholder' => 'Type an optional role description']) !!}
+                                <div class="form-group label-floating">
+                                    {!! Form::label('display_name', 'Name', ['class' => 'control-label']) !!}
+                                    {!! Form::text('display_name', null, ['class' => 'form-control']) !!}
+                                    <p class="help-block">Input new role name</p>
+                                </div>
+                                <div class="form-group label-floating">
+                                    {!! Form::label('description', 'Description', ['class' => 'control-label']) !!}
+                                    {!! Form::text('description', null, ['class' => 'form-control']) !!}
+                                    <p class="help-block">Type an optional role description</p>
+                                </div>
                             </td>
-                            <td>{!! Form::submit('Create', ['class' => 'btn btn-default']) !!}</td>
+                            <td>{!! Form::submit('Create', ['class' => 'btn btn-raised btn-default']) !!}</td>
                         </tr>
                         {!! Form::close() !!}
                     </tbody>

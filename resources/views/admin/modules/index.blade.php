@@ -8,7 +8,7 @@
 <div class="row">
     <div class="col-sm-12">
         <h1 class="page-header">{!! FA::icon('files-o') !!} Modules</h1>
-        <p><a href="{{ url('admin/modules/add') }}" class="btn btn-default">{!! FA::icon('plus') !!} Add</a></p>
+        <p><a href="{{ url('admin/modules/add') }}" class="btn btn-raised btn-default">{!! FA::icon('plus') !!} Add</a></p>
     </div>
 </div>
 
@@ -43,10 +43,10 @@
                         <td>
 
                             @if(Module::isEnabled($module['slug']))
-                                {!! Html::link('admin/modules/'.$module['slug'].'/disable', 'Disable', ['class' => 'btn btn-danger']) !!}
+                                {!! Html::link('admin/modules/'.$module['slug'].'/disable', 'Disable', ['class' => 'btn btn-raised btn-danger']) !!}
                             @else
                                 {!! Form::open(['url' => 'admin/modules/'.$module['slug'].'/enable', 'method' => 'POST']) !!}
-                                {!! Form::submit('Enable', ['class' => 'btn btn-primary']) !!}
+                                {!! Form::submit('Enable', ['class' => 'btn btn-raised btn-info']) !!}
                                 {!! Form::close() !!}
                             @endif
                         </td>
@@ -56,7 +56,7 @@
                 </tbody>
             </table>
             <div class="form-group">
-                {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+                {!! Form::submit('Save', ['class' => 'btn btn-raised btn-primary']) !!}
             </div>
         {!! Form::close() !!}
         @else

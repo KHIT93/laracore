@@ -8,7 +8,7 @@
 <div class="row">
     <div class="col-sm-12">
         <h1 class="page-header">Edit menu: <em>{{ $menu->name }}</em></h1>
-        <p><a href="{{ url('admin/menus/'.$menu->mid.'/links/add') }}" class="btn btn-default">{!! FA::icon('plus') !!} Create</a></p>
+        <p><a href="{{ url('admin/menus/'.$menu->mid.'/links/add') }}" class="btn btn-raised btn-default">{!! FA::icon('plus') !!} Create</a></p>
     </div>
 </div>
 
@@ -43,7 +43,7 @@
                 </tbody>
             </table>
             <div class="form-group">
-                {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+                {!! Form::submit('Save', ['class' => 'btn btn-raised btn-primary']) !!}
             </div>
         {!! Form::close() !!}
         @else

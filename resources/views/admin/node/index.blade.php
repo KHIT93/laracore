@@ -8,7 +8,7 @@
 <div class="row">
     <div class="col-sm-12">
         <h1 class="page-header">{!! FA::icon('files-o') !!} Content Management</h1>
-        <p><a href="{{ url('node/add') }}" class="btn btn-default">{!! FA::icon('plus') !!} Create</a></p>
+        <p><a href="{{ url('node/add') }}" class="btn btn-raised btn-default">{!! FA::icon('plus') !!} Create</a></p>
     </div>
 </div>
 
@@ -40,9 +40,9 @@
                     <td>{{ $node->author()->first()->name }}</td>
                     <td>{{ $node->updated_at->diffForHumans() }}</td>
                     <td>
-                        {!! Html::link('node/'.$node->nid, 'View', ['class' => 'btn btn-default']) !!}
-                        {!! Html::link('node/'.$node->nid.'/edit', 'Edit', ['class' => 'btn btn-primary']) !!}
-                        {!! Html::link('node/'.$node->nid.'/delete', 'Delete', ['class' => 'btn btn-danger']) !!}
+                        {!! Html::link('node/'.$node->nid, 'View', ['class' => 'btn btn-raised btn-default']) !!}
+                        {!! Html::link('node/'.$node->nid.'/edit', 'Edit', ['class' => 'btn btn-raised btn-primary']) !!}
+                        {!! Html::link('node/'.$node->nid.'/delete', 'Delete', ['class' => 'btn btn-raised btn-danger']) !!}
                     </td>
                 </tr>
                 @endforeach

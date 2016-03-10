@@ -8,7 +8,7 @@
 <div class="row">
     <div class="col-sm-12">
         <h1 class="page-header">{!! FA::icon('bars') !!} Menus</h1>
-        <p><a href="{{ url('admin/menus/add') }}" class="btn btn-default">{!! FA::icon('plus') !!} Create</a></p>
+        <p><a href="{{ url('admin/menus/add') }}" class="btn btn-raised btn-default">{!! FA::icon('plus') !!} Create</a></p>
     </div>
 </div>
 
@@ -39,9 +39,9 @@
                         <small>{{ $menu->description }}</small>
                     </td>
                     <td>
-                        {!! Html::link('admin/menus/'.$menu->mid.'/links', 'View links', ['class' => 'btn btn-default']) !!}
-                        {!! Html::link('admin/menus/'.$menu->mid.'/edit', 'Edit', ['class' => 'btn btn-primary']) !!}
-                        {!! Html::link('admin/menus/'.$menu->mid.'/delete', 'Delete', ['class' => 'btn btn-danger']) !!}
+                        {!! Html::link('admin/menus/'.$menu->mid.'/links', 'View links', ['class' => 'btn btn-raised btn-default']) !!}
+                        {!! Html::link('admin/menus/'.$menu->mid.'/edit', 'Edit', ['class' => 'btn btn-raised btn-primary']) !!}
+                        {!! Html::link('admin/menus/'.$menu->mid.'/delete', 'Delete', ['class' => 'btn btn-raised btn-danger']) !!}
                     </td>
                 </tr>
                 @endforeach

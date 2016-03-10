@@ -31,7 +31,7 @@
         <div class="tab-content">
             <div class="tab-pane fade in active">
                 <br>
-                <p><a href="{{ url('admin/users/add') }}" class="btn btn-default">{!! FA::icon('plus') !!} Create</a></p>
+                <p><a href="{{ url('admin/users/add') }}" class="btn btn-raised btn-default">{!! FA::icon('plus') !!} Create</a></p>
                 @if(count($users))
                 <table class="table table-striped">
                     <thead>
@@ -51,9 +51,9 @@
                             <td>{{ ($user->enabled == 1) ? 'Enabled' : 'Disabled' }}</td>
                             <td>{{ $user->updated_at->diffForHumans() }}</td>
                             <td>
-                                {!! Html::link('user/'.$user->uid, 'View', ['class' => 'btn btn-default']) !!}
-                                {!! Html::link('admin/users/'.$user->uid.'/edit', 'Edit', ['class' => 'btn btn-primary']) !!}
-                                {!! Html::link('admin/users/'.$user->uid.'/delete', 'Delete', ['class' => 'btn btn-danger']) !!}
+                                {!! Html::link('user/'.$user->uid, 'View', ['class' => 'btn btn-raised btn-default']) !!}
+                                {!! Html::link('admin/users/'.$user->uid.'/edit', 'Edit', ['class' => 'btn btn-raised btn-primary']) !!}
+                                {!! Html::link('admin/users/'.$user->uid.'/delete', 'Delete', ['class' => 'btn btn-raised btn-danger']) !!}
                             </td>
                         </tr>
                         @endforeach
@@ -61,7 +61,7 @@
                 </table>
                 {!! $users->render() !!}
                 @else
-                <p>There are currently no users on the website. If you see this message, please contact your system administrator right away as your website og webserver might have been compromised.</p>
+                <p>There are currently no users on the website. If you see this message, please contact your system administrator right away as your website or webserver might have been compromised.</p>
                 @endif
             </div>
         </div>

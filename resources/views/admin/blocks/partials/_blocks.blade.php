@@ -8,8 +8,8 @@
             <td>{!! Form::select('blocks['.$block->bid.'][section]', Theme::sections(), (($block->section) ? $block->section : 0), ['class' => 'form-control select2']) !!}</td>
             <td>{!! Form::select('blocks['.$block->bid.'][position]', range(0, 15), $block->position, ['class' => 'form-control select2-basic']) !!}</td>
             <td>
-                {!! Html::link('admin/blocks/'.$block->bid.'/edit', 'Edit', ['class' => 'btn btn-primary']) !!}
-                {!! Html::link('admin/blocks/'.$block->bid.'/delete', 'Delete', ['class' => 'btn btn-danger']) !!}
+                {!! Html::link('admin/blocks/'.$block->bid.'/edit', 'Edit', ['class' => 'btn btn-raised btn-primary']) !!}
+                {!! Html::link('admin/blocks/'.$block->bid.'/delete', 'Delete', ['class' => 'btn btn-raised btn-danger']) !!}
             </td>
         </tr>
     @endforeach

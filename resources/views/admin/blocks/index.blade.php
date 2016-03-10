@@ -40,14 +40,14 @@
                 <tbody>
                     @foreach(Theme::sections() as $key => $section)
                         <tr>
-                            <td colspan="4" class="bg-primary"><strong>{{ $section }}</strong></td>
+                            <td colspan="4" class="bg-info"><strong>{{ $section }}</strong></td>
                         </tr>
                         @include('admin.blocks.partials._blocks', ['content' => $blocks[$key]])
                     @endforeach
                 </tbody>
             </table>
             <div class="form-group">
-                {!! Form::submit('Save blocks', ['class' => 'btn btn-primary']) !!}
+                {!! Form::submit('Save blocks', ['class' => 'btn btn-raised btn-primary']) !!}
             </div>
         {!! Form::close() !!}
         @else

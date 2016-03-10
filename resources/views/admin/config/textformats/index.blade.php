@@ -41,8 +41,8 @@
                             <small><em>{{ $filter->description }}</em></small>
                         </td>
                         <td>
-                            @if($filter->type == \App\Libraries\StrFilter::RESTRICTED_HTML){!! Html::link('admin/config/text-formats/'.$filter->id, 'Edit', ['class' => 'btn btn-default']) !!}@endif
-                            {!! Html::link('admin/config/text-formats/'.$filter->id.'/delete', 'Delete', ['class' => 'btn btn-danger']) !!}
+                            @if($filter->type == \App\Libraries\StrFilter::RESTRICTED_HTML){!! Html::link('admin/config/text-formats/'.$filter->id, 'Edit', ['class' => 'btn btn-raised btn-default']) !!}@endif
+                            {!! Html::link('admin/config/text-formats/'.$filter->id.'/delete', 'Delete', ['class' => 'btn btn-raised btn-danger']) !!}
                         </td>
                     </tr>
                 @endforeach

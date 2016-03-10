@@ -30,26 +30,26 @@
         <div class="tab-content">
             <div class="tab-pane fade in active" id="tab-main">
                 <br>
-                <div class="form-group @if ($errors->has('title')) has-error @endif">
-                    {!! Form::label('title', 'Title') !!}
+                <div class="form-group label-floating @if ($errors->has('title')) has-error @endif">
+                    {!! Form::label('title', 'Title', ['class' => 'control-label']) !!}
                     {!! Form::text('title', null, ['class' => 'form-control', 'required']) !!}
                     <span class="help-block">This field contains the title of the block. This will be displayed to the visitors of the website. This field can be left blank in order to not display a title</span>
                 </div>
-                <div class="form-group @if ($errors->has('description')) has-error @endif">
-                    {!! Form::label('description', 'Description') !!}
+                <div class="form-group label-floating @if ($errors->has('description')) has-error @endif">
+                    {!! Form::label('description', 'Description', ['class' => 'control-label']) !!}
                     {!! Form::text('description', null, ['class' => 'form-control', 'required']) !!}
                     <span class="help-block">This field contains a description of the block. This will not be shown to the visitors of the website</span>
                 </div>
-                <div class="form-group @if ($errors->has('body')) has-error @endif">
-                    {!! Form::label('body', 'Body') !!}
+                <div class="form-group label-floating @if ($errors->has('body')) has-error @endif">
+                    {!! Form::label('body', 'Body', ['class' => 'control-label']) !!}
                     {!! Form::textarea('body', null, ['class' => 'form-control']) !!}
                 </div>
-                <div class="form-group @if ($errors->has('section')) has-error @endif">
-                    {!! Form::label('section', 'Section') !!}
+                <div class="form-group label-floating @if ($errors->has('section')) has-error @endif">
+                    {!! Form::label('section', 'Section',['class' => 'control-label']) !!}
                     {!! Form::select('section', Theme::sections(), (($block->section) ? $block->section : 0), ['class' => 'form-control select2']) !!}
                 </div>
-                <div class="form-group @if ($errors->has('position')) has-error @endif">
-                    {!! Form::label('position', 'Position') !!}
+                <div class="form-group label-floating @if ($errors->has('position')) has-error @endif">
+                    {!! Form::label('position', 'Position', ['class' => 'control-label']) !!}
                     {!! Form::select('position', range(0, 15), 0, ['class' => 'form-control select2-basic']) !!}
                 </div>
             </div>
@@ -72,14 +72,14 @@
                     </div>
                 </div>
                 <div class="form-group @if ($errors->has('pages')) has-error @endif">
-                    {!! Form::label('pages', 'Pages') !!}
+                    {!! Form::label('pages', 'Pages', ['class' => 'control-label']) !!}
                     {!! Form::textarea('pages', null, ['class' => 'form-control']) !!}
                 </div>
             </div>
         </div>
         <hr>
         <div class="form-group">
-            {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+            {!! Form::submit('Save', ['class' => 'btn btn-raised btn-primary']) !!}
         </div>
         {!! Form::close() !!}
     </div>

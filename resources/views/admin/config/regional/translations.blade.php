@@ -39,7 +39,7 @@
                         <td>{{ $translation->translation }}</td>
                         <td>{{ $translation->locale }}</td>
                         <td>{{ $translation->updated_at->diffForHumans() }}</td>
-                        <td>{!! Html::link('admin/config/regional/translate/'.$translation->id, 'Edit', ['class' => 'btn btn-default']) !!}</td>
+                        <td>{!! Html::link('admin/config/regional/translate/'.$translation->id, 'Edit', ['class' => 'btn btn-raised btn-default']) !!}</td>
                     </tr>
                 @endforeach
                 </tbody>

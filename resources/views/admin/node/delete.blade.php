@@ -27,8 +27,8 @@
         <p>Are you sure that you want to completely remove <em>{{ $node->title }}</em> and all associated data?</p>
         <hr>
         <p>
-            {!! Form::submit('Yes', ['class' => 'btn btn-danger']) !!}
-            {!! Html::link('admin/content', 'No', ['class' => 'btn btn-default']) !!}
+            {!! Form::submit('Yes', ['class' => 'btn btn-raised btn-danger']) !!}
+            {!! Html::link('admin/content', 'No', ['class' => 'btn btn-raised btn-default']) !!}
         </p>
         {!! Form::close() !!}
     </div>

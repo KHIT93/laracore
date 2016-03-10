@@ -29,7 +29,7 @@
         <hr>
         <p>
             {!! Form::submit('Yes', ['class' => 'btn btn-danger']) !!}
-            {!! Html::link('admin/modules', 'No', ['class' => 'btn btn-default']) !!}
+            {!! Html::link('admin/modules', 'No', ['class' => 'btn btn-raised btn-default']) !!}
         </p>
         {!! Form::close() !!}
     </div>

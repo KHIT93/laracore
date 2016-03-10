@@ -36,7 +36,7 @@
                 {!! Form::file('module_file', ['class' => 'form-control']) !!}
             </div>
             <div class="form-group">
-                {!! Form::submit('Install', ['class' => 'btn btn-primary']) !!}
+                {!! Form::submit('Install', ['class' => 'btn btn-raised btn-primary']) !!}
             </div>
         </div>
         {!! Form::close() !!}

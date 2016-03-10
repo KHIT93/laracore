@@ -63,7 +63,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                {!! Form::submit('Save assignments', ['class' => 'btn btn-primary']) !!}
+                {!! Form::submit('Save assignments', ['class' => 'btn btn-raised btn-primary']) !!}
                 {!! Form::close() !!}
                 @else
                 <p>There are currently no permissions on the website. If you see this message, please contact your system administrator right away as your website og webserver might have been compromised.</p>

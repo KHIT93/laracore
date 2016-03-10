@@ -24,13 +24,13 @@
 <div class="row">
     <div class="col-sm-12">
         {!! Form::model($role) !!}
-        <div class="form-group @if ($errors->has('name')) has-error @endif">
-            {!! Form::label('name', 'Name') !!}
+        <div class="form-group label-floating @if ($errors->has('name')) has-error @endif">
+            {!! Form::label('name', 'Name', ['class' => 'control-label']) !!}
             {!! Form::text('name', null, ['class' => 'form-control', 'required']) !!}
         </div>
         <hr>
         <div class="form-group">
-            {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+            {!! Form::submit('Save', ['class' => 'btn btn-raised btn-primary']) !!}
         </div>
         {!! Form::close() !!}
     </div>

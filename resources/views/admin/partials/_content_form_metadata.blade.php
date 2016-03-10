@@ -1,15 +1,15 @@
 <div class="tab-pane fade in" id="tab-meta">
     <br>
-    <div class="form-group @if ($errors->has('meta.title')) has-error @endif">
-        {!! Form::label('meta[title]', 'Meta Title') !!}
+    <div class="form-group label-floating @if ($errors->has('meta.title')) has-error @endif">
+        {!! Form::label('meta[title]', 'Meta Title', ['class' => 'control-label']) !!}
         {!! Form::text('meta[title]', null, ['class' => 'form-control']) !!}
     </div>
-    <div class="form-group @if ($errors->has('meta.keywords')) has-error @endif">
-        {!! Form::label('meta[keywords]', 'Meta Keywords') !!}
+    <div class="form-group label-floating @if ($errors->has('meta.keywords')) has-error @endif">
+        {!! Form::label('meta[keywords]', 'Meta Keywords', ['class' => 'control-label']) !!}
         {!! Form::text('meta[keywords]', null, ['class' => 'form-control']) !!}
     </div>
-    <div class="form-group @if ($errors->has('meta.description')) has-error @endif">
-        {!! Form::label('meta[description]', 'Meta Description') !!}
+    <div class="form-group label-floating @if ($errors->has('meta.description')) has-error @endif">
+        {!! Form::label('meta[description]', 'Meta Description', ['class' => 'control-label']) !!}
         {!! Form::text('meta[description]', null, ['class' => 'form-control']) !!}
     </div>
     <div class="form-group @if ($errors->has('meta.robots')) has-error @endif">
