@@ -76,5 +76,5 @@
         @endforeach
         </tbody>
     </table>
-    <a href="/installer/requirements" class="btn btn-info">{!! FA::icon('refresh') !!} {{ trans('installer.check_again') }}</a>
+    <a href="/installer/requirements" class="btn btn-raised btn-info">{!! FA::icon('refresh') !!} {{ trans('installer.check_again') }}</a>
 </div>

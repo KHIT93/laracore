@@ -26,7 +26,7 @@
 </head>
 <body>
     <div id="wrapper">
-        <nav class="navbar navbar-inverse navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             @include('admin.partials._navbar')
             @include('admin.partials._sidebar')
         </nav>

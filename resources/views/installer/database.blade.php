@@ -19,33 +19,33 @@
     </div>
     <p id="sqlite_notes" class="alert alert-info">{{ trans('installer.database.sqlite.note') }}</p>
     <p id="sqlsrv_notes" class="alert alert-info">{{ trans('installer.database.sqlsrv.note') }}</p>
-    <div class="form-group @if ($errors->has('DB_DATABASE')) has-error @endif">
-        {!! Form::label('DB_DATABASE', trans('installer.database.db_database')) !!}
+    <div class="form-group label-floating @if ($errors->has('DB_DATABASE')) has-error @endif">
+        {!! Form::label('DB_DATABASE', trans('installer.database.db_database'), ['class' => 'control-label']) !!}
         {!! Form::text('DB_DATABASE', null, ['class' => 'form-control', 'required']) !!}
     </div>
-    <div class="form-group @if ($errors->has('DB_USERNAME')) has-error @endif">
-        {!! Form::label('DB_USERNAME', trans('installer.database.db_username')) !!}
+    <div class="form-group label-floating @if ($errors->has('DB_USERNAME')) has-error @endif">
+        {!! Form::label('DB_USERNAME', trans('installer.database.db_username'), ['class' => 'control-label']) !!}
         {!! Form::text('DB_USERNAME', null, ['class' => 'form-control', 'required']) !!}
     </div>
-    <div class="form-group @if ($errors->has('DB_PASSWORD')) has-error @endif">
-        {!! Form::label('DB_PASSWORD', trans('installer.database.db_password')) !!}
+    <div class="form-group label-floating @if ($errors->has('DB_PASSWORD')) has-error @endif">
+        {!! Form::label('DB_PASSWORD', trans('installer.database.db_password'), ['class' => 'control-label']) !!}
         {!! Form::password('DB_PASSWORD', ['class' => 'form-control']) !!}
     </div>
     <fieldset>
         <legend>{{ trans('installer.adv_settings') }}</legend>
         <p>{{ trans('installer.database.adv_notes') }}</p>
-        <div class="form-group @if ($errors->has('DB_HOST')) has-error @endif">
-            {!! Form::label('DB_HOST', trans('installer.hostname')) !!}
+        <div class="form-group label-floating @if ($errors->has('DB_HOST')) has-error @endif">
+            {!! Form::label('DB_HOST', trans('installer.hostname'), ['class' => 'control-label']) !!}
             {!! Form::text('DB_HOST', 'localhost', ['class' => 'form-control', 'required']) !!}
         </div>
-        <div class="form-group @if ($errors->has('DB_PORT')) has-error @endif">
-            {!! Form::label('DB_PORT', trans('installer.port')) !!}
+        <div class="form-group label-floating @if ($errors->has('DB_PORT')) has-error @endif">
+            {!! Form::label('DB_PORT', trans('installer.port'), ['class' => 'control-label']) !!}
             {!! Form::text('DB_PORT', '3306', ['class' => 'form-control']) !!}
         </div>
-        <div class="form-group @if ($errors->has('DB_PREFIX')) has-error @endif">
-            {!! Form::label('DB_PREFIX', trans('installer.database.db_prefix')) !!}
+        <div class="form-group label-floating @if ($errors->has('DB_PREFIX')) has-error @endif">
+            {!! Form::label('DB_PREFIX', trans('installer.database.db_prefix'), ['class' => 'control-label']) !!}
             {!! Form::text('DB_PREFIX', null, ['class' => 'form-control']) !!}
         </div>
     </fieldset>
-    <button type="button" class="btn btn-info">{!! FA::icon('refresh') !!} {{ trans('installer.database.test') }}</button>
+    <button type="button" class="btn btn-raised btn-info">{!! FA::icon('refresh') !!} {{ trans('installer.database.test') }}</button>
 </div>

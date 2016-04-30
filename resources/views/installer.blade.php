@@ -46,7 +46,8 @@
     {!! Form::close() !!}
 </div>
 <!-- Scripts -->
-<script src="{{ asset('/js/plugins.js') }}"></script>
+<script src="{{ asset('/js/admin.plugins.js') }}"></script>
 @include('installer._js')
+<script>$.material.init();</script>
 </body>
 </html>

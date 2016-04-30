@@ -1,7 +1,7 @@
 /* Bootstrap 3 */
-@import "vendor/bootswatch/paper/variables";
 @import "vendor/bootstrap/bootstrap";
-@import "vendor/bootswatch/paper/bootswatch";
+@import "vendor/bootstrap-material/bootstrap-material-design";
+@import "vendor/bootstrap-material/ripples";
 /* Bootstrap 3 END */
 /* Font-Awesome 4 */
 @import "vendor/font-awesome/font-awesome";
@@ -29,6 +29,16 @@ body.installer
 {
   color: #ffffff;
   background-color: #fa503a;
+}
+#btn_next
+{
+  color: #ffffff;
+  background-color: #fa503a;
+}
+#btn_next:hover, #btn_next:focus
+{
+  color: #ffffff;
+  background-color: #993123;
 }
 .btn-laravel:hover, .btn-laravel:focus
 {
