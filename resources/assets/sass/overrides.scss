@@ -40,3 +40,20 @@
 .hidden-all {
     display: none !important;
 }
+/* highlight active nav-tabs item */
+ul.nav-tabs {
+    background-color: rgba(255, 255, 255, 0.0);
+    border-bottom: .333rem solid transparent;
+}
+ul.nav-tabs li.active {
+    border-bottom: .333rem solid $deep-orange;
+    color: grey;
+}
+ul.nav-tabs li a,
+ul.nav-tabs li a:focus
+{
+    color: grey !important;
+}
+ul.nav-tabs li a:hover {
+    color: black !important;
+}

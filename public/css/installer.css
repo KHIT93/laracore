@@ -6754,11 +6754,11 @@ fieldset[disabled][disabled] .btn-group-vertical,
   opacity: 0.2; }
 
 .checkbox input[type=checkbox]:checked + .checkbox-material .check {
-  color: #337ab7;
-  border-color: #337ab7; }
+  color: #ff5722;
+  border-color: #ff5722; }
 
 .checkbox input[type=checkbox]:checked + .checkbox-material .check:before {
-  color: #337ab7;
+  color: #ff5722;
   box-shadow: 0 0 0 10px, 10px -10px 0 10px, 32px 0 0 20px, 0px 32px 0 20px, -5px 5px 0 10px, 20px -12px 0 11px;
   -webkit-animation: checkbox-on 0.3s forwards;
   animation: checkbox-on 0.3s forwards; }

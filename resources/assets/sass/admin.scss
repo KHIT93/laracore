@@ -1,7 +1,10 @@
 /* Bootstrap 3 */
-@import "vendor/bootstrap/bootstrap";
+@import "vendor/bootstrap/_bootstrap";
+@import "vendor/bootstrap-material/_variables";
+$brand-primary: $deep-orange;
+$link-color: $deep-orange;
 @import "vendor/bootstrap-material/bootstrap-material-design";
-@import "vendor/bootstrap-material/ripples";
+@import "vendor/material/ripples";
 /* Bootstrap 3 END */
 /* Font-Awesome 4 */
 @import "vendor/font-awesome/font-awesome";
