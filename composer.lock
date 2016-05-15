@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c862e8047c5b73db86a08812b78883ab",
-    "content-hash": "1b258140c9c2cb78cf9a7d337a09dc6a",
+    "hash": "5997643089b26915f3d23df5d7675f82",
+    "content-hash": "bee2286d533121eca32583f2927e7e7c",
     "packages": [
         {
             "name": "barryvdh/elfinder-flysystem-driver",
@@ -867,6 +867,38 @@
                 "view"
             ],
             "time": "2014-09-13 13:18:07"
+        },
+        {
+            "name": "laracore/formbuilder",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/KHIT93/FormBuilder.git",
+                "reference": "3c18f793b06f8a1aabf219ae0cdf66bcca70d8dd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/KHIT93/FormBuilder/zipball/3c18f793b06f8a1aabf219ae0cdf66bcca70d8dd",
+                "reference": "3c18f793b06f8a1aabf219ae0cdf66bcca70d8dd",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.1.*",
+                "laravelcollective/html": "5.1.*",
+                "php": ">= 5.5.9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "LaracoreComponent\\FormBuilder\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Laravel 5.x FormBuilder for Blade Engine based on Bootstrap 3",
+            "time": "2016-05-15 11:36:17"
         },
         {
             "name": "laravel/framework",
@@ -4133,7 +4165,8 @@
         "overtrue/laravel-lang": 20,
         "zizaco/entrust": 20,
         "orangehill/iseed": 20,
-        "msurguy/honeypot": 20
+        "msurguy/honeypot": 20,
+        "laracore/formbuilder": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

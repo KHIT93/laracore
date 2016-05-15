@@ -18,7 +18,8 @@
         "orangehill/iseed": "dev-master",
 		"caffeinated/modules": "~2.0",
 		"msurguy/honeypot": "dev-master",
-		"davejamesmiller/laravel-breadcrumbs": "^3.0"
+		"davejamesmiller/laravel-breadcrumbs": "^3.0",
+		"laracore/formbuilder": "dev-master"
 	},
 	"require-dev": {
 	  "fzaninotto/faker": "~1.4",
