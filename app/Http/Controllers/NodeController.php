@@ -15,9 +15,6 @@ use Collective\Html\HtmlFacade;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Str;
-use Laracore\FormBuilder\FormBuilder;
-use LaracoreComponent\FormBuilder\Components\TextField;
-use LaracoreComponent\FormBuilder\FormMethods;
 use Symfony\Component\Console\Application;
 
 class NodeController extends Controller
@@ -201,13 +198,6 @@ class NodeController extends Controller
         $revision->delete();
         \Flash::success('The node revision has been deleted');
         return redirect('node/'.$node-nid.'/edit');
-    }
-
-    public function test()
-    {
-        $form = FormBuilder::create(FormMethods::POST);
-        $form->addComponent(new TextField('name'));
-        return $form->render();
     }
 
 }

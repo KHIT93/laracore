@@ -154,6 +154,7 @@ return [
         Orangehill\Iseed\IseedServiceProvider::class,
 		Msurguy\Honeypot\HoneypotServiceProvider::class,
 		DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
+		LaracoreComponent\FormBuilder\FormBuilderServiceProvider::class,
 
 	],
 
