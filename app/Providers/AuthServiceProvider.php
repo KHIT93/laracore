@@ -24,12 +24,19 @@ class AuthServiceProvider extends ServiceProvider
     {
         parent::registerPolicies($gate);
 
-        foreach ($this->getPermissions() as $permission)
+        try
         {
-            $gate->define($permission->name, function($user) use ($permission)
+            foreach ($this->getPermissions() as $permission)
             {
-                return $user->hasRole($permission->roles);
-            });
+                $gate->define($permission->name, function($user) use ($permission)
+                {
+                    return $user->hasRole($permission->roles);
+                });
+            }
+        }
+        catch(\PDOException $ex)
+        {
+
         }
     }
 
